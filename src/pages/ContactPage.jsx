@@ -150,7 +150,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div style={{ fontSize: "0.75rem", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--nr-medium-gray)", marginBottom: "4px" }}>WhatsApp / Direct</div>
-                    <a href="https://wa.me/917736361739" target="_blank" rel="noopener noreferrer" style={{ fontSize: "1.25rem", fontWeight: "500", color: "var(--nr-deep-navy)", textDecoration: "none" }}>+91 7736361739</a>
+                    <a href="https://wa.me/919447261739" target="_blank" rel="noopener noreferrer" style={{ fontSize: "1.25rem", fontWeight: "500", color: "var(--nr-deep-navy)", textDecoration: "none" }}>+91 9447261739</a>
                   </div>
                 </div>
 
