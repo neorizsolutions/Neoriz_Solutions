@@ -1,0 +1,55 @@
+{
+  "product": "Felora Dress Rental",
+  "projectLocation": "https://felora.neorizsolutions.com/ (no separate local codebase; deployed directly)",
+  "liveWebsite": "https://felora.neorizsolutions.com/",
+  "lastUpdated": "2026-10-15T18:45:00+05:30",
+  "sourceScreenshotsPath": "public/images/portfolio/felora/source-screenshots",
+  "finalAssetsPath": "public/images/portfolio/felora/final",
+  "assets": [
+    {
+      "id": "felora-hero",
+      "filename": "felora-hero.jpg",
+      "target": "Asset A — Premium desktop hero showcase",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Cinematic desktop browser mockup displaying genuine Felora website homepage with headline 'Where Bridal Dreams Meet Timeless Elegance' on an opulent champagne studio desk setting."
+    },
+    {
+      "id": "felora-website-collage",
+      "filename": "felora-website-collage.jpg",
+      "target": "Asset B — Multi-screen website collage",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Layered cards showing verified dress collection catalogue with rental prices (₹4,500 – ₹7,500), dress detail pages with 3, 5, and 7-day tenure selectors, and booking enquiry modal."
+    },
+    {
+      "id": "felora-mobile-showcase",
+      "filename": "felora-mobile-showcase.jpg",
+      "target": "Asset C — Authentic mobile experience",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Dual smartphone mockups standing in a luxury bridal boutique showing the responsive mobile hero and dress detail page with rental duration selectors (3, 5, 7 days)."
+    },
+    {
+      "id": "felora-product-showcase",
+      "filename": "felora-product-showcase.jpg",
+      "target": "Asset D — Genuine dress catalogue and product details",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Editorial dress catalogue and product showcase highlighting genuine dress designs (Ethereal Green Organza Gown, Rental Fee ₹6,800) alongside rental tenure pills (3, 5, 7 days), material details, and booking action button."
+    },
+    {
+      "id": "felora-alternate-showcase",
+      "filename": "felora-alternate-showcase.jpg",
+      "target": "Asset E — Alternate premium portfolio composition",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Isometric luxury agency portfolio composition presenting a laptop with the Felora bridal website alongside a smartphone displaying the mobile rental catalogue on a white Italian marble surface with blush roses and pearls."
+    }
+  ],
+  "quotaErrorsEncountered": false,
+  "totalAssetsTargeted": 5,
+  "totalAssetsApproved": 5,
+  "totalAssetsPending": 0,
+  "totalAssetsRejected": 0
+}

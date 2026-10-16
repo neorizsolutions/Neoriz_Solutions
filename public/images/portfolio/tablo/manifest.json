@@ -1,0 +1,107 @@
+{
+  "productEcosystem": "TABLO Restaurant Suite",
+  "lastUpdated": "2026-10-15T17:52:00+05:30",
+  "products": {
+    "tablo-self-ordering": {
+      "name": "TABLO Self-Ordering",
+      "sourceDirectory": "C:\\NEORIZ_SOLUTIONS\\Tablu_Barcode\\Tablu and C:\\NEORIZ_SOLUTIONS\\Tablo_Website",
+      "sourceScreenshotsPath": "public/images/portfolio/tablo/self-ordering/source-screenshots",
+      "generatedAssetsPath": "public/images/portfolio/tablo/self-ordering/final",
+      "assets": [
+        {
+          "id": "self-ordering-hero",
+          "filename": "self-ordering-hero.jpg",
+          "target": "Asset A — Hero product showcase",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "Desktop laptop frame showcasing verified Self-Ordering overview on minimalist emerald gradient background."
+        },
+        {
+          "id": "self-ordering-product-collage",
+          "filename": "self-ordering-product-collage.jpg",
+          "target": "Asset B — Multi-screen product collage",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "Layered cards showing menu QR, interactive item customization, cart hold, and counter receipt verification."
+        },
+        {
+          "id": "self-ordering-mobile-showcase",
+          "filename": "self-ordering-mobile-showcase.jpg",
+          "target": "Asset C — Mobile experience showcase",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "Two smartphone devices standing side by side showing mobile web menu and post-payment Order QR token."
+        },
+        {
+          "id": "self-ordering-workflow",
+          "filename": "self-ordering-workflow.jpg",
+          "target": "Asset D — Feature and workflow showcase",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "3-stage horizontal flow: Menu QR scan -> Digital payment & Order QR -> Counter optical scan & receipt printing."
+        },
+        {
+          "id": "self-ordering-alternate-showcase",
+          "filename": "self-ordering-alternate-showcase.jpg",
+          "target": "Asset E — Alternate portfolio composition",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "Isometric desk setting showing manager live order queue on tablet, phone pickup token, and thermal printer."
+        }
+      ]
+    },
+    "tablo-table-qr": {
+      "name": "TABLO Table QR",
+      "sourceDirectory": "C:\\NEORIZ_SOLUTIONS\\Tablo_Website",
+      "sourceScreenshotsPath": "public/images/portfolio/tablo/table-qr/source-screenshots",
+      "generatedAssetsPath": "public/images/portfolio/tablo/table-qr/final",
+      "assets": [
+        {
+          "id": "table-qr-hero",
+          "filename": "table-qr-hero.jpg",
+          "target": "Asset A — Hero product showcase",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "Desktop monitor displaying the Kitchen Display System (KDS) tagged with table numbers alongside customer table menu phone."
+        },
+        {
+          "id": "table-qr-product-collage",
+          "filename": "table-qr-product-collage.jpg",
+          "target": "Asset B — Multi-screen product collage",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "Layered cards featuring table QR placard, dine-in ordering, live kitchen ticket monitor, and consolidated billing review."
+        },
+        {
+          "id": "table-qr-mobile-showcase",
+          "filename": "table-qr-mobile-showcase.jpg",
+          "target": "Asset C — Mobile experience showcase",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "Guest hands browsing Table 04 digital menu at dining table with wooden TABLO QR stand in foreground."
+        },
+        {
+          "id": "table-qr-workflow",
+          "filename": "table-qr-workflow.jpg",
+          "target": "Asset D — Feature and workflow showcase",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "3-stage workflow: Guest table scan & order -> Kitchen order ticket with prep notes -> Manager consolidated bill review."
+        },
+        {
+          "id": "table-qr-alternate-showcase",
+          "filename": "table-qr-alternate-showcase.jpg",
+          "target": "Asset E — Alternate portfolio composition",
+          "aspectRatio": "16:9",
+          "status": "approved",
+          "description": "Eye-level ambient restaurant bar view showing station service tablet with table management and guest table QR stand."
+        }
+      ]
+    }
+  },
+  "quotaErrorsEncountered": false,
+  "totalAssetsTargeted": 10,
+  "totalAssetsApproved": 10,
+  "totalAssetsRejected": 0,
+  "totalAssetsPending": 0
+}

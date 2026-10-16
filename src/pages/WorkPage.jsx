@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -6,33 +6,25 @@ import MobileMenu from "../components/MobileMenu";
 import CustomCursor from "../components/CustomCursor";
 import Footer from "../sections/Footer";
 import MagneticButton from "../components/MagneticButton";
-import { projectsData } from "../data/portfolioData";
+import FeaturedShowcase from "../components/works/FeaturedShowcase";
 import ProjectCard from "../components/portfolio/ProjectCard";
 import ProjectFilter from "../components/portfolio/ProjectFilter";
-import FeaturedProject from "../components/portfolio/FeaturedProject";
+import { projectsData } from "../data/portfolioData";
+import useSEO from "../hooks/useSEO";
 
 const CATEGORIES = [
   "All",
-  "Healthcare",
-  "Hospitality",
-  "Commerce",
-  "Education",
-  "Lifestyle",
-  "Creative",
-  "Technology",
-  "Travel",
-  "Real Estate"
+  "Products",
+  "Client Projects"
 ];
-
-import useSEO from "../hooks/useSEO";
 
 export default function WorkPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
 
   useSEO({
-    title: "Portfolio & Case Studies | NEORIZ Solutions",
-    description: "Explore our portfolio of premium digital platforms, custom enterprise software, and modern web applications built by NEORIZ Solutions.",
+    title: "Portfolio & Selected Works | NEORIZ Solutions",
+    description: "Explore the NEORIZ Solutions portfolio: TABLO Self-Ordering, TABLO Table QR, NOX Fight Club, Neoriz WhatsApp Automation, Cafe Serenity, Emblingo Learning App, and Felora Dress Rental.",
     url: "https://neorizsolutions.com/work"
   });
 
@@ -40,20 +32,14 @@ export default function WorkPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Determine projects to show based on filter
-  const filteredProjects = projectsData.filter(project => {
+  // Filter projects according to the active category
+  const filteredProjects = projectsData.filter((project) => {
     if (activeCategory === "All") return true;
     return project.category === activeCategory;
   });
 
-  // If viewing 'All', separate featured projects from the regular grid
-  const showFeaturedLayout = activeCategory === "All";
-  const featuredProjects = showFeaturedLayout ? filteredProjects.filter(p => p.featured).slice(0, 1) : [];
-  
-  // The rest of the projects (if All, exclude the ones shown as featured; otherwise show all filtered)
-  const gridProjects = showFeaturedLayout 
-    ? filteredProjects.filter(p => !featuredProjects.some(fp => fp.id === p.id))
-    : filteredProjects;
+  // Featured spotlight projects (from the curated set)
+  const featuredProjects = projectsData.filter((p) => p.featured);
 
   return (
     <>
@@ -62,68 +48,71 @@ export default function WorkPage() {
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       <main style={{ paddingTop: "120px", background: "var(--nr-soft-white)", minHeight: "100vh" }}>
-        
-        {/* Work Hero */}
-        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "120px 0 80px 0" }}>
+
+        {/* 1. Works Introduction / Hero */}
+        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "120px 0 60px 0" }}>
           <div className="container">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ maxWidth: "900px" }}>
-              <div style={{ color: "var(--nr-blue)", fontWeight: 600, letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "24px", fontSize: "0.8125rem" }}>
-                Our Portfolio
+              <div style={{ color: "var(--nr-blue)", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px", fontSize: "0.8125rem" }}>
+                Selected Portfolio
               </div>
-              <h1 style={{ fontFamily: "var(--nr-font-display)", fontSize: "clamp(3.5rem, 7vw, 6rem)", fontWeight: 700, color: "var(--nr-deep-navy)", lineHeight: 1.02, letterSpacing: "-0.04em", marginBottom: "32px" }}>
-                ONE APPROACH.<br />
-                MANY POSSIBILITIES.
+              <h1 style={{ fontFamily: "var(--nr-font-display)", fontSize: "clamp(3.25rem, 6.5vw, 5.5rem)", fontWeight: 700, color: "var(--nr-deep-navy)", lineHeight: 1.05, letterSpacing: "-0.035em", marginBottom: "28px" }}>
+                PROPRIETARY PRODUCTS.<br />
+                ENGINEERED EXPERIENCES.
               </h1>
-              <p style={{ fontSize: "1.25rem", color: "var(--nr-medium-gray)", lineHeight: 1.7, maxWidth: "600px", letterSpacing: "0.01em" }}>
-                Every project starts with a different business problem. We build engineered digital experiences tailored for varying industries and objectives.
+              <p style={{ fontSize: "1.25rem", color: "var(--nr-medium-gray)", lineHeight: 1.7, maxWidth: "680px" }}>
+                Explore our proprietary platforms, custom client web architectures, and digital services engineered for high operational performance and fluid user journeys.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Discovery Filter */}
-        <section style={{ padding: "0 0 60px 0" }}>
+        {/* 2. Featured Showcase Carousel */}
+        <section style={{ padding: "20px 0 80px 0" }}>
           <div className="container">
-            <ProjectFilter 
-              categories={CATEGORIES} 
-              activeCategory={activeCategory} 
-              onCategoryChange={setActiveCategory} 
-            />
+            <FeaturedShowcase projects={featuredProjects} />
           </div>
         </section>
 
-        {/* Projects Display */}
-        <section style={{ padding: "0 0 120px 0" }}>
+        {/* 3. Category Filter & Project Browsing Grid */}
+        <section style={{ padding: "20px 0 120px 0" }}>
           <div className="container">
-            
+
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "48px" }}>
+              <div>
+                <div style={{ fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--nr-blue)", fontWeight: 700, marginBottom: "8px" }}>
+                  Browse Work
+                </div>
+                <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)", fontWeight: 700, color: "var(--nr-deep-navy)", margin: 0, letterSpacing: "-0.02em" }}>
+                  Active Engagements
+                </h2>
+              </div>
+
+              <ProjectFilter
+                categories={CATEGORIES}
+                activeCategory={activeCategory}
+                onCategoryChange={setActiveCategory}
+              />
+            </div>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCategory}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.4 }}
               >
-                {/* Featured Projects (Only shown when "All" is selected) */}
-                {showFeaturedLayout && featuredProjects.length > 0 && (
-                  <div style={{ marginBottom: "120px" }}>
-                    {featuredProjects.map((project, index) => (
-                      <FeaturedProject key={project.id} project={project} reversed={false} />
-                    ))}
-                  </div>
-                )}
-
-                {/* Grid Projects */}
-                {gridProjects.length > 0 ? (
-                  <div className="grid-system grid-2-col" style={{ gap: "48px" }}>
-                    {gridProjects.map((project, idx) => (
+                {filteredProjects.length > 0 ? (
+                  <div className="nr-works-grid">
+                    {filteredProjects.map((project, idx) => (
                       <ProjectCard key={project.id} project={project} index={idx} />
                     ))}
                   </div>
                 ) : (
                   <div style={{ padding: "80px 0", textAlign: "center", color: "var(--nr-medium-gray)" }}>
                     <p style={{ fontSize: "1.25rem" }}>No projects found in this category.</p>
-                    <button 
+                    <button
                       onClick={() => setActiveCategory("All")}
                       style={{ background: "none", border: "none", color: "var(--nr-blue)", marginTop: "16px", cursor: "pointer", fontSize: "1rem", fontWeight: 600 }}
                     >
@@ -137,23 +126,39 @@ export default function WorkPage() {
           </div>
         </section>
 
-        {/* Cross-Page CTA */}
-        <section style={{ padding: "120px 0", background: "var(--nr-white)", textAlign: "center" }}>
+        {/* 4. Closing Contact CTA */}
+        <section style={{ padding: "120px 0", background: "var(--nr-deep-navy)", color: "var(--nr-white)", textAlign: "center" }}>
           <div className="container">
-            <h2 style={{ fontFamily: "var(--nr-font-display)", fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "48px", letterSpacing: "-0.03em" }}>
-              Ready to start your project?
+            <h2 style={{ fontFamily: "var(--nr-font-display)", fontSize: "clamp(2.5rem, 4vw, 3.75rem)", fontWeight: 700, marginBottom: "24px", letterSpacing: "-0.03em" }}>
+              Have a product or project in mind?
             </h2>
+            <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.25rem", maxWidth: "600px", margin: "0 auto 48px auto", lineHeight: 1.6 }}>
+              Whether building an enterprise web system, an internal platform, or an interactive brand experience, our engineering team is ready.
+            </p>
             <MagneticButton>
-              <Link to="/contact" className="btn-primary">
-                Start a Project
-                <span className="btn-arrow" style={{ fontSize: "1.2em", marginLeft: "8px" }}>→</span>
+              <Link
+                to="/contact"
+                className="btn-secondary"
+                style={{
+                  borderColor: "rgba(255,255,255,0.25)",
+                  color: "var(--nr-white)",
+                  padding: "18px 44px",
+                  borderRadius: "100px",
+                  fontSize: "1.0625rem",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center"
+                }}
+              >
+                Start a Conversation
+                <span className="btn-arrow" style={{ fontSize: "1.2em", marginLeft: "10px" }}>→</span>
               </Link>
             </MagneticButton>
           </div>
         </section>
 
       </main>
-      
+
       <Footer />
     </>
   );

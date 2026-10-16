@@ -7,6 +7,7 @@ import CustomCursor from "../components/CustomCursor";
 import Footer from "../sections/Footer";
 import MagneticButton from "../components/MagneticButton";
 import { projectsData } from "../data/portfolioData";
+import useSEO from "../hooks/useSEO";
 
 const solutions = [
   {
@@ -14,49 +15,48 @@ const solutions = [
     title: "Digital Experiences",
     desc: "Premium websites and digital experiences built around narrative and performance.",
     problem: "Brands struggle to translate their physical premium feel into a digital environment without sacrificing loading speed.",
-    builds: "Immersive landing pages, WebGL experiences, portfolio sites, and luxury brand platforms.",
-    projectSlug: "gems-health-center",
-    projectLabel: "Healthcare"
+    builds: "Immersive landing pages, interactive portfolios, and lifestyle brand platforms.",
+    // TEMPORARILY HIDDEN: Cafe Serenity project is under development. Restore by uncommenting lines below.
+    // projectSlug: "cafe-serenity",
+    // projectLabel: "Hospitality & Roastery"
   },
   {
     id: "02",
     title: "Web Applications",
     desc: "Interactive applications and platforms designed around complex user workflows.",
     problem: "Users abandon applications that feel slow, confusing, or lack native-like responsiveness on the web.",
-    builds: "Client portals, booking systems, dashboards, and progressive web apps (PWAs).",
-    projectSlug: "elevate-academy",
-    projectLabel: "Education"
+    builds: "Client portals, learning platforms, booking systems, dashboards, and progressive web apps.",
+    projectSlug: "emblingo-learning-app",
+    projectLabel: "EdTech & Learning"
   },
   {
     id: "03",
-    title: "Business Platforms",
-    desc: "Digital systems that support business operations and heavy transactions.",
-    problem: "Off-the-shelf software forces businesses to adapt their workflows to the software, instead of the other way around.",
-    builds: "E-Commerce engines, multi-vendor marketplaces, and operational management systems.",
-    projectSlug: "haya-mart",
-    projectLabel: "E-Commerce"
+    title: "Contactless Business Platforms",
+    desc: "Digital systems that support high-volume venue operations and live customer transactions.",
+    problem: "Traditional physical ordering systems create bottlenecks, printing overhead, and slow table turnover.",
+    builds: "QR digital menus, real-time table bill splitting, and instant service dispatcher interfaces.",
+    projectSlug: "tablo-table-qr",
+    projectLabel: "Contactless Dining & QR Ordering"
   },
   {
     id: "04",
     title: "Custom Software",
     desc: "Tailored solutions designed around specific, unique business problems.",
     problem: "Legacy systems slow down growth and cannot easily integrate with modern APIs and mobile platforms.",
-    builds: "Internal tools, ERP extensions, data visualization suites, and specialized industry software.",
-    projectSlug: "maison-estate",
-    projectLabel: "Real Estate"
+    builds: "Touchscreen self-ordering kiosks, POS synchronizers, and kitchen display integrations.",
+    projectSlug: "tablo-self-ordering",
+    projectLabel: "Point of Sale & Kiosks"
   },
   {
     id: "05",
-    title: "UI/UX Systems",
-    desc: "Interfaces and design systems focused on absolute usability and clarity.",
-    problem: "Inconsistent design across a product ecosystem leads to poor brand perception and slow engineering velocity.",
-    builds: "Component libraries, design tokens, wireframing, and comprehensive user experience audits.",
-    projectSlug: "restroie",
-    projectLabel: "Restaurant"
+    title: "Athletic & Membership Portals",
+    desc: "High-octane digital experiences combining branding, class schedules, and conversion funnels.",
+    problem: "Outdated gym templates fail to communicate elite training culture and generate high member drop-offs.",
+    builds: "Dynamic timetables, coach profiles, membership tiers, and instant session bookings.",
+    projectSlug: "nox-fight-club",
+    projectLabel: "Athletics & Fitness"
   }
 ];
-
-import useSEO from "../hooks/useSEO";
 
 export default function SolutionsPage() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -71,7 +71,7 @@ export default function SolutionsPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  const getProject = (slug) => projectsData.find(p => p.slug === slug);
+  const getProject = (slug) => projectsData.find((p) => p.slug === slug);
 
   return (
     <>
@@ -102,7 +102,7 @@ export default function SolutionsPage() {
         <section style={{ padding: "80px 0", background: "var(--nr-white)" }}>
           <div className="container">
             <div style={{ display: "flex", flexDirection: "column", gap: "120px" }}>
-              {solutions.map((sol, idx) => {
+              {solutions.map((sol) => {
                 const project = getProject(sol.projectSlug);
                 return (
                   <motion.div 
@@ -125,12 +125,12 @@ export default function SolutionsPage() {
                       </p>
                       
                       <div style={{ marginBottom: "24px" }}>
-                        <h4 style={{ fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--nr-teal)", marginBottom: "8px" }}>The Problem It Solves</h4>
+                        <h3 style={{ fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--nr-teal)", marginBottom: "8px" }}>The Problem It Solves</h3>
                         <p style={{ color: "var(--nr-medium-gray)", lineHeight: 1.6 }}>{sol.problem}</p>
                       </div>
 
                       <div style={{ marginBottom: "40px" }}>
-                        <h4 style={{ fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--nr-teal)", marginBottom: "8px" }}>What Can Be Built</h4>
+                        <h3 style={{ fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--nr-teal)", marginBottom: "8px" }}>What Can Be Built</h3>
                         <p style={{ color: "var(--nr-medium-gray)", lineHeight: 1.6 }}>{sol.builds}</p>
                       </div>
                     </div>
@@ -147,7 +147,7 @@ export default function SolutionsPage() {
                             transition={{ duration: 0.6 }}
                             src={project.image} 
                             alt={project.name} 
-                            style={{ width: "100%", height: "auto", display: "block" }} 
+                            style={{ width: "100%", height: "auto", display: "block", aspectRatio: "16/10", objectFit: "cover" }} 
                           />
                         </Link>
                         <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "12px" }}>{project.name}</h3>
@@ -172,7 +172,7 @@ export default function SolutionsPage() {
               How do we get there?
             </h2>
             <MagneticButton>
-              <Link to="/process" className="btn-secondary" style={{ borderColor: "rgba(255,255,255,0.2)", color: "var(--nr-white)" }}>
+              <Link to="/process" className="btn-secondary" style={{ borderColor: "rgba(255,255,255,0.2)", color: "var(--nr-white)", textDecoration: "none" }}>
                 View Our Process
                 <span className="btn-arrow" style={{ fontSize: "1.2em", marginLeft: "8px" }}>→</span>
               </Link>

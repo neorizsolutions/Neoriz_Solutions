@@ -1,0 +1,55 @@
+{
+  "product": "Cafe Serenity",
+  "projectLocation": "C:\\Projects\\Neoriz_Salad",
+  "liveWebsite": "https://cafeserenity.neorizsolutions.com/",
+  "lastUpdated": "2026-10-15T18:16:00+05:30",
+  "sourceScreenshotsPath": "public/images/portfolio/cafe-serenity/source-screenshots",
+  "finalAssetsPath": "public/images/portfolio/cafe-serenity/final",
+  "assets": [
+    {
+      "id": "cafe-serenity-hero",
+      "filename": "cafe-serenity-hero.jpg",
+      "target": "Asset A — Premium desktop hero showcase",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Cinematic desktop browser mockup displaying genuine Café Serenity website homepage with headline 'Good food, made for everyday.' and authentic South Indian breakfast presentation on a warm culinary desk setting."
+    },
+    {
+      "id": "cafe-serenity-website-collage",
+      "filename": "cafe-serenity-website-collage.jpg",
+      "target": "Asset B — Multi-screen website collage",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Layered cards showing verified Healthy Choices meal plans (Weight Loss, High Protein, Diabetic Friendly), morning breakfast classics, and quality standards."
+    },
+    {
+      "id": "cafe-serenity-mobile-showcase",
+      "filename": "cafe-serenity-mobile-showcase.jpg",
+      "target": "Asset C — Authentic responsive mobile experience",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Dual smartphone mockups standing on cafe stone counter displaying mobile responsive homepage with breakfast classics and healthy choices meal plans, accompanied by a South Indian filter coffee in the soft background."
+    },
+    {
+      "id": "cafe-serenity-product-showcase",
+      "filename": "cafe-serenity-product-showcase.jpg",
+      "target": "Asset D — Verified menu and culinary showcase",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Editorial culinary presentation illustrating the two dining pillars: authentic morning breakfast classics (steamed puttu, idli vada, ghee roast dosa, filter coffee) and portion-controlled healthy meal plans with verified FSSAI standards."
+    },
+    {
+      "id": "cafe-serenity-alternate-showcase",
+      "filename": "cafe-serenity-alternate-showcase.jpg",
+      "target": "Asset E — Alternate premium portfolio composition",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Isometric perspective on light stone and wood cafe counter showing laptop displaying website, smartphone with mobile meal plans, eucalyptus leaves, and morning cafe cup."
+    }
+  ],
+  "quotaErrorsEncountered": false,
+  "totalAssetsTargeted": 5,
+  "totalAssetsApproved": 5,
+  "totalAssetsRejected": 0,
+  "totalAssetsPending": 0
+}

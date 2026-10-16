@@ -1,45 +1,38 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function ProjectFilter({ categories, activeCategory, onCategoryChange }) {
   return (
-    <div className="project-filter-container">
-      {categories.map((category) => (
-        <button
-          key={category}
-          onClick={() => onCategoryChange(category)}
-          style={{
-            background: "none",
-            border: "none",
-            padding: "8px 16px",
-            fontSize: "0.9375rem",
-            fontWeight: 500,
-            cursor: "pointer",
-            position: "relative",
-            color: activeCategory === category ? "var(--nr-deep-navy)" : "var(--nr-medium-gray)",
-            transition: "color 0.3s ease",
-            outline: "none"
-          }}
-          aria-pressed={activeCategory === category}
-        >
-          {category}
-          {activeCategory === category && (
-            <motion.div
-              layoutId="activeFilter"
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: "2px",
-                background: "var(--nr-blue)",
-                borderRadius: "2px"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            />
-          )}
-        </button>
-      ))}
+    <div className="project-filter-container" role="tablist" aria-label="Filter projects by category">
+      {categories.map((category) => {
+        const isActive = activeCategory === category;
+        return (
+          <button
+            key={category}
+            role="tab"
+            aria-selected={isActive}
+            onClick={() => onCategoryChange(category)}
+            style={{
+              background: isActive ? "var(--nr-deep-navy)" : "var(--nr-white)",
+              color: isActive ? "var(--nr-white)" : "var(--nr-deep-navy)",
+              border: "1px solid",
+              borderColor: isActive ? "var(--nr-deep-navy)" : "var(--nr-light-gray)",
+              padding: "10px 22px",
+              borderRadius: "100px",
+              fontSize: "0.9375rem",
+              fontWeight: 600,
+              cursor: "pointer",
+              position: "relative",
+              transition: "all 0.25s ease",
+              outline: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px"
+            }}
+          >
+            {category}
+          </button>
+        );
+      })}
     </div>
   );
 }

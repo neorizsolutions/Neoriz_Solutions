@@ -1,0 +1,70 @@
+{
+  "project": "neoriz-whatsapp-automation",
+  "productName": "Neoriz AI Automation CRM",
+  "productCategory": "AI-powered CRM, Lead Generation & Workflow Automation Platform",
+  "sourceProject": "C:\\Automation_Whatsapp",
+  "presentationType": "Representative Concept UI (Realistic High-Fidelity SaaS Showcase)",
+  "isRepresentativeConceptUI": true,
+  "realFrontendAvailable": false,
+  "notes": "Original frontend was incomplete/unusable. High-fidelity representative SaaS product showcases were generated adhering to the Neoriz AI Automation CRM concept and design specification.",
+  "targetDirectory": "public/images/portfolio/neoriz-whatsapp-automation/final/",
+  "aspectRatio": "16:9",
+  "lastUpdated": "2026-10-15T19:25:00+05:30",
+  "assets": [
+    {
+      "id": "A",
+      "filename": "neoriz-whatsapp-hero.jpg",
+      "title": "Main CRM Dashboard Hero",
+      "composition": "Desktop monitor studio showcase featuring Neoriz AI Automation CRM dashboard with metric cards, acquisition trend chart, pipeline summary, and recent lead activity.",
+      "status": "approved",
+      "reviewStatus": "approved",
+      "fileSize": "628 KB",
+      "dimensions": "1792x1024 (16:9)",
+      "reviewNotes": "Pristine enterprise dashboard UI on modern desk setup, clear metrics (Total Leads: 1,284, New Leads: 186, Qualified Leads: 72, Conversion Rate: 18.6%), sharp typography and realistic layout."
+    },
+    {
+      "id": "B",
+      "filename": "neoriz-whatsapp-product-collage.jpg",
+      "title": "CRM and Lead Pipeline Showcase",
+      "composition": "Multi-screen layered desktop collage highlighting the Kanban CRM pipeline stages, lead cards, and AI Lead Profile summary panel.",
+      "status": "approved",
+      "reviewStatus": "approved",
+      "fileSize": "618 KB",
+      "dimensions": "1792x1024 (16:9)",
+      "reviewNotes": "Distinct Kanban columns (New Lead, Contacted, Qualified, Proposal, Converted) with realistic lead cards and AI-suggested follow-up action panel."
+    },
+    {
+      "id": "C",
+      "filename": "neoriz-whatsapp-mobile-showcase.jpg",
+      "title": "AI Messaging and Follow-up Showcase",
+      "composition": "Smartphone and desktop companion setup demonstrating automated lead enquiry qualification conversation and agent inbox sync.",
+      "status": "approved",
+      "reviewStatus": "approved",
+      "fileSize": "636 KB",
+      "dimensions": "1792x1024 (16:9)",
+      "reviewNotes": "Realistic conversational workflow showing incoming client inquiry, AI assistant qualification, and demo booking response alongside the live CRM agent inbox."
+    },
+    {
+      "id": "D",
+      "filename": "neoriz-whatsapp-automation-showcase.jpg",
+      "title": "AI Agents and Automation Workflow",
+      "composition": "Panoramic desktop monitor display showing node-based visual workflow automation builder and configurable AI Agent status panel.",
+      "status": "approved",
+      "reviewStatus": "approved",
+      "fileSize": "637 KB",
+      "dimensions": "1792x1024 (16:9)",
+      "reviewNotes": "Connected workflow nodes (New Enquiry -> AI Lead Qualification -> Automated Response -> CRM Lead Creation -> Scheduled Follow-Up -> Conversion Tracking) and active AI Agents panel."
+    },
+    {
+      "id": "E",
+      "filename": "neoriz-whatsapp-alternate-showcase.jpg",
+      "title": "Alternate Agency Portfolio Showcase",
+      "composition": "Architectural studio environment featuring an ultra-thin laptop and companion smartphone displaying lead pipeline analytics and quick-action alerts.",
+      "status": "approved",
+      "reviewStatus": "approved",
+      "fileSize": "652 KB",
+      "dimensions": "1792x1024 (16:9)",
+      "reviewNotes": "Premium dual-device studio arrangement with consistent Neoriz AI Automation branding, conversion funnel metrics, and mobile response previews."
+    }
+  ]
+}

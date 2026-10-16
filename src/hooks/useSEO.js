@@ -45,7 +45,7 @@ export default function useSEO({
 
     // Enforce no trailing slash on URLs except root
     const formattedUrl = url ? (url.endsWith('/') && url.length > 30 ? url.slice(0, -1) : url) : null;
-    const defaultImage = "/images/projects/gems-health.png";
+    const defaultImage = "/images/projects/tablo-self-ordering-1.png.jpeg";
     let finalImage = image || defaultImage;
     if (finalImage.startsWith("/")) {
       finalImage = `https://neorizsolutions.com${finalImage}`;

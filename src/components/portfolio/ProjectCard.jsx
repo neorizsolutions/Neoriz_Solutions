@@ -1,75 +1,115 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function ProjectCard({ project, index = 0 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
-      style={{ display: "flex", flexDirection: "column", height: "100%" }}
-    >
-      <Link 
-        to={`/project/${project.slug}`} 
-        className="project-card-image-wrapper"
-        data-cursor="case-study"
-        style={{ 
-          display: "block", 
-          borderRadius: "16px", 
-          overflow: "hidden", 
-          marginBottom: "32px", 
-          aspectRatio: "4/3", 
-          background: "var(--nr-light-gray)",
-          position: "relative"
-        }}
-      >
-        <motion.img
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          src={project.image}
-          alt={project.name}
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-        />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.1) 0%, transparent 40%)", pointerEvents: "none" }}></div>
-      </Link>
-      
-      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-        <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-blue)", textTransform: "uppercase", letterSpacing: "0.05em" }}>{project.category}</span>
-        <span style={{ width: "16px", height: "1px", background: "var(--nr-light-gray)" }}></span>
-        <span style={{ fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--nr-medium-gray)", fontWeight: 600 }}>{project.industry}</span>
-      </div>
-      
-      <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "16px", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-        <Link to={`/project/${project.slug}`} style={{ color: "inherit", textDecoration: "none" }}>
-          {project.name}
-        </Link>
-      </h2>
-      
-      <p style={{ color: "var(--nr-medium-gray)", fontSize: "1.0625rem", lineHeight: 1.6, flexGrow: 1, marginBottom: "24px" }}>
-        {project.description}
-      </p>
+/**
+ * ProjectCard — Modern, distinctive, premium portfolio card template.
+ * Built for NEORIZ Solutions.
+ * 
+ * Supports:
+ * - Optional image / collage slot (renders cleanly with or without image)
+ * - Subtle lift and understated shadow transitions (no grayscale, no dramatic distortions)
+ * - Verified project metadata (category, industry, tech stack, description)
+ * - Reusable across grid, list, or featured layouts
+ */
+export default function ProjectCard({ project, index = 0, showImageSlot = false }) {
+  if (!project) return null;
 
-      <div style={{ marginTop: "auto" }}>
-        <Link 
-          to={`/project/${project.slug}`}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            fontSize: "0.875rem",
-            fontWeight: 700,
-            color: "var(--nr-deep-navy)",
-            textTransform: "uppercase",
-            letterSpacing: "0.05em",
-            textDecoration: "none"
-          }}
-          className="hover-arrow-link"
-        >
-          View Case Study <span style={{ transition: "transform 0.3s ease" }}>→</span>
-        </Link>
+  const hasImage = Boolean(project.image);
+  const shouldRenderImageArea = showImageSlot || hasImage;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="nr-project-card"
+    >
+      <div className="nr-card-inner">
+        {/* Optional Image / Collage Slot */}
+        {shouldRenderImageArea && (
+          <div className="nr-card-media-slot">
+            {hasImage ? (
+              <Link to={`/project/${project.slug}`} tabIndex={-1} aria-hidden="true" className="nr-card-media-link">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  loading="lazy"
+                  className="nr-card-img"
+                />
+              </Link>
+            ) : (
+              <div className="nr-card-media-placeholder" aria-hidden="true">
+                <div className="nr-card-media-watermark">
+                  <span className="nr-watermark-text">{project.category || "Architecture"}</span>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Card Header: Project Number, Category & Industry */}
+        <div className="nr-card-meta">
+          <div className="nr-card-badge-row">
+            <span className="nr-card-index">{String(index + 1).padStart(2, "0")}</span>
+            <span className="nr-card-divider" />
+            <span className="nr-card-category">{project.category}</span>
+          </div>
+          {project.industry && (
+            <span className="nr-card-industry">{project.industry}</span>
+          )}
+        </div>
+
+        {/* Card Title & Link */}
+        <h3 className="nr-card-title">
+          <Link to={`/project/${project.slug}`} className="nr-card-title-link">
+            {project.name}
+          </Link>
+        </h3>
+
+        {/* Project Description (limited strictly to verified data) */}
+        {project.description && (
+          <p className="nr-card-description">
+            {project.description}
+          </p>
+        )}
+
+        {/* Solution Highlights Chips */}
+        {project.techStack && project.techStack.length > 0 && (
+          <div className="nr-card-tags" aria-label="Key capabilities">
+            {project.techStack.slice(0, 4).map((tech, i) => (
+              <span key={i} className="nr-card-tag">
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Card Footer: Action Links */}
+        <div className="nr-card-footer">
+          <Link
+            to={`/project/${project.slug}`}
+            className="nr-card-action-link"
+            aria-label={`View case study for ${project.name}`}
+          >
+            <span>View Case Study</span>
+            <span className="nr-card-arrow" aria-hidden="true">→</span>
+          </Link>
+
+          {project.website && project.website !== "#" && (
+            <a
+              href={project.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nr-card-live-link"
+              aria-label={`Open live experience for ${project.name} in a new tab`}
+            >
+              <span>{project.ctaLabel || "Live Demo"}</span>
+              <span className="nr-live-glyph" aria-hidden="true">↗</span>
+            </a>
+          )}
+        </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }

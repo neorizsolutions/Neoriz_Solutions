@@ -13,7 +13,7 @@ import Process from "../sections/Process";
 import WhyChooseUs from "../sections/WhyChooseUs";
 import Contact from "../sections/Contact";
 import Footer from "../sections/Footer";
-import { technologiesData } from "../data/portfolioData";
+
 
 import useSEO from "../hooks/useSEO";
 

@@ -1,1016 +1,642 @@
+// Active curated portfolio containing the 6 approved projects
 export const projectsData = [
   {
-    "id": "01",
-    "name": "Gems Health Center",
-    "slug": "gems-health-center",
-    "industry": "Healthcare",
-    "description": "A modern healthcare platform focused on accessibility, patient trust, and service discovery.",
-    "image": "/images/projects/gems-health.png",
-    "website": "https://gems-health-center.vercel.app/",
-    "category": "Healthcare",
-    "featured": true,
-    "tagline": "Modern healthcare experience focused on accessibility and trust.",
-    "overview": "Gems Health Center is a premier medical institution requiring a digital presence that balances medical authority with absolute user accessibility. The goal was to build a fluid portal where patients can explore clinical specialties, identify physicians, and schedule visits seamlessly.",
-    "challenge": {
-      "requirements": "The client requested a clean, accessible interface compliant with modern healthcare guidelines, offering instant loading and high mobile responsiveness.",
-      "businessProblem": "Traditional medical portals are often cluttered and confusing, leading to high drop-offs during appointment booking and an influx of avoidable support calls.",
-      "userChallenges": "Patients searching for immediate care are often stressed. Finding doctors and booking hours must be friction-free, load immediately, and feature legible typography.",
-      "industryChallenges": "Regulatory compliance, data security, and service reliability across fluctuating network connections are absolute priorities in healthcare portals."
+    id: "tablo-self-ordering",
+    name: "TABLO — Self-Ordering",
+    slug: "tablo-self-ordering",
+    category: "Products",
+    industry: "Quick-Service Restaurants / Express Ordering",
+    projectType: "product",
+    description: "Customer-owned smartphone ordering and counter collection solution featuring temporary inventory holds, online payments, and counter receipt validation.",
+    image: null,
+    gallery: [],
+    website: "https://tablo.neorizsolutions.com/#self-ordering",
+    ctaLabel: "View Product Overview",
+    featured: true,
+    tagline: "Mobile digital ordering, secure online checkout, and validated counter collection for express dining.",
+    overview: "TABLO Self-Ordering is a digital ordering and counter-collection solution designed for quick-service restaurants, express cafés, and food courts. Rather than lining up at a cashier counter, guests scan a public Menu QR using their smartphone camera to browse the menu, customize items, and pay online directly in their mobile browser. Once payment is confirmed, the customer receives a distinct digital Order QR token that is scanned at the pickup counter to validate the order and automatically print itemized receipts and kitchen slips.",
+    challenge: {
+      requirements: "Provide a friction-free mobile ordering experience that operates across standard smartphone browsers without requiring diners to install a native app, while ensuring real-time menu availability and reliable counter pickup coordination.",
+      businessProblem: "During busy meal periods, counter ordering bottlenecks lead to long customer queues, misheard order requests, and high cashier staffing overhead.",
+      userChallenges: "Diners want to review clear item pricing, explore dish photos and dietary modifiers comfortably on their own devices, and complete checkout quickly without waiting for cashier availability.",
+      industryChallenges: "Preventing customers from ordering items that have run out of stock during peak rushes, while separating open public menu browsing from paid, validated order collection."
     },
-    "strategy": {
-      "uxPlanning": "We mapped user journeys starting from direct organic search landing pages straight to the primary action button to booking confirmation in under 3 clicks.",
-      "infoArchitecture": "A highly structured catalog grouping medical departments logically under Clinical Specialties, alongside an intuitive Doctor Directory.",
-      "wireframes": "We designed desktop-first and mobile-first layouts prioritising contact numbers and booking widgets immediately in the header viewport.",
-      "designDecisions": "We selected a pure black and white theme with soft grey boundaries to reflect hygiene, simplicity, and professionalism, without typical bright hospital teals."
+    strategy: {
+      uxPlanning: "Engineered an 8-step customer journey: Public Menu QR Scan → Visual Catalog Exploration → 5-Minute Inventory Hold → Secure Online Payment → Separate Order QR Issuance → Counter Optical Validation → Single-Billing Thermal Print → Order Handover.",
+      infoArchitecture: "Clear separation between public discovery and verified order fulfillment: the public Menu QR placard directs phones to the interactive catalog, whereas a dedicated Order QR token is generated only after payment is verified.",
+      wireframes: "Mobile-optimized catalog layout with visual category tabs, transparent modifier selectors, dynamic cart summary, and high-visibility pickup token screens.",
+      designDecisions: "A clean, responsive mobile web interface engineered to load instantly across standard mobile browsers without login or registration barriers."
     },
-    "designSystem": {
-      "typography": "Space Grotesk for bold headers to convey modern stability; Inter for system body text to guarantee maximum contrast and legibility.",
-      "spacing": "A strict 8px layout grid with wide 120px padding gaps between sections to let elements breathe and avoid visual strain.",
-      "philosophy": "Content-first minimalism. We eliminated stock medical graphics in favor of clean layouts and modern iconography detailing clinics.",
-      "components": "Reusable cards for doctor profiles, responsive calendars, and clear, descriptive booking buttons.",
-      "hierarchy": "Large titles leading to crisp descriptive paragraphs, with high contrast primary interaction widgets."
+    designSystem: {
+      typography: "Modern display typography for clear dish titles and category headers, paired with highly legible body styling for ingredients, pricing, and modifier options.",
+      spacing: "Ergonomic mobile touch targets calibrated for comfortable one-handed navigation on personal smartphones.",
+      philosophy: "Frictionless self-service. Eliminate app installation hurdles, keep inventory status transparent, and ensure counter pickup is quick and orderly.",
+      components: "Dish selection cards, modifier option selectors, countdown cart reservation tickers, digital Order QR badges, and counter validation status panels.",
+      hierarchy: "Prominent visual menu categories leading to dish customization, real-time cart review, and post-payment order token presentation."
     },
-    "process": {
-      "planning": "Weeks 1-2: Gathering requirements, stakeholder interviews, user persona mapping.",
-      "design": "Weeks 3-4: Constructing interactive wireframes, final layouts, and accessible component definitions.",
-      "development": "Weeks 5-8: React integration, setting up state systems, and responsive layout styling.",
-      "testing": "Week 9: Conducting extensive lighthouse checks, screen reader validations, and browser testing.",
-      "launch": "Week 10: Server hosting, production build pipeline setup, and domain pointing."
+    process: {
+      planning: "Workflow mapping across counter ordering touchpoints, checkout inventory holds, and optical pickup validation.",
+      design: "Mobile-first digital menu interface, post-payment pickup token screens, and centralized restaurant management dashboards.",
+      development: "Interactive customer ordering flow, temporary stock reservation timer, online payment verification, and counter validation workflow.",
+      testing: "Cross-device browser compatibility testing on iOS Safari and Android Chrome across varied screen resolutions.",
+      launch: "Product deployment, counter hardware setup guidance, and restaurant operational onboarding."
     },
-    "features": [
+    features: [
       {
-        "title": "Specialist Directory",
-        "desc": "An advanced, searchable index of all physicians with filtering by department, language, and availability."
+        title: "Customer Smartphone Ordering",
+        desc: "Diners scan the entrance or counter Menu QR to explore food categories, customize modifiers, and order directly on their mobile browser without downloading an app."
       },
       {
-        "title": "Appointment Workflows",
-        "desc": "A smooth, step-by-step booking form built using light React state systems and instant confirmation alerts."
+        title: "5-Minute Inventory Hold",
+        desc: "Temporarily reserves selected dish quantities during checkout to prevent concurrent double-ordering, releasing stock automatically if payment is abandoned."
       },
       {
-        "title": "Mobile Accessibility",
-        "desc": "A completely responsive layout optimized for mobile screens, conforming to WCAG contrast standards."
+        title: "Secure Online Payment",
+        desc: "Supports digital checkout via UPI, debit/credit cards, and netbanking, ensuring orders are verified before pickup tokens are generated."
+      },
+      {
+        title: "Dedicated Order QR Pickup Token",
+        desc: "Issues a unique digital Order QR and pickup number exclusively after successful payment, completely separate from the public restaurant menu QR code."
+      },
+      {
+        title: "Counter Scanner & Thermal Printing",
+        desc: "Hands-free optical scanning at the collection counter validates the Order QR, enforces single-billing duplicate protection, and automatically prints the official thermal receipt and kitchen slip."
+      },
+      {
+        title: "Live Order Queue Monitor",
+        desc: "Operational dashboard displaying incoming orders categorized by clear fulfillment stages: Pending, Paid, and Completed."
+      },
+      {
+        title: "Stock & Availability Management",
+        desc: "Instant one-tap toggles allow restaurant staff to mark dishes as available or out-of-stock, immediately updating customer digital menus."
+      },
+      {
+        title: "Sales Analytics & Excel Reports",
+        desc: "Summarizes gross sales, order volume, and average order value, with one-click export of itemized transaction data to Microsoft Excel for bookkeeping."
       }
     ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "GSAP",
-      "Vite"
+    techStack: [
+      "Mobile Web Ordering",
+      "Digital Menu & QR Ordering",
+      "Online Payments",
+      "Inventory & Order Management",
+      "Counter Scanner & Receipt Printing",
+      "Sales Analytics & Excel Reports"
     ],
-    "results": [
-      {
-        "number": "40%",
-        "label": "Increase in Bookings"
-      },
-      {
-        "number": "99%",
-        "label": "Lighthouse Performance"
-      },
-      {
-        "number": "30%",
-        "label": "Reduced Support Calls"
-      }
-    ]
+    intendedOutcomes: {
+      title: "Intended Operational Benefits",
+      description: "Operational objectives designed for fast-casual and counter-service dining:",
+      points: [
+        { title: "Queue Reduction", desc: "Designed to shift high-volume ordering from cashier queues to parallel customer smartphone ordering." },
+        { title: "Stock Accuracy", desc: "Automated 5-minute stock reservations during checkout prevent concurrent ordering of depleted items." },
+        { title: "Collection Control", desc: "Separating online payment confirmation from hands-free counter token validation prevents duplicate meal collections." }
+      ]
+    }
   },
   {
-    "id": "02",
-    "name": "Restroie",
-    "slug": "restroie",
-    "industry": "Restaurant",
-    "description": "A premium restaurant website delivering an immersive dining and reservation experience.",
-    "image": "/images/projects/restroie.png",
-    "website": "https://restroie.vercel.app/",
-    "category": "Hospitality",
-    "featured": false,
-    "tagline": "Elegant restaurant platform with immersive dining experience.",
-    "overview": "Restroie is a luxury culinary brand that needed a web presence reflecting its fine dining excellence. We designed a dark-toned visual story highlighting artisanal dishes and integrating a booking flow to capture diners before they leave the page.",
-    "challenge": {
-      "requirements": "Deliver a visually immersive dining site that showcases high-quality culinary photography without compromising speed, combined with table reservation functions.",
-      "businessProblem": "Third-party reservation portals charge high margins. Restroie needed an independent portal to drive direct table bookings and build customer loyalty.",
-      "userChallenges": "Users looking for fine dining want to see the atmosphere, menu items, and secure a reservation in seconds. Delays or cluttered menus cause instant departures.",
-      "industryChallenges": "Integrating reservation times with physical kitchen capacity, managing peak dinner hours, and rendering heavy imagery on cellular mobile networks."
+    id: "tablo-table-qr",
+    name: "TABLO — Table QR",
+    slug: "tablo-table-qr",
+    category: "Products",
+    industry: "Full-Service Dining / Table-Associated Ordering",
+    projectType: "product",
+    description: "Table-associated digital ordering and kitchen coordination solution for dine-in restaurants, enabling in-seat mobile ordering without counter hardware.",
+    image: null,
+    gallery: [],
+    website: "https://tablo.neorizsolutions.com/#table-qr",
+    ctaLabel: "View Product Overview",
+    featured: true,
+    tagline: "Table-linked digital ordering, live kitchen coordination, and centralized operational monitoring for dine-in venues.",
+    overview: "TABLO Table QR is a table-associated digital ordering and dining management solution engineered for full-service restaurants, casual eateries, pubs, and table-service cafés. Guests scan a table-specific QR code placard from their seats using their smartphone camera, browse the interactive digital menu in their mobile browser without downloading an app, and submit orders directly to restaurant operations. Orders appear immediately on the restaurant's operational display with table information and itemized modifiers, allowing kitchen and floor staff to coordinate preparation and deliver meals accurately to the correct table.",
+    challenge: {
+      requirements: "Provide a responsive in-seat digital ordering experience linked to specific dining tables that works across standard mobile browsers without requiring guests to install an app, while keeping kitchen and service staff aligned in real time.",
+      businessProblem: "During busy dining shifts, waitstaff spend significant time delivering paper menus, handwriting order notes, and manually re-entering tickets, leading to service delays and kitchen communication errors.",
+      userChallenges: "Diners want immediate access to menus, transparent pricing, dish descriptions, allergen information, and dietary modifier options without waiting for available floor staff.",
+      industryChallenges: "Connecting table-level dining requests directly with kitchen preparation workflows while preserving attentive guest hospitality and keeping front-of-house hardware simple."
     },
-    "strategy": {
-      "uxPlanning": "We planned the page as an online journey, moving from atmospheric hero images to curated menus, culminating in a table scheduler.",
-      "infoArchitecture": "A clear structural separation between Menu, About the Chef, Reservation Form, and Location coordinates.",
-      "wireframes": "Bold typography offsets, large image blocks with smooth parallax movement, and static overlay buttons for booking.",
-      "designDecisions": "A dark editorial layout to mimic atmospheric candle-lit tables, leveraging high-contrast white serif typography."
+    strategy: {
+      uxPlanning: "Structured around a verified 5-step table ordering workflow: Table QR Placard Scan → In-Seat Digital Menu Browsing → Table-Tagged Order Submission → Real-Time Kitchen Display Reception → Staff Food Delivery to Table.",
+      infoArchitecture: "Binds the mobile session to the physical dining table number, routing submitted tickets directly to central kitchen and service displays while separating active ordering from planned end-of-meal tab settlement.",
+      wireframes: "Clean mobile menu interface featuring clear category navigation, dish photography, itemized preparation modifier selectors, real-time availability badges, and table-tagged order confirmation views.",
+      designDecisions: "A focused, accessible mobile web layout designed for clear readability across varied dining room lighting conditions, requiring zero guest registration or account setup."
     },
-    "designSystem": {
-      "typography": "Playfair Display paired with Inter to create a premium, editorial magazine style.",
-      "spacing": "Massive spacing blocks to mimic visual luxury, where image elements exist as independent art installations.",
-      "philosophy": "Elegant minimalism. Images do the talking, supported by minimal typography.",
-      "components": "Menu item listings, date-picker widgets, and visual review sliders.",
-      "hierarchy": "Dominant image banners followed by layout grids and subtle contact buttons."
+    designSystem: {
+      typography: "Modern display typography for clear dish titles and category headers, paired with highly legible body styling for ingredients, pricing, and modifier options.",
+      spacing: "Comfortable touch-friendly spacing calibrated for handheld mobile browsing while seated at a dining table.",
+      philosophy: "Hospitality-first clarity. Make menu exploration intuitive from the seat, route orders accurately with table numbers, and eliminate front-of-house hardware complexity.",
+      components: "Table identifier badges, category selection carousels, dish cards with modifier selectors, out-of-stock indicators, and operational kitchen ticket cards.",
+      hierarchy: "Table identity banner leading to categorized dishes, item customization drawers, and table-confirmed order submission."
     },
-    "process": {
-      "planning": "Weeks 1-2: Brand positioning analysis, layout discovery, target audience mapping.",
-      "design": "Weeks 3-5: UI design, image preparation, typography testing.",
-      "development": "Weeks 6-8: Setting up interactive transitions and lazy image loads in React.",
-      "testing": "Week 9: Responsive testing, performance optimization.",
-      "launch": "Week 10: Vercel deployment, setting up custom domain names."
+    process: {
+      planning: "Analysis of dine-in floor operations, table placard placement strategies, and kitchen order dispatch workflows.",
+      design: "Mobile-first digital menu interface, table-associated order confirmation screens, and centralized kitchen operations displays.",
+      development: "Table-linked session binding, interactive menu navigation, real-time order status tracking, and management dashboard controls.",
+      testing: "Cross-device browser compatibility audits on iOS Safari and Android Chrome across varied tablet and mobile screen sizes.",
+      launch: "Venue onboarding, table QR placard deployment guidance, and staff operational training."
     },
-    "features": [
+    features: [
       {
-        "title": "Table Scheduler",
-        "desc": "An inline booking engine allowing diners to reserve specific hours and seating arrangements."
+        title: "Table-Associated Mobile Ordering",
+        desc: "Guests scan a dedicated table QR placard (e.g., Table 04) to access the digital menu and submit orders directly from their seats without app downloads."
       },
       {
-        "title": "Visual Digital Menu",
-        "desc": "A fast-loading, categorized menu detailing dietary preferences, allergens, and ingredients."
+        title: "Digital Dine-In Menu",
+        desc: "Categorized digital catalog showcasing food photography, clear pricing, dish descriptions, dietary tags, and selectable preparation modifiers."
       },
       {
-        "title": "Immersive Parallax",
-        "desc": "A series of smooth scrolling layout blocks highlighting restaurant aesthetics."
+        title: "Kitchen Order Monitoring",
+        desc: "Centralized operational screen displaying incoming orders tagged with table numbers, preparation notes, and status tracking across Pending, In Progress, and Completed."
+      },
+      {
+        title: "Table-Side Hospitality Delivery",
+        desc: "Kitchen staff prepare orders with clear digital table tags, enabling waitstaff to focus on meal quality, table care, and prompt food delivery."
+      },
+      {
+        title: "Live Menu & Availability Controls",
+        desc: "Instant one-tap management toggles allow staff to mark ingredients or dishes as available or out-of-stock, immediately reflecting on customer menus."
+      },
+      {
+        title: "Sales Analytics & Excel Reports",
+        desc: "Summarizes dine-in sales totals, order volumes, average order value, and peak dining trends, with one-click export to Microsoft Excel for bookkeeping."
       }
     ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "Framer Motion",
-      "Vite"
+    techStack: [
+      "Table QR Ordering",
+      "Digital Dine-In Menu",
+      "Kitchen Order Management",
+      "Restaurant Operations Dashboard"
     ],
-    "results": [
-      {
-        "number": "55%",
-        "label": "Direct Reservations"
-      },
-      {
-        "number": "95%",
-        "label": "Lighthouse Score"
-      },
-      {
-        "number": "2x",
-        "label": "Page Views Increase"
-      }
-    ]
+    intendedOutcomes: {
+      title: "Intended Operational Benefits",
+      description: "Operational objectives designed for full-service and casual dining rooms:",
+      points: [
+        { title: "Order-Taking Efficiency", desc: "Designed to allow guests to browse and order at their own pace upon seating, reducing initial wait times during peak dining rushes." },
+        { title: "Kitchen Clarity", desc: "Digital tickets tagged with table numbers and specific guest preparation notes eliminate handwritten pad ambiguity and missed tickets." },
+        { title: "Minimal Hardware Footprint", desc: "Operates completely on standard web screens and guest mobile devices, requiring no specialized counter scanners or dedicated billing terminals." }
+      ]
+    }
   },
   {
-    "id": "03",
-    "name": "Haya Mart",
-    "slug": "haya-mart",
-    "industry": "E-Commerce",
-    "description": "A modern online shopping platform designed for seamless product discovery and purchasing.",
-    "image": "/images/projects/haya-mart.png",
-    "website": "https://haya-mart-eta.vercel.app/",
-    "category": "Commerce",
-    "featured": true,
-    "tagline": "Modern shopping platform built for seamless online purchasing.",
-    "overview": "Haya Mart required an e-commerce platform that challenges traditional cluttered storefronts. We constructed a high-end shopping experience featuring clean layout grids, large product listings, and an optimized, checkout funnel.",
-    "challenge": {
-      "requirements": "Construct a robust online shop with dynamic product filtering, persistent shopping cart capabilities, and a lightning-fast checkout flow.",
-      "businessProblem": "Cart abandonment rates in standard e-commerce platforms average 70%. Cluttered screens and complex multi-page checkouts are the main reasons.",
-      "userChallenges": "Shoppers want to discover items, review details, select options, and check out without feeling overwhelmed by popups and banners.",
-      "industryChallenges": "Inventory synchronisation, secure payment gateway integrations, and fast rendering of large catalogs on mobile browsers."
+    id: "nox-fight-club",
+    name: "NOX Fight Club",
+    slug: "nox-fight-club",
+    category: "Client Projects",
+    industry: "Athletics / Combat Sports & Martial Arts",
+    projectType: "client",
+    description: "High-octane digital presence and admissions portal for Kozhikode's premier combat sports academy, featuring comprehensive martial arts disciplines and training batch schedules.",
+    image: null,
+    gallery: [],
+    website: "https://noxfightclub.neorizsolutions.com/",
+    ctaLabel: "View Live Website",
+    featured: true,
+    tagline: "Premier martial arts academy and boxing gym in Kozhikode, Kerala.",
+    overview: "NOX Fight Club is an elite combat sports academy and boxing gym located in Olavanna, Kozhikode, Kerala. Designed with a high-intensity, dark athletic aesthetic, the website serves as the digital flagship for the academy. It showcases six core combat disciplines (Boxing, Muay Thai, Kickboxing, Grappling & BJJ, MMA, and Strength & Conditioning), daily batch schedules (Morning, Kids, and Night Batches), certified coaches, fighter training facility galleries, and single-tap WhatsApp trial booking.",
+    challenge: {
+      requirements: "Deliver an authoritative, cinematic combat sports web presence featuring detailed training curriculum breakdowns, daily batch timetables, coach profiles, and immediate lead generation via direct WhatsApp integration.",
+      businessProblem: "Traditional gym websites often rely on generic fitness templates that fail to capture the discipline, technical intensity, and community culture of a genuine martial arts fight club.",
+      userChallenges: "Prospective fighters, fitness enthusiasts, and parents need to quickly understand age prerequisites, training times (Morning, Kids, Night Batches), discipline requirements, and gym location before visiting.",
+      industryChallenges: "Balancing dark, aggressive visual energy (deep blacks, blood-red #DC2626 accents, and heavy typography) with fast loading performance and accessible mobile navigation."
     },
-    "strategy": {
-      "uxPlanning": "We simplified the conversion funnel. Products are added to a slide-out cart drawer, and checkout is completed on a single, clean page.",
-      "infoArchitecture": "Flat layout categories enabling users to find any item in two clicks. Filters are collapsible to save mobile space.",
-      "wireframes": "Grid-based product galleries, clean checkout fields with clear validation indicators.",
-      "designDecisions": "Pure black and white grid system with minimal borders to focus customer eyes purely on high-resolution product photography."
+    strategy: {
+      uxPlanning: "Engineered an adrenaline-fueled conversion flow: High-Voltage Hero Statement → Core Combat Disciplines Grid → Daily Batch Schedule Matrix → Facility Gallery & Coach Roster → Direct WhatsApp Trial Registration.",
+      infoArchitecture: "Comprehensive curriculum organized into six combat pillars: Traditional Boxing, Muay Thai (The Art of Eight Limbs), Kickboxing, Grappling & BJJ, Mixed Martial Arts (MMA), and Strength & Conditioning.",
+      wireframes: "Split-layout discipline showcases with technical style breakdowns, batch timetable cards with exact hours, and persistent floating WhatsApp quick-contact triggers.",
+      designDecisions: "Dark, battle-tested palette combining deep void blacks (#0A0A0A) and carbon grays with razor-sharp crimson red accents, paired with Bebas Neue display typography and Inter for instructional reading."
     },
-    "designSystem": {
-      "typography": "Inter font family across all components for clean, technical legibility.",
-      "spacing": "Uniform grid gaps, with clear separation between item name, price, and CTA buttons.",
-      "philosophy": "Functional minimalism. Eliminating unnecessary details, prioritizing item dimensions and material clarity.",
-      "components": "Product grid cards, filter slide-outs, floating cart counters.",
-      "hierarchy": "Dominant product imagery with clean metadata, leading to clear call-to-actions."
+    designSystem: {
+      typography: "Bebas Neue for commanding, heavyweight athletic titles and display numbers; Inter for class descriptions, schedule details, and address metadata.",
+      spacing: "Generous 80px-120px editorial breathing room allowing high-intensity training imagery and cinematic text statements to dominate the screen.",
+      philosophy: "Uncompromising combat authority. Every design component reflects strength, technical precision, and elite physical conditioning.",
+      components: "Combat discipline cards with who-it's-for breakdowns, daily batch schedule tiles, marquee banner tickers, and high-visibility WhatsApp booking triggers.",
+      hierarchy: "Hero headline manifesto leading to training disciplines, structured batch schedules, athlete testimonials, and direct WhatsApp contact."
     },
-    "process": {
-      "planning": "Weeks 1-2: Product taxonomy definitions, checkout flow mapping.",
-      "design": "Weeks 3-5: Interface layouts, checkout forms design, filter UI wireframing.",
-      "development": "Weeks 6-9: Redux/State integration, cart actions, responsive layout grids.",
-      "testing": "Week 10: Checkout validation checks, API loading speeds.",
-      "launch": "Week 11: Production deployment and integration checks."
+    process: {
+      planning: "Academy brand positioning, fighter persona mapping, class structure indexing, and local Kozhikode search discovery optimization.",
+      design: "Dark combat aesthetic prototyping, typography hierarchy using Bebas Neue, and responsive mobile timetable design.",
+      development: "Interactive web experience with responsive combat discipline showcases, schedule matrices, and direct messaging workflows.",
+      testing: "Cross-device responsiveness testing across mobile viewports, typography legibility checks, and WhatsApp click-to-chat link verification.",
+      launch: "High-performance production deployment with automated search engine indexing, structured business schema markup, and speed optimization."
     },
-    "features": [
+    features: [
       {
-        "title": "Unified Catalog",
-        "desc": "A clean product catalog with real-time text searching and instant parameter filtering."
+        title: "6 Specialized Combat Disciplines",
+        desc: "Structured training modules for Western Boxing, Muay Thai, Kickboxing, Grappling & BJJ, MMA, and Strength & Conditioning with dedicated technical breakdowns."
       },
       {
-        "title": "Slide-Out Cart",
-        "desc": "A responsive cart drawer updating items and prices instantly without page reloads."
+        title: "Daily Batch Schedule Matrix",
+        desc: "Clear timetables for Morning Batches (6:30 AM – 8:30 AM), Kids Batches (6:00 PM – 8:00 PM), and Night Batches (8:00 PM – 10:00 PM)."
       },
       {
-        "title": "One-Page Checkout",
-        "desc": "An optimized checkout page reducing fields and focusing on swift payment completion."
+        title: "Direct WhatsApp Trial Booking",
+        desc: "Seamless click-to-chat WhatsApp integration pre-populated with inquiry messages for instant trial session reservations."
+      },
+      {
+        title: "Interactive Facility & Training Gallery",
+        desc: "High-contrast visual gallery highlighting ring sparring, heavy bag stations, mat rolling areas, and functional conditioning gear."
+      },
+      {
+        title: "Local SEO & Location Integration",
+        desc: "Google Maps integration, full business address in Olavanna, Kozhikode, and optimized schema metadata for combat sports searches in Kerala."
       }
     ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "Framer Motion",
-      "Vite"
+    techStack: [
+      "Combat Curriculum Showcase",
+      "Daily Batch Timetables",
+      "Direct WhatsApp Booking",
+      "Facility & Training Gallery",
+      "Local Map & Discovery"
     ],
-    "results": [
-      {
-        "number": "35%",
-        "label": "Lower Abandonment"
-      },
-      {
-        "number": "1.2s",
-        "label": "Average Page Load"
-      },
-      {
-        "number": "48%",
-        "label": "Mobile Sales Increase"
-      }
-    ]
+    intendedOutcomes: {
+      title: "Intended Business Benefits",
+      description: "Operational and brand objectives established for the academy:",
+      points: [
+        { title: "Trial Conversion Funnel", desc: "Drives immediate visitor conversions directly to WhatsApp with pre-formatted inquiry text." },
+        { title: "Schedule Autonomy", desc: "Enables prospective fighters and parents to quickly find age-appropriate batch times without back-and-forth messaging." },
+        { title: "Combat Brand Authority", desc: "Positions NOX Fight Club as the premier martial arts and boxing destination in Kozhikode." }
+      ]
+    }
   },
   {
-    "id": "04",
-    "name": "MessMate",
-    "slug": "messmate",
-    "industry": "Hostel Food Delivery",
-    "description": "A food ordering web app for mess owners to seamlessly deliver meals to college hostels.",
-    "image": "/images/projects/messmate.png",
-    "website": "https://messmate-ind.vercel.app/",
-    "category": "Technology",
-    "featured": false,
-    "tagline": "Seamless food ordering platform connecting mess owners with hostel residents.",
-    "overview": "MessMate is a custom food ordering and delivery web application built to empower local mess owners. The app enables them to list menus, collect daily meal pre-orders from college hostel students, coordinate bulk deliveries, and track hostel gate drop-offs in real-time.",
-    "challenge": {
-      "requirements": "Create an intuitive mobile interface for students to order meals, alongside an operations dashboard for mess owners to organize bulk delivery schedules.",
-      "businessProblem": "Mess owners faced erratic order counts, leading to massive food waste or shortages, combined with disorganized delivery logistics across hostel blocks.",
-      "userChallenges": "Students need a rapid way to pre-order meals within strict time cut-offs, choose delivery windows, and submit exact hostel block numbers in seconds.",
-      "industryChallenges": "Coordinating high-volume concurrent orders during narrow meal break windows, and ensuring temperature quality and roster accuracy."
+    id: "neoriz-whatsapp-automation",
+    name: "Neoriz WhatsApp Automation",
+    slug: "neoriz-whatsapp-automation",
+    category: "Products",
+    industry: "Business Automation / Conversational AI",
+    projectType: "product",
+    description: "Enterprise WhatsApp automation system enabling scheduled broadcasts, AI customer interactions, and multi-agent inbox synchronization.",
+    image: null,
+    gallery: [],
+    website: "",
+    ctaLabel: "View Case Study",
+    featured: false,
+    tagline: "High-scale conversational commerce and messaging pipeline for modern business operations.",
+    overview: "Neoriz WhatsApp Automation is a business messaging infrastructure designed to connect commercial catalogs, operational notifications, and client engagement directly through verified messaging channels. Engineered for reliable throughput, customer conversation tagging, and seamless system integration.",
+    challenge: {
+      requirements: "Build an automated communication framework capable of delivering targeted broadcast campaigns, customer triage flows, and real-time support routing.",
+      businessProblem: "Manual messaging on personal numbers lacks auditability, analytics, and CRM synchronization, creating lead drop-offs.",
+      userChallenges: "Customers expect immediate responses to inquiries and order confirmations within their primary messaging app.",
+      industryChallenges: "Maintaining compliance with official messaging policies while sustaining high concurrency and webhook reliability."
     },
-    "strategy": {
-      "uxPlanning": "We simplified the ordering funnel. Students can select their daily meal plan and confirm hostel block numbers in under two steps.",
-      "infoArchitecture": "A clear structure separating the Student Meal Menu, Order Tracking interface, and Mess Operator kitchen-prep queues.",
-      "wireframes": "A card-based meal directory, clean input fields for hostel blocks, and a persistent delivery status timeline.",
-      "designDecisions": "A high-contrast grid design focusing strictly on food listings, pricing transparency, and real-time delivery countdowns."
+    strategy: {
+      uxPlanning: "Clean management interface prioritizing inbox oversight, broadcast scheduling, and real-time conversation triage.",
+      infoArchitecture: "Conversation threads tagged by status, automated triggers, contact metadata, and deliverability analytics.",
+      wireframes: "Split-pane inbox with contact details, trigger sequence builders, and campaign performance dashboards.",
+      designDecisions: "Focused operational interface using clean neutrals with brand blue and teal status accents."
     },
-    "designSystem": {
-      "typography": "Space Grotesk for metrics and active order IDs; Inter for menus and system instructions.",
-      "spacing": "Compact grid padding to display all meal options clearly on mobile screens without scroll fatigue.",
-      "philosophy": "Speed-first minimalism. Eliminating heavy banners to keep menu options and checkout triggers primary.",
-      "components": "Meal card items, progress trackers, delivery wing selectors.",
-      "hierarchy": "Immediate order window countdowns, leading to menu categories and direct checkout buttons."
+    designSystem: {
+      typography: "Outfit for primary labels and headers; Inter for chat transcription and operational logs.",
+      spacing: "Compact density system optimized for high data volume and swift multi-chat navigation.",
+      philosophy: "Operational velocity. Zero latency between customer trigger and programmatic fulfillment.",
+      components: "Message queue tickers, broadcast planners, contact badges, and trigger condition blocks.",
+      hierarchy: "Account status summary, conversation triage inbox, trigger management console."
     },
-    "process": {
-      "planning": "Weeks 1-2: Interviewing mess operators, mapping hostel delivery points.",
-      "design": "Weeks 3-4: UI design, order status components, responsive layouts.",
-      "development": "Weeks 5-8: State systems configuration, cart setups, database mapping.",
-      "testing": "Week 9: Heavy traffic load simulations, gateway checks.",
-      "launch": "Week 10: Production release and field testing."
+    process: {
+      planning: "Operational workflow mapping, event schema design, and conversation routing protocols.",
+      design: "Console UX wireframes, message template editor, and metric visualization.",
+      development: "Message dispatch pipeline, conversation state management, and real-time team synchronization.",
+      testing: "Rate-limit compliance testing, failover handling, and delivery throughput audits.",
+      launch: "Internal deployment, cloud integration, and enterprise validation."
     },
-    "features": [
+    features: [
       {
-        "title": "Daily Meal Selector",
-        "desc": "A clean catalog for hostel residents to place single or recurring meal orders with clear cut-off times."
+        title: "Automated Conversational Triage",
+        desc: "Instant rule-based and AI-guided replies that resolve common customer queries around the clock."
       },
       {
-        "title": "Kitchen Dispatch System",
-        "desc": "A dashboard for mess owners to auto-compile delivery lists sorted by hostel gates and wing rooms."
+        title: "Targeted Broadcast Dispatch",
+        desc: "Compliant template messaging pipelines for transactional notifications and audience updates."
       },
       {
-        "title": "Roster Manager",
-        "desc": "A dashboard grouping active deliveries by hostel name, block number, and room wing."
+        title: "Multi-Agent Synchronized Inbox",
+        desc: "Shared operational team inbox with conversation assignment, internal notes, and audit history."
       }
     ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "ASP.NET Core",
-      "SQL Server",
-      "Vite"
+    techStack: [
+      "Conversational Automation",
+      "Template Broadcast Pipelines",
+      "Shared Multi-Agent Inbox",
+      "Customer Triage Workflows",
+      "Live Delivery Analytics"
     ],
-    "results": [
+    intendedOutcomes: {
+      title: "Intended Operational Impact",
+      description: "Business objectives engineered into the automation platform:",
+      points: [
+        { title: "Response Latency", desc: "Reduces initial customer inquiry response time from hours to instantaneous acknowledgment." },
+        { title: "Team Scalability", desc: "Allows support and sales representatives to manage high volumes through centralized triage." },
+        { title: "Audit & Compliance", desc: "Provides full message history and delivery logs within enterprise compliance guidelines." }
+      ]
+    }
+  },
+  /* ==========================================================================
+     TEMPORARILY HIDDEN: Cafe Serenity project is under development.
+     Restore by uncommenting this complete block when approved.
+     ==========================================================================
+  {
+    id: "cafe-serenity",
+    name: "Cafe Serenity",
+    slug: "cafe-serenity",
+    category: "Client Projects",
+    industry: "Hospitality / Healthy Lifestyle Cafe & Breakfast Favourites",
+    projectType: "client",
+    description: "Modern, health-conscious culinary web portal for Kakkanad's premier wellness cafe, featuring daily balanced meal plans, traditional Kerala breakfast menus, and direct WhatsApp ordering.",
+    image: null,
+    gallery: [],
+    website: "https://cafeserenity.neorizsolutions.com/",
+    ctaLabel: "View Live Website",
+    featured: true,
+    tagline: "Good food, made for everyday — healthy choices and cafe favourites in Kakkanad, Kochi.",
+    overview: "Café Serenity is a healthy lifestyle café and everyday dining spot situated near Civil Station, Kakkanad, Kochi. Designed with an inviting culinary presentation, the digital flagship is structured around two complementary dining experiences: specialized portion-controlled healthy meal plans (Weight Loss, High Protein, Diabetic Friendly, Balanced, Corporate) and cherished morning café breakfast classics (steamed puttu, idli vada, ghee roast dosa, filter coffee) starting from 5:00 AM daily.",
+    challenge: {
+      requirements: "Deliver an appetizing, responsive web presence showcasing macro-nutrient balanced dietary plans and traditional breakfast items, paired with instant WhatsApp meal subscriptions and location discovery.",
+      businessProblem: "Corporate professionals and fitness-minded residents in Kakkanad often struggle to find reliable, freshly prepared dietary meals with transparent macro profiles alongside everyday budget-friendly breakfast options.",
+      userChallenges: "Diners want clear calorie and protein breakdowns for diet meal plans, scannable breakfast pricing, and a quick, frictionless channel to order or subscribe via WhatsApp.",
+      industryChallenges: "Harmonizing two distinct customer journeys on one platform: subscription-focused wellness meal plans and fast-turnaround morning cafe dine-in/takeaway."
+    },
+    strategy: {
+      uxPlanning: "Engineered a dual-focus menu experience: Hero Value Proposition → Dietary Health Plans Grid → Everyday Morning Cafe Menu → Chef Philosophy & FSSAI Standards → One-Tap WhatsApp Ordering.",
+      infoArchitecture: "Separation between Healthy Choices (Weight Loss ₹199, High Protein ₹249, Diabetic Friendly ₹219, Corporate ₹199) and Everyday Cafe Favourites (Breakfast combos, Kerala meals, snacks, and beverages).",
+      wireframes: "Clean, card-based meal item layouts with dietary badges (Veg / Non-Veg / Calorie-Controlled), price chips, and persistent floating WhatsApp order triggers.",
+      designDecisions: "A serene, botanical color palette featuring warm cream backgrounds, natural olive/sage green accents (#3F6212), and crisp slate typography, creating an aura of wellness and freshness."
+    },
+    designSystem: {
+      typography: "Outfit for warm, modern hospitality headlines; Inter for nutritional breakdowns, menu pricing, and ingredient details.",
+      spacing: "Generous, breathable section spacing (80px-100px) that gives culinary photography room to breathe and inspires appetite.",
+      philosophy: "Calm nourishment. Every screen reflects health, transparency, natural ingredients, and everyday culinary comfort.",
+      components: "Nutritional meal plan cards, dietary filter pills, FSSAI certified badges, and interactive WhatsApp order connectors.",
+      hierarchy: "Fresh food hero presentation leading to healthy choice meal tiers, morning cafe menus, and direct WhatsApp contact."
+    },
+    process: {
+      planning: "Menu taxonomy design, dietary macro analysis, corporate subscription mapping, and Kakkanad local SEO setup.",
+      design: "Clean culinary UI wireframing, botanical color palette crafting, and mobile-first menu card layouts.",
+      development: "Interactive digital menu presentation, nutritional meal tier catalog, and direct messaging order integration.",
+      testing: "Cross-device responsive testing across iOS and Android browsers, touch target accessibility, and WhatsApp direct links.",
+      launch: "High-performance production deployment, automated sitemap indexing, and Google Maps location discovery."
+    },
+    features: [
       {
-        "number": "90%",
-        "label": "Order Accuracy"
+        title: "Targeted Dietary Meal Plans",
+        desc: "Structured meal plans for Weight Loss (₹199), High Protein (₹249), Diabetic Friendly (₹219), Balanced, and Corporate subscribers with transparent calorie guidance."
       },
       {
-        "number": "35%",
-        "label": "Reduced Waste"
+        title: "Everyday Morning Cafe Menu",
+        desc: "Affordable authentic Kerala breakfast favorites starting daily at 5:00 AM, including Idli Vada combos, Ghee Roast Dosa, Puttu, and freshly brewed Filter Coffee."
       },
       {
-        "number": "95%",
-        "label": "Delivery Speed"
+        title: "Direct WhatsApp Ordering & Subscription",
+        desc: "Instant click-to-chat WhatsApp ordering connecting customers directly to the kitchen with pre-formatted meal requests."
+      },
+      {
+        title: "Certified Food Safety & Transparency",
+        desc: "Verified FSSAI license display (21324005000123) and ingredient freshness commitments guaranteeing clean, safe meal preparation."
+      },
+      {
+        title: "Local Kakkanad Hub Discovery",
+        desc: "Interactive Google Maps integration and location details near Civil Station, Echamuku, Kakkanad for swift dine-in and takeaway pickups."
       }
-    ]
+    ],
+    techStack: [
+      "Dietary Meal Plan Subscriptions",
+      "Morning Cafe & Breakfast Catalog",
+      "Direct WhatsApp Ordering",
+      "Nutritional Macro Profiles",
+      "FSSAI Certified Safety Details"
+    ],
+    intendedOutcomes: {
+      title: "Intended Business Benefits",
+      description: "Operational and brand objectives engineered for the cafe:",
+      points: [
+        { title: "Subscription Conversion", desc: "Drives recurring dietary meal plan inquiries directly into WhatsApp without third-party commission overhead." },
+        { title: "Menu Clarity & Speed", desc: "Allows working professionals to quickly browse early-morning breakfast items and order ahead." },
+        { title: "Neighborhood Brand Presence", desc: "Establishes Cafe Serenity as Kakkanad's trusted destination for both fitness meals and everyday comfort food." }
+      ]
+    }
+  },
+  ========================================================================== */
+  {
+    id: "emblingo",
+    name: "Emblingo",
+    slug: "emblingo-learning-app",
+    category: "Products",
+    industry: "EdTech / Competitive Exam Preparation",
+    projectType: "product",
+    description: "Engineering and medical entrance exam preparation platform featuring high-resolution previous year question (PYQ) image archives, chapter-wise practice tests, and persistent progress tracking.",
+    image: null,
+    gallery: [],
+    website: "https://play.google.com/store/apps/details?id=com.emblingo.app",
+    ctaLabel: "View on Google Play",
+    featured: true,
+    tagline: "Comprehensive previous year question banks, chapter-wise mock practice, and structured entrance exam preparation on mobile.",
+    overview: "Emblingo is a dedicated education technology platform engineered to empower engineering and medical entrance exam aspirants (KEAM, NEET, JEE) across core subjects including Physics, Chemistry, and Mathematics. Delivered as an intuitive, high-performance mobile learning application, Emblingo provides students with indexed previous year question paper (PYQ) archives, interactive question practice with instant answer validation, step-by-step hints and solutions, topic-level question bookmarking, and continuous study session tracking that automatically resumes where the learner left off.",
+    challenge: {
+      requirements: "Deliver an accessible, distraction-free mobile learning experience capable of rendering high-resolution multi-page question paper scans with zero latency, pinch-to-zoom fidelity, and interactive answer verification, paired with reliable offline caching on Android devices.",
+      businessProblem: "Entrance exam candidates often struggle with fragmented physical question guides, cumbersome offline answer keys, and difficulty systematically tracking which questions and chapters they have completed during intensive revision.",
+      userChallenges: "Students need rapid, thumb-friendly navigation across large subject syllabi, immediate visual feedback on multiple-choice options (A, B, C, D), step-by-step solution breakdowns, and the ability to bookmark difficult problems for revision before exams.",
+      industryChallenges: "Handling large archives of digitized question papers with clear image scaling across diverse handset screen resolutions, maintaining secure authentication with proactive renewal, and persisting student progress without interrupting study flow."
+    },
+    strategy: {
+      uxPlanning: "Engineered an ergonomic 4-branch navigation architecture: Home Daily Dashboard (greeting, continue learning resume card, banner carousel) → Explore & Subject Catalog (Physics, Chemistry, Mathematics with chapter hierarchies) → Saved Bookmarks (filtered by subject and chapter) → Student Profile (account management and study activity).",
+      infoArchitecture: "A structured, hierarchical learning taxonomy: Exam Goal → Subject → Chapter → Question Batches / PYQ Pages → Interactive Practice & Explanations, with granular page-level bookmarking and scroll-based progress detection.",
+      wireframes: "Thumb-accessible bottom navigation shell with stateful tab persistence, shimmer loading skeletons, double-tap zoomable image modal viewers, and high-contrast option selection bottom sheets.",
+      designDecisions: "A crisp, welcoming visual palette combining clean white and dark-slate backgrounds with focused cobalt blue (#2563EB) primary accents, paired with Outfit for approachable headings and Inter for high-legibility question reading."
+    },
+    designSystem: {
+      typography: "Outfit font family for clear screen headings, subject banners, and modal titles; Inter for instructional chapter content, question options, and step-by-step solution texts.",
+      spacing: "Compact, ergonomic mobile layout with 48px+ touch targets, rounded card groupings (12px-16px border radii), and smooth edge-to-edge padding.",
+      philosophy: "Academic focus and clarity. Eliminate distracting banner advertisements and intrusive popups, giving students an uninterrupted, clean digital study environment.",
+      components: "Subject progress cards with chapter counts, continue learning hero modules, multi-page PYQ image viewers with pinch-to-zoom, option selection pill selectors, and bookmark action buttons.",
+      hierarchy: "Personalized greeting header with quick search, active study session resume card, followed by subject listings and structured chapter catalogs."
+    },
+    process: {
+      planning: "Detailed syllabus mapping for major state and national engineering entrance examinations (KEAM, Physics, Chemistry, Mathematics) and question batch taxonomy.",
+      design: "Mobile-first UI/UX wireframing, component design, responsive image viewer specifications, and dark/light mode contrast auditing.",
+      development: "Mobile learning application construction, multi-branch navigation, interactive answer evaluation, and cloud study sync.",
+      testing: "Automated test suites, security validation, question option verification, and cross-device performance testing on varied display resolutions.",
+      launch: "Google Play Store publishing, compliance verification, and scalable cloud infrastructure deployment."
+    },
+    features: [
+      {
+        title: "Subject & Chapter Syllabus Catalog",
+        desc: "Structured syllabus breakdowns across Physics, Chemistry, and Mathematics displaying chapter counts, topic difficulty, and completed question tracking."
+      },
+      {
+        title: "High-Resolution PYQ Image Batches",
+        desc: "Digitized multi-page question paper archives featuring pinch-to-zoom, double-tap full-screen inspection, and rapid batch scrolling."
+      },
+      {
+        title: "Interactive Practice & Instant Answer Keys",
+        desc: "Multiple-choice practice interface with instant correct/incorrect visual feedback, authoritative answer key mapping, and detailed solution explanations."
+      },
+      {
+        title: "Continue Learning Study Resumption",
+        desc: "Scroll-based progress detection automatically saves the student's exact chapter, batch, and page, enabling instant one-tap session resumption from the home screen."
+      },
+      {
+        title: "Personalized Question Bookmarking",
+        desc: "Students can bookmark challenging questions or specific PYQ pages with subject and chapter filters for quick revision before exams."
+      },
+      {
+        title: "Secure Authentication & Token Management",
+        desc: "Encrypted credential storage with proactive expiration detection and automatic refresh to prevent session dropouts during revision."
+      },
+      {
+        title: "Offline Image & Content Caching",
+        desc: "Cached image storage allows previously reviewed question pages to be accessed smoothly even during intermittent mobile network connectivity."
+      },
+      {
+        title: "Admin Portal & Content Management",
+        desc: "Dedicated administrative portal enabling instructors to upload question batches, configure answer keys, and manage subject syllabi."
+      }
+    ],
+    techStack: [
+      "Entrance Exam Question Bank (PYQ)",
+      "Interactive MCQ Practice & Answers",
+      "One-Tap Study Resumption",
+      "Offline Content & Image Caching",
+      "Personalized Subject Bookmarks",
+      "Instructor Content Portal"
+    ],
+    intendedOutcomes: {
+      title: "Intended Learning Outcomes",
+      description: "Educational and accessibility goals designed into the platform:",
+      points: [
+        { title: "Systematic Entrance Revision", desc: "Allows students to work systematically through hundreds of previous entrance questions without confusing physical paper copies." },
+        { title: "Immediate Feedback & Conceptual Clarity", desc: "Helps learners identify knowledge gaps instantly through authoritative answer keys and step-by-step problem explanations." },
+        { title: "Frictionless Study Resumption", desc: "Eliminates time lost searching for the last-studied page, allowing students to pick up their study session instantly on their smartphones." }
+      ]
+    }
   },
   {
-    "id": "05",
-    "name": "Ananya Rahul",
-    "slug": "ananya-rahul",
-    "industry": "Wedding Invitation Digital",
-    "description": "A personalized digital wedding invitation platform designed for memorable celebrations.",
-    "image": "/images/projects/ananya-rahul.png",
-    "website": "https://ananyarahul.vercel.app/",
-    "category": "Lifestyle",
-    "featured": false,
-    "tagline": "Personalized digital invitation experience.",
-    "overview": "Ananya Rahul is a personalized, luxury digital wedding invitation platform. We crafted a highly elegant website that details invitation events, tells the couple's story, maps directions, and manages guest RSVPs in a single visual experience.",
-    "challenge": {
-      "requirements": "Build an exquisite digital invitation with smooth scrolling storytelling, an RSVP collection system, and integration with mapping platforms.",
-      "businessProblem": "Physical invitation cards are costly to distribute globally and cannot collect RSVPs dynamically, causing major planning headaches for couples.",
-      "userChallenges": "Guests of varying ages must navigate the page, find event dates, read accommodations, and submit RSVP responses easily on their smartphones.",
-      "industryChallenges": "Ensuring cross-device compatibility for older mobile browsers, and managing immediate peaks in traffic when links are shared."
+    id: "felora-dress-rental",
+    name: "Felora",
+    slug: "felora-dress-rental",
+    category: "Client Projects",
+    industry: "E-Commerce / Fashion & Designer Dress Rental",
+    projectType: "client",
+    description: "Premium designer apparel rental and bridal boutique platform featuring event-based calendar booking, transparent rental durations, and direct WhatsApp styling consultations.",
+    image: null,
+    gallery: [],
+    website: "https://felora.neorizsolutions.com/",
+    ctaLabel: "View Live Website",
+    featured: true,
+    tagline: "Rent luxury bridal gowns, lehengas, and designer evening wear for your special occasions.",
+    overview: "Felora is an exclusive luxury fashion and bridal dress rental boutique offering an elevated alternative to fast fashion and high-cost event attire. Built with an editorial luxury aesthetic combining champagne neutrals, warm rose tones, and high-fashion typography, the ecommerce platform showcases curated collections of bridal lehengas, couture wedding gowns, reception sarees, and cocktail dresses. Customers can browse designer collections by occasion, check real-time rental availability via date-range selectors, choose rental tenures (3-day, 5-day, or 7-day windows), and connect directly with dedicated bridal stylists via WhatsApp for bespoke fittings.",
+    challenge: {
+      requirements: "Create a sophisticated, trustworthy designer rental experience that handles date-based reservation logic, garment security deposits, size measurements, and personalized fitting coordination.",
+      businessProblem: "High-end bridal and festive attire is typically worn once or twice, leaving customers hesitant to spend significant amounts on outright purchases while local rental boutiques struggle with disorganized manual phone bookings.",
+      userChallenges: "Shoppers need transparent rental pricing, clear availability calendars for upcoming event dates, detailed garment measurement charts, and reassurance regarding hygiene and dry-cleaning standards.",
+      industryChallenges: "Preventing double-booking conflicts across overlapping wedding dates, communicating damage deposit and return policies clearly, and providing personalized stylist assistance online."
     },
-    "strategy": {
-      "uxPlanning": "A continuous vertical story that flows from header visual to story, event details, and finishes with the RSVP form.",
-      "infoArchitecture": "Sections ordered by logical guest priorities: Date & Time, Venue Map, Story, and RSVP Submit.",
-      "wireframes": "Delicate serif titles, layout grids showcasing high-quality couple photography, and centered forms.",
-      "designDecisions": "A refined white and soft-gold layout theme to evoke luxury celebration feelings, using high-end spacing."
+    strategy: {
+      uxPlanning: "Engineered an aspirational, high-conversion boutique journey: Editorial Campaign Hero → Curated Collection Discovery (Bridal, Reception, Evening) → Event Date Availability Checker → Transparent Rental Tier Selection → Direct Stylist Fitting & Booking.",
+      infoArchitecture: "Organized by Occasion (Bridal Couture, Sangeet & Reception, Evening Glamour), Category (Lehengas, Gowns, Anarkalis, Indowestern), and Flexible Rental Durations (3, 5, or 7 days).",
+      wireframes: "Luxury magazine-style editorial layout, multi-angle garment photography carousels, date-picker reservation widgets, and sticky WhatsApp consultation triggers.",
+      designDecisions: "An opulent minimalist palette featuring warm ivory (#FAF9F6), soft blush rose, deep charcoal, and muted champagne gold accents, paired with elegant serif headings and clean sans-serif product details."
     },
-    "designSystem": {
-      "typography": "Playfair Display for romantic headers; Inter for informational details.",
-      "spacing": "Generous whitespace margins to reflect the luxury of high-end stationary.",
-      "philosophy": "Sophisticated minimalism. Combining classic serif layouts with modern UI components.",
-      "components": "Countdown timers, interactive venue maps, custom RSVP inputs.",
-      "hierarchy": "Central hero message followed by card components and direct RSVP triggers."
+    designSystem: {
+      typography: "Outfit for refined, couture-inspired editorial titles and collection banners; Inter for fabric descriptions, rental terms, and size dimensions.",
+      spacing: "Expansive editorial whitespace (80px-120px) creating an unhurried, luxury boutique atmosphere.",
+      philosophy: "Sustainable luxury. Make high-end designer fashion accessible, effortless, and environmentally conscious through seamless circular rental.",
+      components: "Date-range availability pickers, rental duration pill selectors, fabric care and hygiene assurance badges, and one-tap WhatsApp bridal concierge triggers.",
+      hierarchy: "Runway-inspired hero showcase leading to categorized designer galleries, rental how-it-works guidelines, and personal stylist booking."
     },
-    "process": {
-      "planning": "Week 1: Concept development, assets compilation.",
-      "design": "Weeks 2-3: Layout mockups, font selection, photo treatment.",
-      "development": "Weeks 4-5: Creating scrolling animations, form integration.",
-      "testing": "Week 6: Mobile testing, form validation checks.",
-      "launch": "Week 7: Domain launch and analytics tracking."
+    process: {
+      planning: "Rental workflow mapping, date reservation requirements, deposit and return policy formulation, and local bridal search optimization.",
+      design: "High-fashion UI wireframing, neutral-palette color tuning, and mobile-first product gallery prototyping.",
+      development: "Interactive designer catalog, calendar reservation widgets, dynamic rental tier pricing, and direct WhatsApp styling integration.",
+      testing: "Cross-device responsiveness across mobile and tablet viewports, image load optimization, and booking link testing.",
+      launch: "Production deployment, catalog categorization, and search engine metadata configuration."
     },
-    "features": [
+    features: [
       {
-        "title": "RSVP Manager",
-        "desc": "A clean database-linked guest form collecting attendance, diet, and guest counts."
+        title: "Curated Bridal & Festive Collections",
+        desc: "Handpicked catalog of premium bridal lehengas, couture wedding gowns, reception wear, and party dresses categorized by occasion and style."
       },
       {
-        "title": "Countdown & Maps",
-        "desc": "An active digital timer combined with inline Google Maps directions for venues."
+        title: "Event Date & Duration Selector",
+        desc: "Interactive rental duration selector (3-day, 5-day, or 7-day periods) with clear date scheduling to ensure garments arrive ahead of wedding festivities."
       },
       {
-        "title": "Interactive Timeline",
-        "desc": "A narrative timeline detailing events from ceremony to reception in order."
+        title: "Transparent Rental Pricing & Security Deposit",
+        desc: "Clear upfront rental rates with detailed security deposit and complimentary return dry-cleaning disclosures, eliminating hidden fees."
+      },
+      {
+        title: "Direct WhatsApp Bridal Concierge",
+        desc: "One-tap direct messaging connecting customers directly to experienced boutique stylists for custom sizing, alterations, and fitting inquiries."
+      },
+      {
+        title: "Hygiene & Fabric Care Assurance",
+        desc: "Strict multi-stage professional sanitization and garment inspection guarantee ensuring pristine condition upon delivery."
       }
     ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "Framer Motion",
-      "Vite"
+    techStack: [
+      "Curated Bridal & Designer Catalog",
+      "Event Date Availability Checker",
+      "Flexible 3, 5 & 7-Day Rental Tiers",
+      "Direct WhatsApp Stylist Concierge",
+      "Garment Hygiene & Care Assurance"
     ],
-    "results": [
-      {
-        "number": "400+",
-        "label": "RSVPs Managed"
-      },
-      {
-        "number": "100%",
-        "label": "Digital Delivery"
-      },
-      {
-        "number": "97%",
-        "label": "Mobile Engagement"
-      }
-    ]
-  },
-  {
-    "id": "06",
-    "name": "Nuhart",
-    "slug": "nuhart",
-    "industry": "Calligraphy & Artwork",
-    "description": "A creative portfolio showcasing artistic excellence and handcrafted visual experiences.",
-    "image": "/images/projects/nuhart.png",
-    "website": "https://nuhart.vercel.app/",
-    "category": "Creative",
-    "featured": false,
-    "tagline": "Creative platform showcasing artistic expression.",
-    "overview": "Nuhart is a creative artwork portfolio built to highlight modern calligraphy, custom lettering, and handcrafted artistic expressions. We constructed a gallery experience that lets the artwork dominate the screen.",
-    "challenge": {
-      "requirements": "Deliver a high-fidelity gallery layout with smooth panning views, quick load times, and custom inquiry options.",
-      "businessProblem": "Art portfolios are often hosted on generic platforms that look template-like, which devalues the bespoke quality of physical, hand-drawn art.",
-      "userChallenges": "Art buyers want to view brush strokes in high detail, browse collections without lagging scroll containers, and request custom orders.",
-      "industryChallenges": "Balancing high-resolution artwork uploads with fast page speed performance metrics."
-    },
-    "strategy": {
-      "uxPlanning": "We planned the page as an online art exhibition, featuring large fullscreen grids and minimal text overlays.",
-      "infoArchitecture": "Collections divided by style (Calligraphy, Lettering, Canvas) with a direct Custom Request gateway.",
-      "wireframes": "A clean magazine-style grid featuring large asymmetrical image containers.",
-      "designDecisions": "Pure black and white gallery theme. Visual focus remains 100% on the art pieces."
-    },
-    "designSystem": {
-      "typography": "Space Grotesk for titles; Inter for dimensions, medium descriptions, and prices.",
-      "spacing": "Asymmetrical layout gaps to echo creative expression and avoid corporate grids.",
-      "philosophy": "Exhibition-first design. Let the physical craftsmanship speak for itself.",
-      "components": "Artwork grid elements, image modal zooms, inquiry sheets.",
-      "hierarchy": "Hero art banner, followed by categorized gallery lists and contact forms."
-    },
-    "process": {
-      "planning": "Weeks 1-2: Gathering art assets, setting scale targets.",
-      "design": "Weeks 3-4: Editorial layout design, image optimization.",
-      "development": "Weeks 5-7: Building responsive galleries and smooth modal states in React.",
-      "testing": "Week 8: Performance checks, image load parameters.",
-      "launch": "Week 9: Domain configuration, SEO setup."
-    },
-    "features": [
-      {
-        "title": "Art Gallery Grid",
-        "desc": "An asymmetrical, lazy-loading showcase grid optimized for high-resolution images."
-      },
-      {
-        "title": "Interactive Modal",
-        "desc": "A premium light-box overlay enabling detailed panning views of physical calligraphy."
-      },
-      {
-        "title": "Bespoke Request",
-        "desc": "A streamlined commission form capturing dimensions, media preferences, and references."
-      }
-    ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "GSAP",
-      "Vite"
-    ],
-    "results": [
-      {
-        "number": "70%",
-        "label": "Inquiry Growth"
-      },
-      {
-        "number": "99%",
-        "label": "SEO Score"
-      },
-      {
-        "number": "96%",
-        "label": "Accessibility Score"
-      }
-    ]
-  },
-  {
-    "id": "07",
-    "name": "Felora",
-    "slug": "felora",
-    "industry": "Fashion & Lifestyle",
-    "description": "A modern fashion and lifestyle platform focused on brand storytelling and elegance.",
-    "image": "/images/projects/felora.png",
-    "website": "https://felora-teal.vercel.app/",
-    "category": "Lifestyle",
-    "featured": false,
-    "tagline": "Contemporary fashion and lifestyle brand experience.",
-    "overview": "Felora is a contemporary fashion brand requiring a digital home that speaks luxury, style, and seasonal stories. We delivered a layout inspired by luxury fashion lookbooks, utilizing high-quality transitions and editorial typography.",
-    "challenge": {
-      "requirements": "Deliver a fluid visual fashion catalogue that changes seasons dynamically and guides customers to retail outlets or stock lists.",
-      "businessProblem": "Fashion brands lose prestige when hosted on generic shopping layouts. Felora needed a customized lookbook that highlights brand values.",
-      "userChallenges": "Users want to browse lookbooks, check sizing details, explore fabrics, and locate retail locations without clunky interfaces.",
-      "industryChallenges": "Representing high-fidelity textile textures and color accuracy on varying display monitors."
-    },
-    "strategy": {
-      "uxPlanning": "Focus on visual flows. Large fullscreen banners transition smoothly, telling a story before showing product sheets.",
-      "infoArchitecture": "Simple structure: Seasonal Campaigns, Editorial Lookbook, Store Finder.",
-      "wireframes": "Stark layout structures, large typography accents, fullscreen model galleries.",
-      "designDecisions": "A luxury editorial theme utilizing thin lines, stark borders, and massive whitespace frames."
-    },
-    "designSystem": {
-      "typography": "Playfair Display paired with Inter for classic high-fashion editorial aesthetics.",
-      "spacing": "Extreme whitespace padding to convey exclusivity and elite brand value.",
-      "philosophy": "Lookbook minimalism. Eliminating buttons in favor of swipe motions and typography links.",
-      "components": "Campaign slider blocks, stock list directories, retail store locators.",
-      "hierarchy": "Stark campaign images, leading to editorial descriptions and collection lists."
-    },
-    "process": {
-      "planning": "Weeks 1-2: Brand guide alignment, campaign asset collection.",
-      "design": "Weeks 3-5: Designing lookbook flows, hover effects, store locator maps.",
-      "development": "Weeks 6-8: Setting up transitions, video embeds, and grids in React.",
-      "testing": "Week 9: Optimization for high-end mobile screens.",
-      "launch": "Week 10: Production release on Vercel."
-    },
-    "features": [
-      {
-        "title": "Editorial Lookbook",
-        "desc": "An interactive digital showroom presenting seasonal collections with fluid transitions."
-      },
-      {
-        "title": "Campaign Slider",
-        "desc": "A fullscreen slide showcase optimized for video backgrounds and model showcases."
-      },
-      {
-        "title": "Retail Directory",
-        "desc": "A clean, responsive map database listing physical retail outlets and store partners."
-      }
-    ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "GSAP",
-      "Vite"
-    ],
-    "results": [
-      {
-        "number": "45%",
-        "label": "Engagement Increase"
-      },
-      {
-        "number": "95%",
-        "label": "Performance Score"
-      },
-      {
-        "number": "3x",
-        "label": "Stockist Inquiries"
-      }
-    ]
-  },
-  {
-    "id": "08",
-    "name": "Thamur",
-    "slug": "thamur",
-    "industry": "Consumer Electronics / Speaker Brand",
-    "description": "A premium product showcase website for a modern speaker brand, designed to highlight high-quality audio products through immersive visuals, elegant product presentation, smooth interactions, and a luxury shopping experience.",
-    "image": "/images/projects/thamur.png",
-    "website": "https://thamur.netlify.app/",
-    "category": "Commerce",
-    "featured": false,
-    "tagline": "Premium product showcase for a modern luxury speaker brand.",
-    "overview": "Thamur is a premium product showcase website for a modern speaker brand, designed to highlight high-quality audio products through immersive visuals, elegant product presentation, smooth interactions, and a luxury shopping experience.",
-    "challenge": {
-      "requirements": "Deliver an exquisite, highly interactive product showcase that reflects acoustic engineering mastery and aesthetic purity, with smooth performance.",
-      "businessProblem": "High-end speaker manufacturers often struggle to convey premium sound characteristics and design quality through standard flat web pages, causing low digital engagement.",
-      "userChallenges": "Audiophiles and design enthusiasts expect high-resolution visual storytelling, precise specifications, and an intuitive product explorer to justify premium pricing.",
-      "industryChallenges": "Rendering high-fidelity imagery and complex interactive elements smoothly without cellular connection latency or layout shift."
-    },
-    "strategy": {
-      "uxPlanning": "We mapped the experience around a high-fidelity visual showroom, allowing users to inspect speaker drivers, materials, and internal acoustic chambers in close detail.",
-      "infoArchitecture": "A clean, focused path leading from the core driver assembly visualization to acoustic specifications, user testimonials, and direct ordering.",
-      "wireframes": "Fullscreen visual banners, precise alignment grids, dynamic product galleries, and clean floating detail panels.",
-      "designDecisions": "A dark editorial aesthetic to mimic high-end listening rooms, utilizing extreme contrast and premium typography to mirror luxury product lines."
-    },
-    "designSystem": {
-      "typography": "Space Grotesk for technical specifications and headers; Inter for descriptions and checkout systems.",
-      "spacing": "Massive, deliberate section spacing blocks to convey exclusivity and elite craftsmanship, keeping layouts balanced.",
-      "philosophy": "Visual-first luxury. Minimizing clutter to highlight product materials like brushed metals and fine acoustic fabric.",
-      "components": "Interactive speaker explorer cards, responsive specs tables, and visual customer testimonial sliders.",
-      "hierarchy": "Bold product naming typography, leading to high-resolution product photography, detailed feature breakdowns, and primary buy links."
-    },
-    "process": {
-      "planning": "Weeks 1-2: Sound system and acoustic profile mapping, brand positioning discovery.",
-      "design": "Weeks 3-5: Interface layouts, high-fidelity image composition, interactive asset preparation.",
-      "development": "Weeks 6-8: Component building, setting up high-performance scroll animations in React.",
-      "testing": "Week 9: Cellular performance checking, responsive layout audit, screen contrast verification.",
-      "launch": "Week 10: Production release on Netlify, global domain configuration."
-    },
-    "features": [
-      {
-        "title": "Acoustic Explorer",
-        "desc": "An interactive section highlighting the speaker driver assembly, voice coils, and crossover networks."
-      },
-      {
-        "title": "Visual Showroom",
-        "desc": "A premium gallery displaying the speaker cabinets in varying luxury finishes and room environments."
-      },
-      {
-        "title": "Specs Configurator",
-        "desc": "A comprehensive specifications index detailing frequency response, power handling, and input connectors."
-      }
-    ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "Framer Motion",
-      "Vite"
-    ],
-    "results": [
-      {
-        "number": "65%",
-        "label": "Conversion Growth"
-      },
-      {
-        "number": "98%",
-        "label": "Lighthouse Score"
-      },
-      {
-        "number": "4.9/5",
-        "label": "Customer Rating"
-      }
-    ]
-  },
-  {
-    "id": "09",
-    "name": "Royal Travels",
-    "slug": "royal-travels",
-    "industry": "Travel & Tourism",
-    "description": "A modern travel and tourism platform designed to simplify trip planning, tour package exploration, vehicle rentals, and travel bookings. The website delivers a premium user experience with engaging visuals, intuitive navigation, and a responsive interface tailored for travelers.",
-    "image": "/images/projects/royal-travels.png",
-    "website": "https://royaltravels-psi.vercel.app/",
-    "category": "Travel",
-    "featured": false,
-    "tagline": "Simplifying global journeys with elegant digital trip planning.",
-    "overview": "Royal Travels is a modern travel and tourism platform designed to simplify trip planning, tour package exploration, vehicle rentals, and travel bookings. The website delivers a premium user experience with engaging visuals, intuitive navigation, and a responsive interface tailored for travelers.",
-    "challenge": {
-      "requirements": "Construct a highly responsive travel platform featuring dynamic destination filtering, tour packaging workflows, vehicle rental sections, and an interactive booking portal.",
-      "businessProblem": "Traditional travel booking portals are often cluttered and confusing, leading to high drop-off rates during itinerary planning and package selection.",
-      "userChallenges": "Travelers seeking convenient booking want to browse destinations, view package rates, configure vehicle options, and complete booking forms in a few clicks.",
-      "industryChallenges": "Integrating live booking schedules, optimizing image sizes of scenic destinations, and maintaining high performance across mobile cellular networks."
-    },
-    "strategy": {
-      "uxPlanning": "We mapped a visual-first user journey, leading the traveler from destination inspiration straight to package customisation and swift checkout booking.",
-      "infoArchitecture": "A modular, flat architecture separating Tour Packages, Destination Guides, Vehicle Rentals, and the central Booking Hub.",
-      "wireframes": "A card-based package layout, clean filters for vehicle size and class, and a simplified checkout booking form.",
-      "designDecisions": "A pure white aesthetic with thin minimalist gridlines to focus traveler eyes directly on vibrant scenic destination photography."
-    },
-    "designSystem": {
-      "typography": "Space Grotesk for bold travel headlines; Inter for pricing grids and booking fields.",
-      "spacing": "Generous layout padding and grid gaps to mimic the open space and luxury of travel.",
-      "philosophy": "Content-first minimalism. Eliminating text clutter to let scenic visuals drive the emotional connection.",
-      "components": "Responsive package cards, floating booking sheets, and interactive destination grids.",
-      "hierarchy": "Vibrant cover imagery leading to metadata tables, package options, and primary CTA reservation buttons."
-    },
-    "process": {
-      "planning": "Weeks 1-2: User persona definition, journey mapping across booking sectors.",
-      "design": "Weeks 3-4: UI design, destination lookbooks, booking form prototypes.",
-      "development": "Weeks 5-8: React components, state integration for bookings, responsive styling.",
-      "testing": "Week 9: Responsive tests across devices, performance optimization on images.",
-      "launch": "Week 10: Vercel deployment, CDN edge caching setup, SEO check."
-    },
-    "features": [
-      {
-        "title": "Tour Showcase",
-        "desc": "A modern, filterable grid displaying curated travel packages with complete itinerary details."
-      },
-      {
-        "title": "Vehicle Rental Hub",
-        "desc": "An inline selector allowing travelers to choose and rent luxury vehicles based on passenger counts."
-      },
-      {
-        "title": "Booking Interface",
-        "desc": "A streamlined booking form capturing passenger details, scheduling, and package options with instant confirmation."
-      }
-    ],
-    "techStack": [
-      "React",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "Framer Motion",
-      "Vite"
-    ],
-    "results": [
-      {
-        "number": "50%",
-        "label": "Increase in Bookings"
-      },
-      {
-        "number": "96%",
-        "label": "Lighthouse Score"
-      },
-      {
-        "number": "4.9/5",
-        "label": "Traveler Rating"
-      }
-    ]
-  },
-  {
-    "id": "10",
-    "name": "Elevate Academy",
-    "slug": "elevate-academy",
-    "industry": "Education Institute",
-    "description": "A modern educational institution website designed to provide students with an engaging digital experience. The platform showcases academic programs, admissions, faculty, campus facilities, and student success while encouraging inquiries through a clean, responsive, and user-friendly interface.",
-    "image": "/images/projects/elevate-academy.png",
-    "website": "https://elevate-academy-enqv.vercel.app/",
-    "category": "Education",
-    "featured": false,
-    "tagline": "Modern educational platform with premium landing page and course showcase.",
-    "overview": "Elevate Academy is a modern educational institution website designed to provide students with an engaging digital experience. The platform showcases academic programs, admissions, faculty, campus facilities, and student success while encouraging inquiries through a clean, responsive, and user-friendly interface.",
-    "challenge": {
-      "requirements": "Construct a highly responsive educational platform showcasing courses, admission criteria, faculty members, student testimonials, and inquiry forms.",
-      "businessProblem": "Many academic portals are difficult to navigate, causing prospective students and parents frustration when searching for tuition rates, programs, and admission steps.",
-      "userChallenges": "Students need a streamlined way to filter courses, explore campus facilities, and easily send inquiries without navigating cluttered layouts.",
-      "industryChallenges": "Integrating multi-departmental program structures, ensuring high accessibility for diverse users, and maintaining speed across regional bandwidth constraints."
-    },
-    "strategy": {
-      "uxPlanning": "We simplified information routes. Prospective students can check program requirements and access direct contact forms within two clicks.",
-      "infoArchitecture": "A clear structure separating Academic Programs, Admission Information, Faculty Profiles, and a central Inquiry/Contact portal.",
-      "wireframes": "A card-based course selector, clean inputs for contact forms, and a responsive grid highlighting campus facilities.",
-      "designDecisions": "A clean black and white layout utilizing ample white space, refined borders, and premium typography to mirror modern academic prestige."
-    },
-    "designSystem": {
-      "typography": "Space Grotesk for bold headlines; Inter for pricing grids, faculty bios, and admission forms.",
-      "spacing": "Generous section layouts and balanced padding grids to evoke a campus-like feel of openness and clarity.",
-      "philosophy": "Content-first academic minimalism. Eliminating visual distractions to prioritize program specifications and registration pathways.",
-      "components": "Responsive course cards, interactive campus galleries, and structured contact forms.",
-      "hierarchy": "Dominant headlines leading to program options, admission timelines, and high-visibility inquiry triggers."
-    },
-    "process": {
-      "planning": "Weeks 1-2: User persona definition, academic hierarchy planning, mapping inquiry funnels.",
-      "design": "Weeks 3-4: UI design, program selector templates, inquiry form layouts.",
-      "development": "Weeks 5-8: React components, state integration for course filters, responsive styling.",
-      "testing": "Week 9: Accessibility validations, form testing, responsive viewport audits.",
-      "launch": "Week 10: Production deployment on Vercel, DNS configurations, and SEO indexing check."
-    },
-    "features": [
-      {
-        "title": "Premium Landing Page",
-        "desc": "A modern, highly engaging home layout presenting academic offerings, admissions, and milestones."
-      },
-      {
-        "title": "Course Showcase",
-        "desc": "A filterable curriculum listing allowing prospective students to explore courses and academic tracks."
-      },
-      {
-        "title": "Inquiry System",
-        "desc": "A clean contact and registration gateway enabling quick requests for admissions and course catalogs."
-      }
-    ],
-    "techStack": [
-      "React JS",
-      "JavaScript",
-      "Responsive Design",
-      "Modern Frontend Architecture"
-    ],
-    "results": [
-      {
-        "number": "60%",
-        "label": "Inquiry Conversion"
-      },
-      {
-        "number": "98%",
-        "label": "Performance Score"
-      },
-      {
-        "number": "2x",
-        "label": "Page Views Growth"
-      }
-    ]
-  },
-  {
-    "id": "11",
-    "name": "Maison Estate",
-    "slug": "maison-estate",
-    "industry": "Real Estate & Builders",
-    "description": "Maison Estate is a premium real estate and builders platform designed to showcase residential and commercial properties through a modern digital experience. The platform highlights projects, property listings, construction services, and company expertise while providing an intuitive experience for prospective buyers and investors.",
-    "image": "/images/projects/maison-estate.png",
-    "website": "https://maison-estate.lovable.app/",
-    "category": "Real Estate",
-    "featured": true,
-    "tagline": "Premium real estate and builders platform for residential and commercial projects.",
-    "overview": "Maison Estate is a premium real estate and builders platform designed to showcase residential and commercial properties through a modern digital experience. The platform highlights projects, property listings, construction services, and company expertise while providing an intuitive experience for prospective buyers and investors.",
-    "challenge": {
-      "requirements": "Create a highly responsive real estate portal showcasing active listings, developer expertise, customer inquiry channels, and builder services.",
-      "businessProblem": "Property websites are often cluttered and load slowly, losing prospective buyers and investors due to poor interface clarity and hard-to-find details.",
-      "userChallenges": "Buyers want clean navigation, fast property searches, high-resolution imagery, and a direct inquiry form that works perfectly on mobile phones.",
-      "industryChallenges": "Managing heavy assets like architectural blueprint renders and high-resolution galleries without hurting site performance."
-    },
-    "strategy": {
-      "uxPlanning": "Designed an intuitive flow that guides buyers from general property categories straight to detailed list sheets and booking widgets.",
-      "infoArchitecture": "A clear structure separating Residential Projects, Commercial Buildings, Builders Services, and direct inquiry forms.",
-      "wireframes": "Clean property grids, sidebar specifications columns, and high-visibility booking calls.",
-      "designDecisions": "A premium minimalist aesthetic using deep black highlights, thin elegant borders, and massive whitespace to reflect high-end architectural design."
-    },
-    "designSystem": {
-      "typography": "Space Grotesk for architectural titles and numbers; Inter for listings metadata and forms.",
-      "spacing": "Clean grid alignment with wide borders to showcase properties as independent design galleries.",
-      "philosophy": "Architectural minimalism. Let high-resolution renders and property dimensions lead the user journey.",
-      "components": "Property cards, filterable showcase blocks, and custom contact overlays.",
-      "hierarchy": "Bold property branding, leading to visual galleries, details tabs, and direct enquiry forms."
-    },
-    "process": {
-      "planning": "Weeks 1-2: Gathering requirements, planning property catalog structures.",
-      "design": "Weeks 3-4: UI design, property page templates, responsive layout creation.",
-      "development": "Weeks 5-8: React integration, property filtering logic, form setups.",
-      "testing": "Week 9: Loading speed audits, responsive check, accessibility test.",
-      "launch": "Week 10: Production deployment on Lovable, domain configuration."
-    },
-    "features": [
-      {
-        "title": "Property Showcase",
-        "desc": "A modern, filterable layout grid presenting residential and commercial properties in high detail."
-      },
-      {
-        "title": "Builder Services",
-        "desc": "Detailed breakdown of construction capabilities, engineering specifications, and custom building stages."
-      },
-      {
-        "title": "Contact & Enquiry",
-        "desc": "A fast, streamlined contact forms system optimized for scheduling site visits and requesting catalogs."
-      }
-    ],
-    "techStack": [
-      "React JS",
-      "JavaScript",
-      "Responsive Design",
-      "Modern Frontend Architecture"
-    ],
-    "results": [
-      {
-        "number": "50%",
-        "label": "Lead Growth"
-      },
-      {
-        "number": "97%",
-        "label": "Lighthouse Score"
-      },
-      {
-        "number": "4.8/5",
-        "label": "Client Rating"
-      }
-    ]
-  },
-  {
-    "id": "12",
-    "name": "TABLO",
-    "slug": "tablo",
-    "industry": "Restaurant Software / POS & Billing",
-    "description": "TABLO is a modern restaurant management platform that streamlines restaurant operations from table ordering to billing. It provides a seamless digital workflow for restaurants, improving order management, customer experience, and billing efficiency.",
-    "image": "/images/projects/tablo.png",
-    "website": "https://hello-you-there-0551.lovable.app/",
-    "category": "Technology",
-    "featured": true,
-    "tagline": "Streamlined restaurant POS, digital menu, and table ordering system.",
-    "overview": "TABLO is a modern restaurant management platform that streamlines restaurant operations from table ordering to billing. It provides a seamless digital workflow for restaurants, improving order management, customer experience, and billing efficiency.",
-    "challenge": {
-      "requirements": "Develop a high-performance restaurant interface featuring digital menus, live table ordering, and a kitchen queue dashboard.",
-      "businessProblem": "Traditional paper-based order management leads to communication gaps between tables and the kitchen, resulting in billing errors and long wait times.",
-      "userChallenges": "Diners want a fast way to browse menus and order at their table. Waiters and chefs need a clear, instant order queue with no interface delays.",
-      "industryChallenges": "Handling concurrent real-time orders during busy hours and rendering dynamic menu items reliably on low-end tablets."
-    },
-    "strategy": {
-      "uxPlanning": "Designed a lightweight table-ordering funnel that lets diners complete menu browsing to checkout in under three steps.",
-      "infoArchitecture": "Categorized digital menus, table-specific order channels, and a central kitchen operations dashboard.",
-      "wireframes": "Card-based menu layouts, sticky cart bars, and a multi-column order status board.",
-      "designDecisions": "A sharp, high-contrast UI with clean borders to ensure legibility and ease of use in busy, varying restaurant lighting environments."
-    },
-    "designSystem": {
-      "typography": "Space Grotesk for tables, bills, and category headers; Inter for menu item descriptions and orders.",
-      "spacing": "Compact but highly touch-friendly grid patterns to avoid misclicks on small mobile or tablet screens.",
-      "philosophy": "Utility-first minimalism. Content focuses purely on dish visuals, prices, order statuses, and totals.",
-      "components": "Interactive menu cards, order tables, progress trackers, and billing details.",
-      "hierarchy": "Direct category selectors, item cards, billing summary, and single-click submit triggers."
-    },
-    "process": {
-      "planning": "Weeks 1-2: Interviewing restaurant staff, planning ordering workflows.",
-      "design": "Weeks 3-4: UI dashboard design, responsive menu cards, POS layouts.",
-      "development": "Weeks 5-8: State management for active carts, table channels, kitchen queues.",
-      "testing": "Week 9: Simulating peak concurrency, validation audits, responsive tests.",
-      "launch": "Week 10: Server hosting, custom integration checks."
-    },
-    "features": [
-      {
-        "title": "Table Ordering",
-        "desc": "A fast, client-side digital ordering interface connected directly to kitchen queues."
-      },
-      {
-        "title": "Kitchen Dashboard",
-        "desc": "A live queue monitor for kitchen staff to organize, track, and complete cooking tickets."
-      },
-      {
-        "title": "POS Billing",
-        "desc": "A integrated billing checkout screen detailing orders, tax parameters, and payment status."
-      }
-    ],
-    "techStack": [
-      "React JS",
-      "JavaScript",
-      "Responsive Design",
-      "Modern Frontend Architecture"
-    ],
-    "results": [
-      {
-        "number": "35%",
-        "label": "Faster Operations"
-      },
-      {
-        "number": "99%",
-        "label": "Order Accuracy"
-      },
-      {
-        "number": "95%",
-        "label": "Lighthouse Score"
-      }
-    ]
+    intendedOutcomes: {
+      title: "Intended Business Benefits",
+      description: "Commercial and customer experience objectives established for the boutique:",
+      points: [
+        { title: "Circular Luxury Adoption", desc: "Allows style-conscious customers to wear designer bridal fashion at a fraction of retail purchase cost." },
+        { title: "Zero-Friction Inquiries", desc: "Channels pre-qualified rental inquiries directly to WhatsApp with specific garment and date details." },
+        { title: "Prestige Brand Image", desc: "Elevates local boutique rental operations to an international-standard digital luxury showroom." }
+      ]
+    }
   }
 ];
 
+// Re-export common site configuration data for backward-compatibility
 export const servicesData = [
   {
     id: "01",
     name: "Web Development",
+    slug: "web-development",
     description: "High-performance websites and web applications built with modern frameworks and best practices."
   },
   {
     id: "02",
     name: "Custom Software Development",
+    slug: "custom-software",
     description: "Tailored software solutions designed to solve your unique business challenges at scale."
   },
   {
     id: "03",
     name: "UI/UX Design",
+    slug: "ui-ux-design",
     description: "Research-driven design that creates intuitive, delightful user experiences across platforms."
   },
   {
     id: "04",
     name: "E-Commerce Solutions",
+    slug: "ecommerce",
     description: "Scalable online stores with seamless checkout, inventory management, and analytics."
   },
   {
     id: "05",
     name: "Business Automation",
+    slug: "automation",
     description: "Streamline operations with custom automation tools that eliminate manual processes."
   },
   {
     id: "06",
     name: "Technology Consulting",
+    slug: "consulting",
     description: "Strategic technology guidance to help you make informed decisions for growth."
   }
 ];
 
 export const technologiesData = [
-  "React JS",
-  "JavaScript",
-  "HTML5",
-  "CSS3",
-  "Tailwind CSS",
-  "ASP.NET Core",
-  ".NET 8",
-  "SQL Server",
-  "PostgreSQL",
-  "Docker",
-  "Azure",
-  "GitHub"
-];
-
-export const processSteps = [
-  {
-    id: "01",
-    name: "Discovery",
-    description: "Deep dive into your business objectives, workflows, and goals."
-  },
-  {
-    id: "02",
-    name: "Research",
-    description: "Competitor analyses, target persona identification, and user mapping."
-  },
-  {
-    id: "03",
-    name: "Design",
-    description: "High-fidelity user interface layouts, wireframes, and design systems."
-  },
-  {
-    id: "04",
-    name: "Development",
-    description: "Translating pixel-perfect mockups into fast, clean, modular software."
-  },
-  {
-    id: "05",
-    name: "Testing",
-    description: "Quality assurance audits, accessibility, speed, and device checks."
-  },
-  {
-    id: "06",
-    name: "Launch",
-    description: "Server setups, builds compilation, and deploying code to production."
-  },
-  {
-    id: "07",
-    name: "Support",
-    description: "Continuous server monitoring, maintenance upgrades, and improvements."
-  }
-];
-
-export const whyChooseUsData = [
-  {
-    id: "01",
-    title: "Custom-Built Solutions",
-    description: "No templates, no shortcuts. Every solution is built from scratch to fit your exact requirements."
-  },
-  {
-    id: "02",
-    title: "Modern Architecture",
-    description: "Built using modular, decoupled designs to enable continuous integration and easy updates."
-  },
-  {
-    id: "03",
-    title: "Scalable Systems",
-    description: "Engineered to handle increasing user volume and complex business flows with stable performance."
-  },
-  {
-    id: "04",
-    title: "Performance Optimized",
-    description: "We optimize load times, rendering cycles, and API responses to keep user engagement high."
-  },
-  {
-    id: "05",
-    title: "Responsive Across Devices",
-    description: "Consistent user experiences on desktop, tablet, and mobile with no layout degradation."
-  },
-  {
-    id: "06",
-    title: "Long-Term Support",
-    description: "Active maintenance, prompt dependency upgrades, and support agreements post launch."
-  }
+  "Custom Web Applications",
+  "Digital Platforms",
+  "E-Commerce Systems",
+  "Hospitality & QR Ordering",
+  "Business Process Automation",
+  "Cloud Systems",
+  "UI/UX Design Systems",
+  "Mobile Experiences",
+  "Data Analytics",
+  "API Integration"
 ];

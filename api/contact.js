@@ -83,7 +83,7 @@ ${new Date().toISOString()}
 
   const htmlBody = `
     <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; line-height: 1.6;">
-      <h2 style="color: #2E3192; border-bottom: 2px solid #EAEAEA; padding-bottom: 12px;">NEORIZ SOLUTIONS &mdash; NEW INQUIRY</h2>
+      <h2 style="color: #2858F0; border-bottom: 2px solid #EAEAEA; padding-bottom: 12px;">NEORIZ SOLUTIONS &mdash; NEW INQUIRY</h2>
       
       <p><strong>Name:</strong><br/>${name}</p>
       <p><strong>Email:</strong><br/><a href="mailto:${email}">${email}</a></p>

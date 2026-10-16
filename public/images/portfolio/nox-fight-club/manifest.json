@@ -1,0 +1,55 @@
+{
+  "product": "NOX Fight Club",
+  "projectLocation": "C:\\Projects\\NOX_Fight_Club",
+  "liveWebsite": "https://noxfightclub.neorizsolutions.com/",
+  "lastUpdated": "2026-10-15T18:03:00+05:30",
+  "sourceScreenshotsPath": "public/images/portfolio/nox-fight-club/source-screenshots",
+  "finalAssetsPath": "public/images/portfolio/nox-fight-club/final",
+  "assets": [
+    {
+      "id": "nox-hero",
+      "filename": "nox-hero.jpg",
+      "target": "Asset A — Premium hero showcase",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Cinematic desktop browser mockup displaying genuine NOX Fight Club homepage with Bebas Neue typography and heavy bag fighter imagery in a dark athletic studio environment."
+    },
+    {
+      "id": "nox-website-collage",
+      "filename": "nox-website-collage.jpg",
+      "target": "Asset B — Multi-screen website collage",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Layered cards and desktop screens displaying genuine combat disciplines, daily batch timetable, coach profiles, and WhatsApp booking trigger against dark carbon void."
+    },
+    {
+      "id": "nox-mobile-showcase",
+      "filename": "nox-mobile-showcase.jpg",
+      "target": "Asset C — Mobile experience showcase",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Dual smartphone mockups standing in dark gym setting showing mobile responsive disciplines navigation and daily batch timetable (Morning, Kids, Night Batches)."
+    },
+    {
+      "id": "nox-training-showcase",
+      "filename": "nox-training-showcase.jpg",
+      "target": "Asset D — Training and programme showcase",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Combat curriculum grid showcasing all six verified disciplines: Western Boxing, Muay Thai, Kickboxing, Grappling & BJJ, MMA, and Strength & Conditioning with sharp crimson accents."
+    },
+    {
+      "id": "nox-alternate-showcase",
+      "filename": "nox-alternate-showcase.jpg",
+      "target": "Asset E — Alternate portfolio showcase",
+      "aspectRatio": "16:9",
+      "status": "approved",
+      "description": "Isometric perspective on carbon fiber desk showing laptop with hero video presentation, smartphone with batch schedule, and membership cards."
+    }
+  ],
+  "quotaErrorsEncountered": false,
+  "totalAssetsTargeted": 5,
+  "totalAssetsApproved": 5,
+  "totalAssetsRejected": 0,
+  "totalAssetsPending": 0
+}

@@ -30,13 +30,13 @@ function generateSitemap() {
     xml += `  </url>\n`;
   });
 
-  // Add dynamic project routes
+  // Add dynamic canonical project routes (6 verified projects)
   projectsData.forEach((project) => {
     if (project.slug) {
       xml += `  <url>\n`;
       xml += `    <loc>${BASE_URL}/project/${project.slug}</loc>\n`;
       xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.7</priority>\n`;
+      xml += `    <priority>0.8</priority>\n`;
       xml += `  </url>\n`;
     }
   });
@@ -50,7 +50,7 @@ function generateRobotsTxt() {
 Allow: /
 Disallow: /404
 
-Sitemap: https://www.neorizsolutions.com/sitemap.xml
+Sitemap: https://neorizsolutions.com/sitemap.xml
 `;
 }
 
