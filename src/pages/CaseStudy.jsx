@@ -124,7 +124,7 @@ export default function CaseStudy() {
               <div style={{ fontSize: "0.8125rem", color: "var(--nr-blue)", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "24px" }}>
                 System Screenshots & Workflows
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "28px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: "28px" }}>
                 {project.gallery.slice(1).map((screenshot, sIdx) => (
                   <div 
                     key={sIdx} 

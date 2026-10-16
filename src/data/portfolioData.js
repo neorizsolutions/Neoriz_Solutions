@@ -439,7 +439,7 @@ export const projectsData = [
   ========================================================================== */
   {
     id: "emblingo",
-    name: "Emblingo",
+    name: "Emblingo Learning App",
     slug: "emblingo-learning-app",
     category: "Products",
     industry: "EdTech / Competitive Exam Preparation",

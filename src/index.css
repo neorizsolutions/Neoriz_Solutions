@@ -2173,13 +2173,13 @@ h1, h2, h3, h4, h5, h6 {
 /* --- EDITORIAL SHOWCASE SECTION --- */
 .editorial-project-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 180px 1fr;
   gap: 40px;
 }
 @media (max-width: 768px) {
   .editorial-project-info {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 }
 
@@ -2486,5 +2486,33 @@ h1, h2, h3, h4, h5, h6 {
 .nr-live-glyph {
   font-size: 0.95em;
   line-height: 1;
+}
+
+/* --- RESPONSIVE POLISH & VIEWPORT ADAPTATIONS --- */
+@media (max-width: 640px) {
+  .project-nav-item.prev-nav {
+    border-right: none !important;
+    border-bottom: 1px solid var(--nr-light-gray);
+  }
+  .project-nav-item.next-nav {
+    text-align: left !important;
+  }
+  .project-nav-item.next-nav > div {
+    justify-content: flex-start !important;
+  }
+}
+
+/* Prevent accidental word-wrapping blowouts on extra-small mobile viewports */
+@media (max-width: 360px) {
+  :root {
+    --nr-container-padding: 16px;
+  }
+  .nav-inner-premium {
+    padding: 0 16px;
+  }
+  h1, h2, h3 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 }
 

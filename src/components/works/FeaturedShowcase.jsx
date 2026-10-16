@@ -168,7 +168,7 @@ export default function FeaturedShowcase({ projects }) {
 
       {/* Navigation Controls */}
       {projects.length > 1 && (
-        <div style={{ position: "absolute", bottom: "36px", right: "36px", display: "flex", gap: "10px", zIndex: 10 }}>
+        <div className="showcase-nav-arrows" style={{ position: "absolute", bottom: "clamp(20px, 4vw, 36px)", right: "clamp(20px, 4vw, 36px)", display: "flex", gap: "10px", zIndex: 10 }}>
           <button 
             onClick={prevProject}
             aria-label="Previous featured project"
@@ -212,7 +212,7 @@ export default function FeaturedShowcase({ projects }) {
       
       {/* Progress Indicators */}
       {projects.length > 1 && (
-        <div style={{ position: "absolute", bottom: "20px", left: "clamp(36px, 6vw, 64px)", display: "flex", gap: "8px", zIndex: 10 }}>
+        <div className="showcase-progress-dots" style={{ position: "absolute", bottom: "clamp(12px, 2.5vw, 20px)", left: "clamp(24px, 5vw, 64px)", display: "flex", gap: "8px", zIndex: 10 }}>
           {projects.map((proj, idx) => (
             <button
               key={proj.id || idx}
