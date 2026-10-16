@@ -11,10 +11,12 @@ const BASE_URL = 'https://neorizsolutions.com';
 const staticRoutes = [
   '/',
   '/about',
-  '/solutions',
   '/process',
   '/work',
-  '/contact'
+  '/contact',
+  '/privacy-policy',
+  '/terms-of-use',
+  '/cookie-policy'
 ];
 
 function generateSitemap() {

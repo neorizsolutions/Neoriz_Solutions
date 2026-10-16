@@ -23,8 +23,8 @@ export default function WorkPage() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   useSEO({
-    title: "Portfolio & Selected Works | NEORIZ Solutions",
-    description: "Explore the NEORIZ Solutions portfolio: TABLO Self-Ordering, TABLO Table QR, NOX Fight Club, Neoriz WhatsApp Automation, Cafe Serenity, Emblingo Learning App, and Felora Dress Rental.",
+    title: "Portfolio & Selected Works | Neoriz Solutions",
+    description: "Explore the Neoriz Solutions portfolio: TABLO Self-Ordering, TABLO Table QR, NOX Fight Club, Neoriz WhatsApp Automation, Cafe Serenity, Emblingo Learning App, and Felora Dress Rental.",
     url: "https://neorizsolutions.com/work"
   });
 

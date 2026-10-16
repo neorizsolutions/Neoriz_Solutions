@@ -27,7 +27,6 @@ export default function MobileMenu({ isOpen, onClose }) {
   return (
     <div className={`mobile-menu ${isOpen ? "active" : ""}`}>
       {renderLink("/about", "About")}
-      {renderLink("/solutions", "Solutions")}
       {renderLink("/work", "Work")}
       {renderLink("/process", "Process")}
       {renderLink("/contact", "Start a Project")}

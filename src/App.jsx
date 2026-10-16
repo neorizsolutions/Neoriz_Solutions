@@ -3,9 +3,11 @@ import Home from "./pages/Home";
 import CaseStudy from "./pages/CaseStudy";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
-import SolutionsPage from "./pages/SolutionsPage";
 import ProcessPage from "./pages/ProcessPage";
 import WorkPage from "./pages/WorkPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
+import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
 import ErrorBoundary from "./components/ErrorBoundary";
 
@@ -16,8 +18,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/solutions" element={<SolutionsPage />} />
-          <Route path="/services" element={<Navigate to="/solutions" replace />} />
+          <Route path="/solutions" element={<Navigate to="/#services" replace />} />
+          <Route path="/services" element={<Navigate to="/#services" replace />} />
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/work" element={<WorkPage />} />
           
@@ -26,6 +28,11 @@ export default function App() {
           
           {/* Backward compatibility: redirect /product/:slug to /project/:slug */}
           <Route path="/product/:slug" element={<ProductRedirect />} />
+          
+          {/* Legal Pages */}
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-use" element={<TermsOfUse />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
           
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />

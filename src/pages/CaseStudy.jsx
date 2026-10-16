@@ -23,8 +23,8 @@ export default function CaseStudy() {
   const nextProject = projectIndex !== -1 && projectIndex < projectsData.length - 1 ? projectsData[projectIndex + 1] : null;
 
   useSEO({
-    title: project ? `${project.name} | Case Study — NEORIZ Solutions` : "Case Study Not Found — NEORIZ Solutions",
-    description: project ? project.overview || project.description : "Case study details for NEORIZ Solutions digital project.",
+    title: project ? `${project.name} | Case Study — Neoriz Solutions` : "Case Study Not Found — Neoriz Solutions",
+    description: project ? project.overview || project.description : "Case study details for Neoriz Solutions digital project.",
     url: project ? `https://neorizsolutions.com/project/${slug}` : ""
   });
 

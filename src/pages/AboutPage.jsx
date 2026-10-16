@@ -20,8 +20,8 @@ export default function AboutPage() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   useSEO({
-    title: "About NEORIZ Solutions | Software Development & Digital Agency",
-    description: "Learn about NEORIZ Solutions' approach to building premium digital platforms. We combine deep engineering with premium aesthetic design to solve real business problems.",
+    title: "About Neoriz Solutions | Software Development & Digital Agency",
+    description: "Learn about Neoriz Solutions' approach to building premium digital platforms. We combine deep engineering with premium aesthetic design to solve real business problems.",
     url: "https://neorizsolutions.com/about"
   });
 
@@ -62,7 +62,7 @@ export default function AboutPage() {
               </motion.div>
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
                 <p style={{ fontSize: "1.25rem", color: "var(--nr-medium-gray)", lineHeight: 1.6, marginBottom: "24px" }}>
-                  It must solve real problems, simplify operations, and support growth. At NEORIZ Solutions, we believe in creating digital experiences that create measurable business value.
+                  It must solve real problems, simplify operations, and support growth. At Neoriz Solutions, we believe in creating digital experiences that create measurable business value.
                 </p>
                 <p style={{ fontSize: "1.125rem", color: "var(--nr-medium-gray)", lineHeight: 1.6 }}>
                   Our approach combines deep technical engineering with premium aesthetic design to deliver scalable, intelligent digital systems.

@@ -36,11 +36,11 @@ export default function Navbar({ onToggleMenu, isMenuOpen }) {
         {/* LOGO */}
         {isHome ? (
           <a href="#hero" className="nav-logo-premium">
-            <img src={logo} alt="NEORIZ Solutions" />
+            <img src={logo} alt="Neoriz Solutions" />
           </a>
         ) : (
           <Link to="/" className="nav-logo-premium">
-            <img src={logo} alt="NEORIZ Solutions" />
+            <img src={logo} alt="Neoriz Solutions" />
           </Link>
         )}
 
@@ -48,7 +48,6 @@ export default function Navbar({ onToggleMenu, isMenuOpen }) {
         <div className="nav-links-premium">
           {renderLink("/", "Home")}
           {renderLink("/about", "About")}
-          {renderLink("/solutions", "Solutions")}
           {renderLink("/process", "Process")}
           {renderLink("/work", "Work")}
           

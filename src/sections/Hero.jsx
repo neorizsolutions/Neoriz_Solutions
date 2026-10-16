@@ -75,7 +75,7 @@ export default function Hero() {
           </motion.h1>
           
           <motion.p variants={itemVariants} className="hero-desc-white">
-            NEORIZ Solutions creates thoughtful digital products, brands, platforms and experiences designed for real business growth.
+            Neoriz Solutions creates thoughtful digital products, brands, platforms and experiences designed for real business growth.
           </motion.p>
           
           <motion.div variants={itemVariants} className="hero-actions-white">

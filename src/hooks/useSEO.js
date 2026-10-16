@@ -62,7 +62,7 @@ export default function useSEO({
     const ogDesc = setMetaTag("property", "og:description", description);
     const ogImage = setMetaTag("property", "og:image", finalImage);
     const ogType = setMetaTag("property", "og:type", type);
-    const ogSiteName = setMetaTag("property", "og:site_name", "NEORIZ Solutions");
+    const ogSiteName = setMetaTag("property", "og:site_name", "Neoriz Solutions");
 
     const twCard = setMetaTag("name", "twitter:card", "summary_large_image");
     const twTitle = setMetaTag("name", "twitter:title", title);

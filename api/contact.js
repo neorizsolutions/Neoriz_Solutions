@@ -35,7 +35,7 @@ export default async function handler(req, res) {
   // 6. Check Environment Setup
   const resendApiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_EMAIL;
-  const fromEmail = process.env.EMAIL_FROM || 'NEORIZ Solutions <onboarding@resend.dev>';
+  const fromEmail = process.env.EMAIL_FROM || 'Neoriz Solutions <onboarding@resend.dev>';
 
   if (!resendApiKey) {
     console.error('CRITICAL ERROR: RESEND_API_KEY is not configured in the environment.');
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
   const subject = `New Project Inquiry — ${projectType || 'General'} — ${name}`;
   
   const textBody = `
-NEORIZ SOLUTIONS — NEW PROJECT INQUIRY
+Neoriz Solutions — New Project Inquiry
 
 Name:
 ${name}
@@ -83,7 +83,7 @@ ${new Date().toISOString()}
 
   const htmlBody = `
     <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; line-height: 1.6;">
-      <h2 style="color: #2858F0; border-bottom: 2px solid #EAEAEA; padding-bottom: 12px;">NEORIZ SOLUTIONS &mdash; NEW INQUIRY</h2>
+      <h2 style="color: #2858F0; border-bottom: 2px solid #EAEAEA; padding-bottom: 12px;">Neoriz Solutions &mdash; New Inquiry</h2>
       
       <p><strong>Name:</strong><br/>${name}</p>
       <p><strong>Email:</strong><br/><a href="mailto:${email}">${email}</a></p>

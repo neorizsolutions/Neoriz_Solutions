@@ -24,8 +24,8 @@ export default function Home() {
   const closeMenu = () => setIsMenuOpen(false);
 
   useSEO({
-    title: "NEORIZ Solutions | Digital Products, Websites & Platforms",
-    description: "NEORIZ Solutions builds premium custom web applications, digital platforms, and business systems focused on performance and seamless user experiences.",
+    title: "Neoriz Solutions | Digital Products, Websites & Platforms",
+    description: "Neoriz Solutions builds premium custom web applications, digital platforms, and business systems focused on performance and seamless user experiences.",
     url: "https://neorizsolutions.com"
   });
 

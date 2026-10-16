@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import logoPrimary from "../assets/brand/neoriz-logo-primary.svg";
@@ -26,11 +25,11 @@ export default function Footer() {
           <div className="footer-brand">
             {isHome ? (
               <a href="#hero" style={{ display: "inline-block", width: "fit-content" }}>
-                <img src={logoPrimary} alt="NEORIZ Solutions" style={{ height: "40px", width: "auto", filter: "brightness(0) invert(1)" }} />
+                <img src={logoPrimary} alt="Neoriz Solutions" style={{ height: "40px", width: "auto", filter: "brightness(0) invert(1)" }} />
               </a>
             ) : (
               <Link to="/" style={{ display: "inline-block", width: "fit-content" }}>
-                <img src={logoPrimary} alt="NEORIZ Solutions" style={{ height: "40px", width: "auto", filter: "brightness(0) invert(1)" }} />
+                <img src={logoPrimary} alt="Neoriz Solutions" style={{ height: "40px", width: "auto", filter: "brightness(0) invert(1)" }} />
               </Link>
             )}
             <p className="footer-desc">
@@ -44,7 +43,6 @@ export default function Footer() {
             <div className="footer-nav-links">
               {renderLink("/", "Home")}
               {renderLink("/about", "About")}
-              {renderLink("/solutions", "Solutions")}
               {renderLink("/process", "Process")}
               {renderLink("/work", "Work")}
               {renderLink("/contact", "Contact")}
@@ -72,8 +70,18 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            © {currentYear} NEORIZ Solutions. All rights reserved.
+            © {currentYear} Neoriz Solutions. All rights reserved.
           </div>
+
+          {/* Legal Links (Footer-Only) */}
+          <div className="footer-legal">
+            <Link to="/privacy-policy" className="footer-legal-link">Privacy Policy</Link>
+            <span className="footer-legal-divider" aria-hidden="true">·</span>
+            <Link to="/terms-of-use" className="footer-legal-link">Terms of Use</Link>
+            <span className="footer-legal-divider" aria-hidden="true">·</span>
+            <Link to="/cookie-policy" className="footer-legal-link">Cookie Policy</Link>
+          </div>
+
           <div className="footer-social">
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">LinkedIn</a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="footer-social-link">Twitter</a>
@@ -159,6 +167,38 @@ export default function Footer() {
         .footer-copyright {
           color: rgba(255, 255, 255, 0.5);
           font-size: 0.875rem;
+        }
+        .footer-legal {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 10px;
+          font-size: 0.875rem;
+          color: rgba(255, 255, 255, 0.5);
+        }
+        .footer-legal-link {
+          color: rgba(255, 255, 255, 0.6);
+          text-decoration: none;
+          transition: color 0.2s ease;
+          outline: none;
+        }
+        .footer-legal-link:hover {
+          color: var(--nr-white);
+          text-decoration: underline;
+        }
+        .footer-legal-link:focus-visible {
+          color: var(--nr-white);
+          outline: 2px solid var(--nr-teal);
+          outline-offset: 4px;
+          border-radius: 2px;
+        }
+        .footer-legal-divider {
+          color: rgba(255, 255, 255, 0.3);
+          font-weight: 700;
+        }
+        .footer-legal-item {
+          color: rgba(255, 255, 255, 0.45);
+          font-style: normal;
         }
         .footer-social {
           display: flex;
