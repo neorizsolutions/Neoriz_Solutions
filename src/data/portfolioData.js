@@ -628,39 +628,39 @@ export const projectsData = [
 export const servicesData = [
   {
     id: "01",
-    name: "Web Development",
-    slug: "web-development",
-    description: "High-performance websites and web applications built with modern frameworks and best practices."
+    name: "Website Development",
+    slug: "website-development",
+    description: "We build business websites that are structured for Google from the ground up. Clean code, fast loading, and content organised the way your customers think."
   },
   {
     id: "02",
-    name: "Custom Software Development",
-    slug: "custom-software",
-    description: "Tailored software solutions designed to solve your unique business challenges at scale."
+    name: "Mobile App Development",
+    slug: "mobile-app-development",
+    description: "We build mobile applications that are fast, intuitive, and structured for real user engagement across iOS and Android."
   },
   {
     id: "03",
-    name: "UI/UX Design",
-    slug: "ui-ux-design",
-    description: "Research-driven design that creates intuitive, delightful user experiences across platforms."
+    name: "UI/UX Designing",
+    slug: "ui-ux-designing",
+    description: "We design interfaces that are clear, conversion-focused, and aligned with how your customers actually think and act."
   },
   {
     id: "04",
-    name: "E-Commerce Solutions",
-    slug: "ecommerce",
-    description: "Scalable online stores with seamless checkout, inventory management, and analytics."
+    name: "Software Development",
+    slug: "software-development",
+    description: "We build custom software that automates workflows, connects teams, and scales with your business goals."
   },
   {
     id: "05",
-    name: "Business Automation",
-    slug: "automation",
-    description: "Streamline operations with custom automation tools that eliminate manual processes."
+    name: "Ecommerce",
+    slug: "ecommerce",
+    description: "We build ecommerce experiences that load fast, convert visitors, and make product discovery effortless on every device."
   },
   {
     id: "06",
-    name: "Technology Consulting",
-    slug: "consulting",
-    description: "Strategic technology guidance to help you make informed decisions for growth."
+    name: "Website Revamp",
+    slug: "website-revamp",
+    description: "We modernize outdated websites with better design, stronger SEO, faster performance, and clearer conversion paths."
   }
 ];
 

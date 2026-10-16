@@ -1,85 +1,111 @@
-import React, { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
+import { servicesData } from "../data/portfolioData";
 
-const capabilities = [
-  { id: "01", title: "Digital Experiences", detail: "Creating immersive, high-performance interfaces that connect brands with their audiences through fluid motion and premium aesthetic execution." },
-  { id: "02", title: "Web Development", detail: "Engineering modern, fast, and accessible web applications using the latest scalable front-end and back-end technologies." },
-  { id: "03", title: "Business Platforms", detail: "Architecting robust enterprise platforms that handle complex workflows, data management, and operational scale." },
-  { id: "04", title: "Custom Software", detail: "Building tailored software solutions from the ground up to solve unique business challenges that off-the-shelf software cannot." },
-  { id: "05", title: "UI/UX Systems", detail: "Developing comprehensive design systems and modular components that ensure consistency and speed up future development." }
-];
+// Professional, scalable inline SVG icons tailored to each of the 6 services
+const serviceIcons = {
+  "01": (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  ),
+  "02": (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="3" ry="3" />
+      <line x1="12" y1="18" x2="12.01" y2="18" />
+    </svg>
+  ),
+  "03": (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 19l7-7 3 3-7 7-3-3z" />
+      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+      <path d="M2 2l7.586 7.586" />
+      <circle cx="11" cy="11" r="2" />
+    </svg>
+  ),
+  "04": (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+      <line x1="14" y1="4" x2="10" y2="20" />
+    </svg>
+  ),
+  "05": (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="9" cy="21" r="1" />
+      <circle cx="20" cy="21" r="1" />
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+    </svg>
+  ),
+  "06": (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="23 4 23 10 17 10" />
+      <polyline points="1 20 1 14 7 14" />
+      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+    </svg>
+  )
+};
 
 export default function Services() {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.1 });
-  const [hovered, setHovered] = useState(null);
-
   return (
-    <section ref={containerRef} className="services bg-grid-pattern-dark" id="services" style={{ background: "var(--nr-deep-navy)", color: "var(--nr-white)" }}>
-      <div className="container" style={{ position: "relative", zIndex: 2 }}>
+    <section className="services-section" id="services">
+      <div className="container">
         
-        <div style={{ marginBottom: "80px", maxWidth: "800px" }}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="section-label" style={{ color: "var(--nr-teal)" }}>
-              Core Capabilities
-            </div>
-            <h2 className="section-title" style={{ color: "var(--nr-white)", margin: 0 }}>
-              Precision execution across the digital spectrum.
-            </h2>
-          </motion.div>
+        {/* Section Header with 'Succeed' highlighted in brand palette */}
+        <div className="services-header-area">
+          <div className="services-badge">
+            <span>Core Capabilities</span>
+          </div>
+          <h2 className="services-main-title">
+            Services to Help You{" "}
+            <span className="services-highlight-word">Succeed</span>{" "}
+            in Your Mission!
+          </h2>
         </div>
 
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-          {capabilities.map((cap, idx) => (
-            <motion.div
-              key={cap.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * idx }}
-              onMouseEnter={() => setHovered(idx)}
-              onMouseLeave={() => setHovered(null)}
-              className="capability-row"
-              style={{
-                padding: "40px 0",
-                borderBottom: "1px solid rgba(255,255,255,0.1)",
-                position: "relative",
-                cursor: "pointer",
-                transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                transform: hovered === idx ? "translateY(-4px)" : "none"
-              }}
+        {/* 6-Service Interactive Gradient Grid */}
+        <div className="nr-services-grid" role="list">
+          {servicesData.map((service) => (
+            <Link
+              to="/contact"
+              key={service.id}
+              className="nr-service-card"
+              role="listitem"
+              tabIndex={0}
+              aria-label={`${service.name}: ${service.description}`}
             >
-              <div style={{ 
-                position: "absolute", 
-                left: "-20px", right: "-20px", top: 0, bottom: 0, 
-                background: "rgba(255,255,255,0.02)", 
-                opacity: hovered === idx ? 1 : 0, 
-                transition: "all 0.4s ease",
-                zIndex: 0,
-                borderRadius: "12px",
-                border: hovered === idx ? "1px solid var(--nr-teal)" : "1px solid transparent",
-                boxShadow: hovered === idx ? "0 12px 32px rgba(0, 229, 255, 0.05)" : "none"
-              }} />
+              {/* Layer 1: Base smooth deep brand gradient reveal on hover */}
+              <div className="nr-service-card-bg-gradient" aria-hidden="true" />
               
-              <div style={{ fontSize: "1.25rem", color: hovered === idx ? "var(--nr-teal)" : "rgba(255,255,255,0.5)", fontWeight: 500, zIndex: 1, transition: "color 0.3s ease" }}>
-                {cap.id}
+              {/* Layer 2: Diagonal Light-Sweep Highlight */}
+              <div className="nr-service-card-sweep" aria-hidden="true" />
+
+              {/* Card Content Layer */}
+              <div className="nr-service-card-content">
+                <div>
+                  <div className="nr-service-card-top">
+                    <div className="nr-service-icon-wrap" aria-hidden="true">
+                      {serviceIcons[service.id]}
+                    </div>
+                    <span className="nr-service-number">{service.id}</span>
+                  </div>
+
+                  <h3 className="nr-service-title">{service.name}</h3>
+                  <p className="nr-service-desc">{service.description}</p>
+                </div>
+
+                <div className="nr-service-card-bottom">
+                  <span className="nr-service-explore-label">Start a Project</span>
+                  <div className="nr-service-arrow-circle" aria-hidden="true">
+                    <span>→</span>
+                  </div>
+                </div>
               </div>
-              
-              <div className="capability-content" style={{ zIndex: 1 }}>
-                <h3 style={{ fontFamily: "var(--nr-font-display)", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", margin: 0, fontWeight: 700, letterSpacing: "-0.03em", color: hovered === idx ? "var(--nr-white)" : "rgba(255,255,255,0.9)", transition: "color 0.3s ease" }}>
-                  {cap.title}
-                </h3>
-                <p style={{ margin: 0, color: "rgba(255,255,255,0.7)", fontSize: "1.125rem", lineHeight: 1.6, opacity: hovered === idx ? 1 : 0.7, transition: "opacity 0.3s ease", letterSpacing: "0.01em" }}>
-                  {cap.detail}
-                </p>
-              </div>
-            </motion.div>
+            </Link>
           ))}
         </div>
-        
+
       </div>
     </section>
   );

@@ -202,64 +202,9 @@ button {
   color: var(--nr-teal) !important;
 }
 
-/* --- CUSTOM CURSOR --- */
+/* --- CUSTOM CURSOR (DECOMMISSIONED SITE-WIDE) --- */
 .custom-cursor {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  border: 1px solid var(--black);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-  background: transparent;
-  transition: width 0.3s var(--ease-out-expo), 
-              height 0.3s var(--ease-out-expo),
-              border-color 0.3s var(--ease-out-expo),
-              background 0.3s var(--ease-out-expo);
-  display: block;
-}
-
-.custom-cursor.hover {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--white);
-}
-
-.custom-cursor.hover-project {
-  width: 60px;
-  height: 60px;
-  background: var(--white);
-  border-color: var(--white);
-}
-
-.custom-cursor.hover-case {
-  width: 110px;
-  height: 110px;
-  background: var(--white);
-  border-color: var(--white);
-}
-
-.custom-cursor.hover-visit {
-  width: 110px;
-  height: 110px;
-  background: var(--white);
-  border-color: var(--white);
-}
-
-.custom-cursor.hover-magnetic {
-  width: 45px;
-  height: 45px;
-  background: rgba(255, 255, 255, 0.15);
-  border-color: var(--white);
-}
-
-@media (max-width: 768px) {
-  .custom-cursor {
-    display: none;
-  }
+  display: none !important;
 }
 
 /* --- NAVIGATION --- */
@@ -654,80 +599,314 @@ section {
   line-height: 1.6;
 }
 
-/* --- SERVICES SECTION --- */
-.services {
-  background: var(--white);
-}
-
-.services-header {
-  margin-bottom: 64px;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid var(--gray-200);
-}
-
-.service-item {
-  padding: 48px 40px;
-  border-bottom: 1px solid var(--gray-200);
-  border-right: 1px solid var(--gray-200);
-  cursor: pointer;
+/* --- UPGRADED SERVICES SECTION (BRAND INTERACTIVE GRADIENT HOVER) --- */
+.services-section {
+  background: var(--nr-white);
+  padding: 120px 0;
   position: relative;
   overflow: hidden;
-  background: transparent;
 }
 
-.service-item:nth-child(2n) {
-  border-right: none;
+.services-header-area {
+  margin-bottom: 72px;
+  max-width: 880px;
 }
 
-.service-item-bg {
+.services-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--nr-blue);
+  margin-bottom: 20px;
+}
+
+.services-main-title {
+  font-family: var(--nr-font-display);
+  font-size: clamp(2.4rem, 4.5vw, 3.75rem);
+  font-weight: 700;
+  color: var(--nr-deep-navy);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+/* Heading highlighted-word treatment for 'Succeed' using NEORIZ brand colors */
+.services-highlight-word {
+  position: relative;
+  display: inline-block;
+  color: var(--nr-white);
+  background: var(--nr-gradient-primary);
+  padding: 2px 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(40, 88, 240, 0.2);
+  margin: 0 4px;
+}
+
+/* Service Card Grid (Spacious 3-column on desktop, 2 on tablet, 1 on mobile) */
+.nr-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Interactive Service Card */
+.nr-service-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  position: relative;
+  background: var(--nr-soft-white);
+  border: 1px solid var(--nr-light-gray);
+  border-radius: 24px;
+  padding: 44px 36px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 340px;
+  transition: transform var(--nr-transition-medium), 
+              border-color var(--nr-transition-medium), 
+              box-shadow var(--nr-transition-medium);
+  outline: none;
+}
+
+.nr-service-card:hover,
+.nr-service-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(40, 88, 240, 0.4);
+  box-shadow: 0 20px 40px rgba(10, 25, 47, 0.1), 0 0 24px rgba(8, 200, 176, 0.15);
+}
+
+.nr-service-card:focus-visible {
+  outline: 2px solid var(--nr-blue);
+  outline-offset: 2px;
+}
+
+/* Layer 1: Base smooth brand gradient reveal on hover (NEORIZ deep navy to vibrant blue/teal) */
+.nr-service-card-bg-gradient {
   position: absolute;
   inset: 0;
-  background: var(--black);
-  z-index: 0;
-}
-
-.service-item-content {
-  position: relative;
+  background: linear-gradient(135deg, var(--nr-deep-navy) 0%, #10243e 50%, #0d3868 100%);
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
   z-index: 1;
 }
 
-.service-number {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--gray-400);
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
-  transition: color var(--transition-medium);
+.nr-service-card:hover .nr-service-card-bg-gradient,
+.nr-service-card:focus-visible .nr-service-card-bg-gradient {
+  opacity: 1;
 }
 
-.service-name {
-  font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-bottom: 16px;
-  transition: color var(--transition-medium);
+/* Layer 3: Diagonal Light-Sweep Highlight */
+.nr-service-card-sweep {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(8, 200, 176, 0.12) 55%,
+    transparent 70%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 3;
 }
 
-.service-desc {
+.nr-service-card:hover .nr-service-card-sweep {
+  animation: nr-light-sweep 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes nr-light-sweep {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 160%;
+  }
+}
+
+/* Card Content Layer */
+.nr-service-card-content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.nr-service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.nr-service-icon-wrap {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--nr-white);
+  border: 1px solid var(--nr-light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nr-blue);
+  box-shadow: 0 4px 12px rgba(10, 25, 47, 0.04);
+  transition: all var(--nr-transition-medium);
+}
+
+.nr-service-card:hover .nr-service-icon-wrap,
+.nr-service-card:focus-visible .nr-service-icon-wrap {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--nr-teal);
+  transform: scale(1.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nr-service-number {
+  font-family: var(--nr-font-display);
   font-size: 0.9375rem;
-  color: var(--gray-600);
-  line-height: 1.6;
-  max-width: 440px;
-  transition: color var(--transition-medium);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--nr-medium-gray);
+  transition: color var(--nr-transition-fast);
 }
 
-.service-arrow {
-  margin-top: 24px;
-  font-size: 1.25rem;
-  transition: transform var(--transition-medium), opacity var(--transition-medium), color var(--transition-medium);
-  display: inline-block;
+.nr-service-card:hover .nr-service-number,
+.nr-service-card:focus-visible .nr-service-number {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.nr-service-title {
+  font-family: var(--nr-font-display);
+  font-size: clamp(1.4rem, 2vw, 1.65rem);
+  font-weight: 700;
+  color: var(--nr-deep-navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  line-height: 1.25;
+  transition: color var(--nr-transition-fast);
+}
+
+.nr-service-card:hover .nr-service-title,
+.nr-service-card:focus-visible .nr-service-title {
+  color: var(--nr-white);
+}
+
+.nr-service-desc {
+  font-size: 0.9625rem;
+  color: var(--nr-medium-gray);
+  line-height: 1.65;
+  margin: 0;
+  transition: color var(--nr-transition-fast);
+}
+
+.nr-service-card:hover .nr-service-desc,
+.nr-service-card:focus-visible .nr-service-desc {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.nr-service-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--nr-light-gray);
+  transition: border-color var(--nr-transition-fast);
+}
+
+.nr-service-card:hover .nr-service-card-bottom,
+.nr-service-card:focus-visible .nr-service-card-bottom {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.nr-service-explore-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nr-blue);
+  transition: color var(--nr-transition-fast);
+}
+
+.nr-service-card:hover .nr-service-explore-label,
+.nr-service-card:focus-visible .nr-service-explore-label {
+  color: var(--nr-teal);
+}
+
+.nr-service-arrow-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(40, 88, 240, 0.08);
+  color: var(--nr-blue);
+  font-size: 1rem;
+  transition: all var(--nr-transition-medium);
+}
+
+.nr-service-card:hover .nr-service-arrow-circle,
+.nr-service-card:focus-visible .nr-service-arrow-circle {
+  background: var(--nr-teal);
+  color: var(--nr-deep-navy);
+  transform: translateX(4px);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .nr-service-card,
+  .nr-service-card-bg-gradient,
+  .nr-service-icon-wrap,
+  .nr-service-arrow-circle {
+    transition: none !important;
+    animation: none !important;
+  }
+  .nr-service-card:hover {
+    transform: none !important;
+  }
+  .nr-service-card-sweep {
+    display: none !important;
+  }
+}
+
+/* Responsive Grid Breakpoints */
+@media (max-width: 1024px) {
+  .nr-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 680px) {
+  .services-section {
+    padding: 80px 0;
+  }
+  .services-header-area {
+    margin-bottom: 48px;
+  }
+  .nr-services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .nr-service-card {
+    padding: 32px 24px;
+    min-height: auto;
+  }
 }
 
 /* --- CAPABILITY MARQUEE (NEW) --- */
