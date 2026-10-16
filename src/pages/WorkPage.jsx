@@ -8,6 +8,7 @@ import Footer from "../sections/Footer";
 import MagneticButton from "../components/MagneticButton";
 import ProjectCard from "../components/portfolio/ProjectCard";
 import ProjectFilter from "../components/portfolio/ProjectFilter";
+import ProjectShowcaseSlider from "../components/portfolio/ProjectShowcaseSlider";
 import { projectsData } from "../data/portfolioData";
 import useSEO from "../hooks/useSEO";
 
@@ -31,8 +32,9 @@ export default function WorkPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Filter projects according to the active category
+  // Filter projects according to the active category (strictly excluding hidden Cafe Serenity)
   const filteredProjects = projectsData.filter((project) => {
+    if (project.id === "cafe-serenity") return false;
     if (activeCategory === "All") return true;
     return project.category === activeCategory;
   });
@@ -46,7 +48,7 @@ export default function WorkPage() {
       <main style={{ paddingTop: "120px", background: "var(--nr-soft-white)", minHeight: "100vh" }}>
 
         {/* 1. Works Introduction / Hero */}
-        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "120px 0 60px 0" }}>
+        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "100px 0 40px 0" }}>
           <div className="container">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ maxWidth: "900px" }}>
               <div style={{ color: "var(--nr-blue)", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px", fontSize: "0.8125rem" }}>
@@ -63,8 +65,16 @@ export default function WorkPage() {
           </div>
         </section>
 
-        {/* 2. Category Filter & Project Browsing Grid */}
+        {/* 2. Interactive Featured Project Showcase Slider (Fedgix inspired) */}
+        <ProjectShowcaseSlider
+          eyebrow="FLAGSHIP SHOWCASE"
+          title="Interactive Project Gallery"
+          subtitle="Explore our active proprietary platforms and client engagements through an immersive slider."
+        />
+
+        {/* 3. Category Filter & Project Browsing Grid */}
         <section style={{ padding: "40px 0 120px 0" }}>
+
           <div className="container">
 
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "48px" }}>

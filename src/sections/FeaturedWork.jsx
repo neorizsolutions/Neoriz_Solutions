@@ -1,41 +1,50 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useInView } from "framer-motion";
-import { projectsData } from "../data/portfolioData";
-import MagneticButton from "../components/MagneticButton";
-import ProjectCard from "../components/portfolio/ProjectCard";
+import { motion, useInView, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import ProjectShowcaseSlider from "../components/portfolio/ProjectShowcaseSlider";
 
 /**
- * FeaturedWork — Homepage Selected Work Section
- * Rebuilt using the clean, modern, distinctive NEORIZ card system.
- * Removes obsolete full-bleed image containers, dramatic zoom-and-darken effects,
- * and presents structured architecture-first portfolio entries with restrained hover interactions.
+ * FeaturedWork — Rebuilt with Scroll-Linked Opposing-Direction Headline:
+ * - Pure/near-black immersive background (#0B0F19 / #000000)
+ * - Scroll-linked headline animation where "WHERE GREAT IDEAS" (left) and 
+ *   "BECOME REAL RESULTS" (right) start offset outward and travel inward as user scrolls,
+ *   meeting seamlessly in the center.
+ * - Large, premium white project presentation card with smooth editorial transitions
+ * - Understated "Explore More Projects →" link pointing to /work
  */
 export default function FeaturedWork() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
   
-  // Featured works (or top selected from the 6 active entries)
-  const featuredProjects = projectsData.filter((p) => p.featured);
-  const displayProjects = featuredProjects.length > 0 ? featuredProjects : projectsData.slice(0, 3);
+  const headlineSectionRef = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  // Track scroll through the headline section
+  const { scrollYProgress } = useScroll({
+    target: headlineSectionRef,
+    offset: ["start end", "center center"]
+  });
+
+  // Opposing horizontal transforms:
+  // Left starts shifted left (-35vw) and moves inward to 0
+  // Right starts shifted right (35vw) and moves inward to 0
+  const xLeft = useTransform(scrollYProgress, [0, 1], ["-35vw", "0vw"]);
+  const xRight = useTransform(scrollYProgress, [0, 1], ["35vw", "0vw"]);
 
   return (
-    <section ref={containerRef} className="work" id="work" style={{ background: "var(--nr-soft-white)", padding: "120px 0" }}>
-      <div className="container">
-        
-        {/* Section Header */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "80px", flexWrap: "wrap", gap: "24px" }}>
+    <section ref={containerRef} className="nr-video-work-section" id="work">
+      
+      {/* 1. Header Row: Understated Section Label and Link */}
+      <div className="container" style={{ marginBottom: "28px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "20px" }}>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <div className="section-label" style={{ color: "var(--nr-teal)", marginBottom: "16px" }}>
+            <div className="nr-video-work-label">
               Selected Work
             </div>
-            <h2 className="section-title" style={{ margin: 0, fontSize: "clamp(2.75rem, 5.5vw, 4.5rem)", lineHeight: 1.05 }}>
-              Proof of <br />Performance.
-            </h2>
           </motion.div>
 
           <motion.div
@@ -45,58 +54,48 @@ export default function FeaturedWork() {
           >
             <Link 
               to="/work" 
-              className="hover-arrow-link"
-              style={{
-                fontSize: "0.9375rem",
-                fontWeight: 700,
-                color: "var(--nr-deep-navy)",
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px"
-              }}
+              className="nr-video-work-explore-link"
             >
-              <span>View All 6 Deployments</span>
-              <span style={{ transition: "transform 0.3s ease" }}>→</span>
+              <span>Explore More Projects</span>
+              <span className="nr-explore-arrow">→</span>
             </Link>
           </motion.div>
         </div>
-
-        {/* Featured Projects Grid */}
-        <div className="nr-works-grid" style={{ marginBottom: "80px" }}>
-          {displayProjects.map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              index={index} 
-              showImageSlot={false}
-            />
-          ))}
-        </div>
-        
-        {/* Call to action button */}
-        <div style={{ textAlign: "center" }}>
-          <MagneticButton>
-            <Link 
-              to="/work" 
-              className="btn-primary" 
-              style={{ 
-                padding: "16px 48px", 
-                fontSize: "1rem", 
-                borderRadius: "100px", 
-                textDecoration: "none", 
-                display: "inline-flex", 
-                alignItems: "center" 
-              }}
-            >
-              Explore Full Portfolio <span className="btn-arrow" style={{ fontSize: "1.2em", marginLeft: "8px" }}>→</span>
-            </Link>
-          </MagneticButton>
-        </div>
-
       </div>
+
+      {/* 2. Scroll-Linked Opposing Direction Headline: "WHERE GREAT IDEAS BECOME REAL RESULTS" */}
+      <div 
+        ref={headlineSectionRef} 
+        className="nr-opposing-headline-wrap" 
+        aria-label="Where great ideas become real results"
+      >
+        <div className="nr-opposing-headline-track">
+          <motion.div 
+            className="nr-opposing-group nr-opposing-group-left"
+            style={{ x: shouldReduceMotion ? 0 : xLeft }}
+          >
+            <span className="nr-opposing-text">WHERE GREAT IDEAS</span>
+          </motion.div>
+          <motion.div 
+            className="nr-opposing-group nr-opposing-group-right"
+            style={{ x: shouldReduceMotion ? 0 : xRight }}
+          >
+            <span className="nr-opposing-text">BECOME REAL RESULTS</span>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* 3. Large White Project Showcase Card Carousel */}
+      <div className="nr-showcase-container-wrap">
+        <ProjectShowcaseSlider 
+          eyebrow=""
+          title=""
+          subtitle=""
+        />
+      </div>
+
     </section>
   );
 }
+
+

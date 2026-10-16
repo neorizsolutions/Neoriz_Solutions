@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import MobileMenu from "../components/MobileMenu";
 import CustomCursor from "../components/CustomCursor";
 import Hero from "../sections/Hero";
 import About from "../sections/About";
 import Services from "../sections/Services";
-import Industries from "../sections/Industries";
 import FeaturedWork from "../sections/FeaturedWork";
 import ScrollingMarquee from "../components/ScrollingMarquee";
 import Process from "../sections/Process";
@@ -69,11 +67,8 @@ export default function Home() {
         {/* 05. Capabilities (mapped to Services.jsx) */}
         <Services />
         
-        {/* 06. Industries */}
-        <Industries />
-        
-        {/* 09. Technology Marquee Section */}
-        <section className="marquee-section" style={{ background: "var(--nr-soft-white)", paddingBottom: "60px" }}>
+        {/* 06. Technology Marquee Section */}
+        <section className="marquee-section" style={{ background: "var(--nr-soft-white)" }}>
           <ScrollingMarquee />
         </section>
 
