@@ -1,0 +1,86 @@
+{
+  "product": "Emblingo Learning App",
+  "projectSlug": "emblingo-learning-app",
+  "targetAudience": "KEAM, NEET, and JEE Entrance Examination Aspirants",
+  "googlePlayUrl": "https://play.google.com/store/apps/details?id=com.emblingo.app",
+  "lastUpdated": "2026-10-16T11:13:00+05:30",
+  "sourceScreenshotsPath": "public/images/portfolio/emblingo-learning-app/source-screenshots",
+  "finalAssetsPath": "public/images/portfolio/emblingo-learning-app/final",
+  "sourceReferences": [
+    "WhatsApp Image 2026-10-16 at 11.02.20 AM.jpeg (Home Dashboard & Continue Learning)",
+    "WhatsApp Image 2026-10-16 at 11.02.20 A.jpeg (Subjects Catalog & Chapter/PYQ Index)",
+    "WhatsApp Image 2026-10-16 at 11.02.20.jpeg (Bookmarks & Revision Library)",
+    "WhatsApp Image 2026-10-16 at 11.02.21 AM.jpeg (Student Profile & Education Details)"
+  ],
+  "assets": [
+    {
+      "id": "emblingo-hero",
+      "filename": "emblingo-hero.jpg",
+      "target": "Asset A — Primary product presentation",
+      "aspectRatio": "16:9",
+      "dimensions": "1792x1024",
+      "fileSize": "592 KB",
+      "presentationType": "Faithful Screen-Based Presentation",
+      "status": "approved",
+      "sourceFiles": ["WhatsApp Image 2026-10-16 at 11.02.20 AM.jpeg", "WhatsApp Image 2026-10-16 at 11.02.20 A.jpeg"],
+      "description": "Professional 16:9 EdTech portfolio hero presentation showcasing a modern smartphone displaying the authentic Emblingo Home dashboard UI with student greeting, 'LAST STUDIED' card (Some Basic Concepts of Chemistry, Page 4 of 4), and 'Resume' action button."
+    },
+    {
+      "id": "emblingo-product-collage",
+      "filename": "emblingo-product-collage.jpg",
+      "target": "Asset B — Multi-screen product collage",
+      "aspectRatio": "16:9",
+      "dimensions": "1792x1024",
+      "fileSize": "508 KB",
+      "presentationType": "Faithful Screen-Based Presentation",
+      "status": "approved",
+      "sourceFiles": [
+        "WhatsApp Image 2026-10-16 at 11.02.20 A.jpeg",
+        "WhatsApp Image 2026-10-16 at 11.02.20.jpeg",
+        "WhatsApp Image 2026-10-16 at 11.02.21 AM.jpeg"
+      ],
+      "description": "Multi-device UI/UX collage displaying three distinct verified Emblingo screens: Subjects syllabus catalog, Bookmarks personal revision library with 'Open PYQ' triggers, and Student Profile with KEAM 2026 exam goals."
+    },
+    {
+      "id": "emblingo-mobile-showcase",
+      "filename": "emblingo-mobile-showcase.jpg",
+      "target": "Asset C — Mobile experience showcase",
+      "aspectRatio": "16:9",
+      "dimensions": "1792x1024",
+      "fileSize": "500 KB",
+      "presentationType": "Faithful Screen-Based Presentation",
+      "status": "approved",
+      "sourceFiles": ["WhatsApp Image 2026-10-16 at 11.02.20 AM.jpeg", "WhatsApp Image 2026-10-16 at 11.02.20 A.jpeg"],
+      "description": "Dual smartphone composition showing real-world handheld Android app experience: side-by-side comparison of Home daily progress resume card and Subjects catalog with Physics and Chemistry syllabus breakdown."
+    },
+    {
+      "id": "emblingo-learning-showcase",
+      "filename": "emblingo-learning-showcase.jpg",
+      "target": "Asset D — Learning workflow and revision showcase",
+      "aspectRatio": "16:9",
+      "dimensions": "1792x1024",
+      "fileSize": "562 KB",
+      "presentationType": "Faithful Screen-Based Presentation",
+      "status": "approved",
+      "sourceFiles": ["WhatsApp Image 2026-10-16 at 11.02.20.jpeg"],
+      "description": "Close-up learning study desk setup highlighting the authentic Bookmarks revision library: subject filter pills (All, Physics, Chemistry, Maths), verified PYQ cards for Electrostatic Potential and Motion in a Plane, and 'Open PYQ' interactive buttons."
+    },
+    {
+      "id": "emblingo-alternate-showcase",
+      "filename": "emblingo-alternate-showcase.jpg",
+      "target": "Asset E — Alternate portfolio composition",
+      "aspectRatio": "16:9",
+      "dimensions": "1792x1024",
+      "fileSize": "640 KB",
+      "presentationType": "Faithful Screen-Based Presentation with Multi-Device Context",
+      "status": "approved",
+      "sourceFiles": ["WhatsApp Image 2026-10-16 at 11.02.20 AM.jpeg", "WhatsApp Image 2026-10-16 at 11.02.21 AM.jpeg"],
+      "description": "Overhead Scandinavian desk setting displaying companion tablet and smartphone showcasing Emblingo subject catalog hierarchy and student educational profile in an aspirational digital study environment."
+    }
+  ],
+  "quotaErrorsEncountered": false,
+  "totalAssetsTargeted": 5,
+  "totalAssetsApproved": 5,
+  "totalAssetsRejected": 0,
+  "totalAssetsPending": 0
+}
