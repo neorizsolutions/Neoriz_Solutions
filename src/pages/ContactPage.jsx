@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import MobileMenu from "../components/MobileMenu";
@@ -10,11 +10,14 @@ import useSEO from "../hooks/useSEO";
 
 export default function ContactPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isDiscovery = new URLSearchParams(location.search).get("type") === "discovery";
+
   const [formData, setFormData] = useState({ 
     name: "", 
     email: "", 
     company: "",
-    projectType: "", 
+    projectType: isDiscovery ? "Discovery Call / Consultation" : "", 
     budget: "",
     timeline: "",
     message: "",
@@ -114,12 +117,12 @@ export default function ContactPage() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
-        style={{ background: "#FFFFFF", color: "#000000", minHeight: "100vh", paddingTop: "140px", paddingBottom: "100px" }}
+        style={{ background: "#FFFFFF", color: "#000000", minHeight: "100vh", paddingTop: "115px", paddingBottom: "80px" }}
         className="bg-grid-pattern bg-radial-gradient"
       >
         <div className="container">
           
-          <div className="grid-system grid-2-col" style={{ marginTop: "40px" }}>
+          <div className="grid-system grid-2-col" style={{ marginTop: "16px" }}>
             
             {/* Left Column: Details */}
             <div>
@@ -178,6 +181,12 @@ export default function ContactPage() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
                   >
+                    {formData.projectType === "Discovery Call / Consultation" && (
+                      <div style={{ marginBottom: "20px", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(40, 88, 240, 0.08)", color: "var(--nr-blue)", padding: "8px 16px", borderRadius: "100px", fontSize: "0.8125rem", fontWeight: 600 }}>
+                        <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--nr-blue)" }} />
+                        Discovery Call Request — Tell us about your goals below
+                      </div>
+                    )}
                     <h2 style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "32px", letterSpacing: "-0.02em" }}>Project Inquiry</h2>
                     
                     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }} noValidate>
@@ -263,6 +272,7 @@ export default function ContactPage() {
                             disabled={isSubmitting}
                           >
                             <option value="">Select an option...</option>
+                            <option value="Discovery Call / Consultation">Discovery Call / Consultation</option>
                             <option value="Website / Digital Experience">Website / Digital Experience</option>
                             <option value="Web Application">Web Application</option>
                             <option value="Business Platform">Business Platform</option>

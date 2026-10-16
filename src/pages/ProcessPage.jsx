@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -18,7 +18,7 @@ const processSteps = [
 import useSEO from "../hooks/useSEO";
 
 export default function ProcessPage() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useSEO({
     title: "Our Process | Software Development Methodology | Neoriz Solutions",
@@ -36,10 +36,10 @@ export default function ProcessPage() {
       <Navbar onToggleMenu={() => setIsMenuOpen(!isMenuOpen)} isMenuOpen={isMenuOpen} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
-      <main style={{ paddingTop: "120px", background: "var(--nr-white)" }}>
+      <main style={{ paddingTop: "100px", background: "var(--nr-white)" }}>
         
         {/* Process Hero */}
-        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "80px 0 120px 0" }}>
+        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "40px 0 60px 0" }}>
           <div className="container">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ maxWidth: "800px" }}>
               <div style={{ color: "var(--nr-blue)", fontWeight: 600, letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "24px", fontSize: "0.8125rem" }}>
@@ -56,15 +56,15 @@ export default function ProcessPage() {
         </section>
 
         {/* Process Timeline */}
-        <section style={{ padding: "0 0 120px 0" }}>
+        <section style={{ padding: "0 0 96px 0" }}>
           <div className="container">
             <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative" }}>
               
               {/* Vertical connecting line */}
               <div style={{ position: "absolute", left: "24px", top: "0", bottom: "0", width: "2px", background: "var(--nr-light-gray)", zIndex: 0 }}></div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
-                {processSteps.map((step, idx) => (
+              <div style={{ display: "flex", flexDirection: "column", gap: "56px" }}>
+                {processSteps.map((step) => (
                   <motion.div 
                     key={step.id}
                     initial={{ opacity: 0, x: -30 }}
@@ -107,9 +107,9 @@ export default function ProcessPage() {
         </section>
 
         {/* Cross-Page CTA */}
-        <section style={{ padding: "120px 0", background: "var(--nr-soft-white)", textAlign: "center" }}>
+        <section style={{ padding: "80px 0", background: "var(--nr-soft-white)", textAlign: "center" }}>
           <div className="container">
-            <h2 style={{ fontFamily: "var(--nr-font-display)", fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "48px", letterSpacing: "-0.03em" }}>
+            <h2 style={{ fontFamily: "var(--nr-font-display)", fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "36px", letterSpacing: "-0.03em" }}>
               See the results of our process.
             </h2>
             <MagneticButton>

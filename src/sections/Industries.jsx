@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const industries = [
@@ -18,7 +18,7 @@ export default function Industries() {
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
   return (
-    <section ref={containerRef} className="industries" style={{ padding: "120px 0", background: "var(--nr-soft-white)" }}>
+    <section ref={containerRef} className="industries" style={{ padding: "96px 0", background: "var(--nr-soft-white)" }}>
       <div className="container">
         
         <div className="about-grid">
@@ -41,7 +41,7 @@ export default function Industries() {
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{ display: "flex", flexWrap: "wrap", gap: "16px", alignContent: "flex-start" }}
           >
-            {industries.map((ind, idx) => (
+            {industries.map((ind) => (
               <motion.div 
                 key={ind}
                 whileHover={{ y: -2 }}

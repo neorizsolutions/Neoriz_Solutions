@@ -81,8 +81,8 @@ export default function Navbar({ onToggleMenu, isMenuOpen }) {
 
         {/* PRIMARY CTA (Right Column) */}
         <div className="nav-cta-wrapper">
-          <Link to="/contact" className="nav-cta-premium">
-            Start a Project
+          <Link to="/contact?type=discovery" className="nav-cta-premium">
+            Book a Discovery Call
           </Link>
         </div>
 

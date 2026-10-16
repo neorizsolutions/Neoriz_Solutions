@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const processSteps = [
@@ -14,10 +14,10 @@ export default function Process() {
   const isInView = useInView(containerRef, { once: true, amount: 0.2 });
 
   return (
-    <section ref={containerRef} className="process" id="process" style={{ padding: "120px 0", background: "var(--nr-white)" }}>
+    <section ref={containerRef} className="process" id="process" style={{ padding: "96px 0", background: "var(--nr-white)" }}>
       <div className="container">
         
-        <div style={{ textAlign: "center", marginBottom: "100px", maxWidth: "800px", margin: "0 auto 100px auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "56px", maxWidth: "800px", margin: "0 auto 56px auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

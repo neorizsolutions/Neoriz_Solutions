@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const reasons = [
@@ -25,7 +25,7 @@ export default function WhyChooseUs() {
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
   return (
-    <section ref={containerRef} className="why" id="why" style={{ padding: "120px 0", background: "var(--nr-deep-navy)", color: "var(--nr-white)" }}>
+    <section ref={containerRef} className="why" id="why" style={{ padding: "96px 0", background: "var(--nr-deep-navy)", color: "var(--nr-white)" }}>
       <div className="container">
         
         <div className="grid-system grid-2-col" style={{ alignItems: "start" }}>
@@ -53,8 +53,8 @@ export default function WhyChooseUs() {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + (idx * 0.1) }}
                 whileHover={{ 
-                  backgroundColor: "rgba(46,49,146,0.15)", 
-                  borderColor: "rgba(0,229,255,0.3)",
+                  backgroundColor: "rgba(40, 88, 240, 0.12)", 
+                  borderColor: "rgba(8, 200, 176, 0.35)",
                   y: -4 
                 }}
                 style={{ 

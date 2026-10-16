@@ -60,7 +60,7 @@ export default function MobileMenu({ isOpen, onClose }) {
       {renderLink("services", "Services", true)}
       {renderLink("/work", "Work")}
       {renderLink("contact", "Contact", true)}
-      {renderLink("/contact", "Start a Project")}
+      {renderLink("/contact?type=discovery", "Book a Discovery Call")}
     </div>
   );
 }

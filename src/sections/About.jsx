@@ -1,4 +1,3 @@
-import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 const processStages = [
@@ -36,7 +35,7 @@ export default function About() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
   };
 
@@ -71,7 +70,7 @@ export default function About() {
           {/* Subtle connection line */}
           <div className="process-line" />
 
-          {processStages.map((stage, index) => (
+          {processStages.map((stage) => (
             <motion.div key={stage.id} variants={itemVariants} className="process-stage-minimal">
               <div className="process-node-minimal" />
               <div className="process-content-minimal">

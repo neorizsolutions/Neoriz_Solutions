@@ -24,10 +24,10 @@ export default function PrivacyPolicy() {
       <Navbar onToggleMenu={() => setIsMenuOpen(!isMenuOpen)} isMenuOpen={isMenuOpen} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
-      <main style={{ paddingTop: "120px", background: "var(--nr-white)", minHeight: "100vh" }}>
+      <main style={{ paddingTop: "100px", background: "var(--nr-white)", minHeight: "100vh" }}>
         
         {/* Header Hero */}
-        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "80px 0 60px 0", borderBottom: "1px solid var(--nr-light-gray)" }}>
+        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "40px 0 40px 0", borderBottom: "1px solid var(--nr-light-gray)" }}>
           <div className="container" style={{ maxWidth: "860px" }}>
             <div style={{ color: "var(--nr-blue)", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "16px", fontSize: "0.8125rem" }}>
               Legal Documentation
@@ -42,7 +42,7 @@ export default function PrivacyPolicy() {
         </section>
 
         {/* Content Document */}
-        <section style={{ padding: "80px 0 120px 0" }}>
+        <section style={{ padding: "60px 0 96px 0" }}>
           <div className="container" style={{ maxWidth: "860px" }}>
             <div className="legal-article" style={{ color: "var(--nr-dark-navy)", fontSize: "1.0625rem", lineHeight: 1.8 }}>
               

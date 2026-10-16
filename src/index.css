@@ -106,6 +106,17 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  background: transparent;
 }
 
 body {
@@ -113,11 +124,13 @@ body {
   background: var(--nr-white);
   color: var(--nr-dark-navy);
   line-height: 1.6;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 #root {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* --- TYPOGRAPHY UTILITIES --- */
@@ -512,7 +525,7 @@ button {
 
 /* --- SECTION SHARED --- */
 section {
-  padding: var(--nr-spacing-xxl) 0;
+  padding: 96px 0;
   position: relative;
 }
 
@@ -625,10 +638,10 @@ section {
 /* --- UPGRADED SERVICES SECTION (BRAND INTERACTIVE GRADIENT HOVER) --- */
 .services-section {
   background: var(--nr-white);
-  padding: 120px 0;
+  padding: 60px 0 96px 0;
   position: relative;
   overflow: hidden;
-  scroll-margin-top: 90px;
+  scroll-margin-top: 85px;
 }
 
 .services-header-area {
@@ -904,7 +917,7 @@ section {
 
 /* --- CAPABILITY MARQUEE (NEW) --- */
 .marquee-section {
-  padding: 80px 0;
+  padding: 56px 0;
   border-top: 1px solid var(--nr-light-gray);
   border-bottom: 1px solid var(--nr-light-gray);
   overflow: hidden;
@@ -1871,7 +1884,7 @@ section {
 
 /* --- PHASE 9 HERO SECTION (WHITE EDITORIAL TEXT-ONLY) --- */
 .hero-white {
-  min-height: calc(100vh - 60px);
+  min-height: auto;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1889,7 +1902,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 145px 0 70px 0;
+  padding: 135px 0 54px 0;
 }
 
 .hero-content-white {
@@ -1931,6 +1944,7 @@ section {
 .hero-headline-accent {
   background: linear-gradient(135deg, var(--nr-deep-navy) 40%, #0284C7 85%, #38BDF8 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -1953,6 +1967,7 @@ section {
   flex-wrap: wrap;
 }
 
+.btn-primary,
 .btn-primary-white {
   display: inline-flex;
   align-items: center;
@@ -1968,13 +1983,16 @@ section {
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid var(--nr-deep-navy);
   text-decoration: none;
+  cursor: pointer;
 }
 
+.btn-primary:hover,
 .btn-primary-white:hover {
-  background: #0284C7;
-  border-color: #0284C7;
+  background: var(--nr-blue);
+  border-color: var(--nr-blue);
+  color: var(--nr-white);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 12px 28px rgba(40, 88, 240, 0.3);
 }
 
 .btn-secondary-white {
@@ -2007,6 +2025,7 @@ section {
   transition: transform 0.3s ease;
 }
 
+.btn-primary:hover .btn-arrow,
 .btn-primary-white:hover .btn-arrow {
   transform: translateX(4px);
 }
@@ -2036,6 +2055,7 @@ section {
   transform: translateY(-2px);
 }
 
+.btn-primary:focus-visible,
 .btn-primary-white:focus-visible,
 .btn-secondary-white:focus-visible,
 .btn-tertiary-white:focus-visible {
@@ -2048,7 +2068,7 @@ section {
    ========================================================================== */
 .vision-mission-section {
   background: #F8FAFC;
-  padding: 110px 0;
+  padding: 96px 0;
   border-top: 1px solid #EAEAEA;
   border-bottom: 1px solid #EAEAEA;
   position: relative;
@@ -2278,6 +2298,8 @@ section {
   letter-spacing: 0.02em;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
 }
 
 .nav-cta-premium:hover {
@@ -2434,7 +2456,7 @@ h6 {
   }
 
   section {
-    padding: 80px 0 !important;
+    padding: 72px 0;
   }
 }
 
@@ -2448,7 +2470,7 @@ h6 {
   }
 
   section {
-    padding: 60px 0 !important;
+    padding: 56px 0;
   }
 
   /* Reset Featured Project Grid */
@@ -3783,3 +3805,93 @@ h6 {
     transform: none !important;
   }
 }
+
+/* ============================================
+   CONTACT SECTION CTA IMPROVEMENTS
+   ============================================ */
+.contact-cta-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-contact-final {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--nr-white);
+  color: var(--nr-deep-navy);
+  font-family: var(--nr-font-primary);
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: var(--nr-radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(8, 200, 176, 0.15);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-contact-final .btn-arrow {
+  display: inline-block;
+  font-size: 1.15rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-contact-final:hover {
+  background: var(--nr-blue);
+  color: var(--nr-white);
+  border-color: var(--nr-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(40, 88, 240, 0.45), 0 0 24px rgba(8, 200, 176, 0.25);
+}
+
+.btn-contact-final:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--nr-white);
+  font-family: var(--nr-font-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 15px 28px;
+  border-radius: var(--nr-radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-contact-whatsapp:hover {
+  background: rgba(8, 200, 176, 0.15);
+  color: var(--nr-teal);
+  border-color: var(--nr-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(8, 200, 176, 0.2);
+}
+
+@media (max-width: 640px) {
+  .contact-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+  
+  .btn-contact-final,
+  .btn-contact-whatsapp {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+}

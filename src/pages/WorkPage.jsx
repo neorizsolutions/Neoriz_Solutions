@@ -45,10 +45,10 @@ export default function WorkPage() {
       <Navbar onToggleMenu={() => setIsMenuOpen(!isMenuOpen)} isMenuOpen={isMenuOpen} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
-      <main style={{ paddingTop: "120px", background: "var(--nr-soft-white)", minHeight: "100vh" }}>
+      <main style={{ paddingTop: "100px", background: "var(--nr-soft-white)", minHeight: "100vh" }}>
 
         {/* 1. Works Introduction / Hero */}
-        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "100px 0 40px 0" }}>
+        <section className="bg-grid-pattern bg-radial-gradient" style={{ padding: "40px 0 30px 0" }}>
           <div className="container">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} style={{ maxWidth: "900px" }}>
               <div style={{ color: "var(--nr-blue)", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px", fontSize: "0.8125rem" }}>

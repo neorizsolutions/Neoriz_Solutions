@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 
 export default function ProjectFilter({ categories, activeCategory, onCategoryChange }) {
   return (

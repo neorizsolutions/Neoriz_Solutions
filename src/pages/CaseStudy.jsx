@@ -40,10 +40,10 @@ export default function CaseStudy() {
       <Navbar onToggleMenu={() => setIsMenuOpen(!isMenuOpen)} isMenuOpen={isMenuOpen} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
-      <main style={{ paddingTop: "120px", background: "var(--nr-white)", minHeight: "100vh" }}>
+      <main style={{ paddingTop: "100px", background: "var(--nr-white)", minHeight: "100vh" }}>
         
         {/* 1. Project Hero Header */}
-        <section style={{ padding: "80px 0 60px 0", background: "var(--nr-soft-white)", borderBottom: "1px solid var(--nr-light-gray)" }}>
+        <section style={{ padding: "40px 0 48px 0", background: "var(--nr-soft-white)", borderBottom: "1px solid var(--nr-light-gray)" }}>
           <div className="container">
             <Link 
               to="/work" 
@@ -53,7 +53,7 @@ export default function CaseStudy() {
                 gap: "8px", 
                 color: "var(--nr-medium-gray)", 
                 textDecoration: "none", 
-                marginBottom: "40px", 
+                marginBottom: "24px", 
                 fontSize: "0.875rem", 
                 fontWeight: 700, 
                 textTransform: "uppercase", 
