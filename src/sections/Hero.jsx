@@ -94,6 +94,20 @@ export default function Hero() {
             <Link to="/work" className="btn-secondary-white">
               Explore Our Work
             </Link>
+            <a 
+              href="#services" 
+              className="btn-tertiary-white"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById("services");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                  window.history.pushState(null, "", "#services");
+                }
+              }}
+            >
+              Explore Our Services
+            </a>
           </motion.div>
         </motion.div>
         

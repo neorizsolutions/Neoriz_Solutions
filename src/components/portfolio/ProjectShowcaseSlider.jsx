@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { projectsData } from "../../data/portfolioData";
+import { createSmoothSpotlight } from "../../hooks/useSmoothSpotlight";
 
 const AUTOPLAY_INTERVAL = 6000; // 6 seconds per project
 
@@ -38,6 +39,8 @@ const projectThemeMap = {
     accentLight: "rgba(217, 119, 6, 0.12)"
   }
 };
+
+const imageSpotlight = createSmoothSpotlight({ lerpFactor: 0.085 });
 
 export default function ProjectShowcaseSlider({
   eyebrow = "SELECTED WORK",
@@ -289,6 +292,9 @@ export default function ProjectShowcaseSlider({
                   to={`/project/${currentProject.slug}`}
                   className="nr-showcase-media-frame nr-showcase-main-frame"
                   aria-label={`View case study hero for ${currentProject.name}`}
+                  onMouseEnter={imageSpotlight.onMouseEnter}
+                  onMouseMove={imageSpotlight.onMouseMove}
+                  onMouseLeave={imageSpotlight.onMouseLeave}
                 >
                   <div className="nr-showcase-card-sweep" aria-hidden="true" />
                   <div className="nr-showcase-img-holder">
@@ -311,6 +317,9 @@ export default function ProjectShowcaseSlider({
                         to={`/project/${currentProject.slug}`}
                         className="nr-showcase-media-frame nr-showcase-thumb-frame"
                         aria-label={`${currentProject.name} screenshot ${idx + 2}`}
+                        onMouseEnter={imageSpotlight.onMouseEnter}
+                        onMouseMove={imageSpotlight.onMouseMove}
+                        onMouseLeave={imageSpotlight.onMouseLeave}
                       >
                         <div className="nr-showcase-card-sweep" aria-hidden="true" />
                         <div className="nr-showcase-img-holder">

@@ -26,19 +26,16 @@ export default function VisionMission() {
   return (
     <section className="vision-mission-section" id="vision-mission">
       <div className="container">
-        
+
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           className="vision-mission-header"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
           variants={containerVariants}
         >
-          <motion.div variants={itemVariants} className="vision-mission-pill">
-            <span className="vision-mission-dot" aria-hidden="true" />
-            <span>Guiding Principles</span>
-          </motion.div>
+
           <motion.h2 variants={itemVariants} className="vision-mission-title">
             Driven by Purpose. <br className="vision-title-break" />
             Defined by <span className="vision-highlight-text">Execution.</span>
@@ -46,7 +43,7 @@ export default function VisionMission() {
         </motion.div>
 
         {/* 2 Balanced Panels */}
-        <motion.div 
+        <motion.div
           className="vision-mission-grid"
           initial="hidden"
           whileInView="show"

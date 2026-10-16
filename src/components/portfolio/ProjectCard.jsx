@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { createSmoothSpotlight } from "../../hooks/useSmoothSpotlight";
 
 /**
  * ProjectCard — Modern, distinctive, premium portfolio card template.
@@ -11,6 +12,8 @@ import { Link } from "react-router-dom";
  * - Verified project metadata (category, industry, tech stack, description)
  * - Reusable across grid, list, or featured layouts
  */
+const cardSpotlight = createSmoothSpotlight({ lerpFactor: 0.085 });
+
 export default function ProjectCard({ project, index = 0, showImageSlot = false }) {
   if (!project) return null;
 
@@ -28,7 +31,12 @@ export default function ProjectCard({ project, index = 0, showImageSlot = false 
       <div className="nr-card-inner">
         {/* Optional Image / Collage Slot */}
         {shouldRenderImageArea && (
-          <div className="nr-card-media-slot">
+          <div 
+            className="nr-card-media-slot"
+            onMouseEnter={cardSpotlight.onMouseEnter}
+            onMouseMove={cardSpotlight.onMouseMove}
+            onMouseLeave={cardSpotlight.onMouseLeave}
+          >
             {hasImage ? (
               <Link to={`/project/${project.slug}`} tabIndex={-1} aria-hidden="true" className="nr-card-media-link">
                 <img

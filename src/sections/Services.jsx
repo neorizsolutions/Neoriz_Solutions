@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { servicesData } from "../data/portfolioData";
+import { createSmoothSpotlight } from "../hooks/useSmoothSpotlight";
 
 // Professional, scalable inline SVG icons tailored to each of the 6 services
 const serviceIcons = {
@@ -47,22 +48,9 @@ const serviceIcons = {
   )
 };
 
+const spotlight = createSmoothSpotlight({ lerpFactor: 0.085 });
+
 export default function Services() {
-  const handleMouseMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty("--spotlight-x", `${x}px`);
-    card.style.setProperty("--spotlight-y", `${y}px`);
-  };
-
-  const handleMouseLeave = (e) => {
-    const card = e.currentTarget;
-    card.style.removeProperty("--spotlight-x");
-    card.style.removeProperty("--spotlight-y");
-  };
-
   return (
     <section className="services-section" id="services">
       <div className="container">
@@ -89,8 +77,9 @@ export default function Services() {
               role="listitem"
               tabIndex={0}
               aria-label={`${service.name}: ${service.description}`}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={spotlight.onMouseEnter}
+              onMouseMove={spotlight.onMouseMove}
+              onMouseLeave={spotlight.onMouseLeave}
             >
               {/* Diagonal light-sweep layer — matches project image hover animation */}
               <div className="nr-service-card-sweep" aria-hidden="true" />
