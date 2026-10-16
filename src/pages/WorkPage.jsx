@@ -6,7 +6,6 @@ import MobileMenu from "../components/MobileMenu";
 import CustomCursor from "../components/CustomCursor";
 import Footer from "../sections/Footer";
 import MagneticButton from "../components/MagneticButton";
-import FeaturedShowcase from "../components/works/FeaturedShowcase";
 import ProjectCard from "../components/portfolio/ProjectCard";
 import ProjectFilter from "../components/portfolio/ProjectFilter";
 import { projectsData } from "../data/portfolioData";
@@ -38,9 +37,6 @@ export default function WorkPage() {
     return project.category === activeCategory;
   });
 
-  // Featured spotlight projects (from the curated set)
-  const featuredProjects = projectsData.filter((p) => p.featured);
-
   return (
     <>
       <CustomCursor />
@@ -67,15 +63,8 @@ export default function WorkPage() {
           </div>
         </section>
 
-        {/* 2. Featured Showcase Carousel */}
-        <section style={{ padding: "20px 0 80px 0" }}>
-          <div className="container">
-            <FeaturedShowcase projects={featuredProjects} />
-          </div>
-        </section>
-
-        {/* 3. Category Filter & Project Browsing Grid */}
-        <section style={{ padding: "20px 0 120px 0" }}>
+        {/* 2. Category Filter & Project Browsing Grid */}
+        <section style={{ padding: "40px 0 120px 0" }}>
           <div className="container">
 
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px", marginBottom: "48px" }}>
