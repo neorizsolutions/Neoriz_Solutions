@@ -32,14 +32,15 @@
       "aspectRatio": "16:9",
       "dimensions": "1792x1024",
       "fileSize": "508 KB",
-      "presentationType": "Faithful Screen-Based Presentation",
+      "presentationType": "Faithful Screen-Based Presentation (Sanitized)",
       "status": "approved",
+      "privacySanitized": true,
       "sourceFiles": [
         "WhatsApp Image 2026-10-16 at 11.02.20 A.jpeg",
         "WhatsApp Image 2026-10-16 at 11.02.20.jpeg",
         "WhatsApp Image 2026-10-16 at 11.02.21 AM.jpeg"
       ],
-      "description": "Multi-device UI/UX collage displaying three distinct verified Emblingo screens: Subjects syllabus catalog, Bookmarks personal revision library with 'Open PYQ' triggers, and Student Profile with KEAM 2026 exam goals."
+      "description": "Multi-device UI/UX collage displaying three distinct verified Emblingo screens: Subjects syllabus catalog, Bookmarks personal revision library with 'Open PYQ' triggers, and Student Profile with KEAM 2026 exam goals. Personally identifiable phone numbers and email addresses have been sanitized and anonymized for privacy."
     },
     {
       "id": "emblingo-mobile-showcase",
