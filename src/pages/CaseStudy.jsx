@@ -106,10 +106,11 @@ export default function CaseStudy() {
         {project.image && (
           <section style={{ padding: "60px 0 80px 0" }}>
             <div className="container">
-              <div style={{ borderRadius: "24px", overflow: "hidden", background: "var(--nr-light-gray)", border: "1px solid var(--nr-light-gray)", boxShadow: "0 20px 50px rgba(0,0,0,0.06)" }}>
+              <div className="nr-project-media-container" style={{ borderRadius: "24px", overflow: "hidden", background: "var(--nr-light-gray)", border: "1px solid var(--nr-light-gray)", boxShadow: "0 20px 50px rgba(0,0,0,0.06)", position: "relative" }}>
                 <img 
                   src={project.image} 
                   alt={`${project.name} primary interface screenshot`} 
+                  className="nr-project-media-img"
                   style={{ width: "100%", height: "auto", display: "block" }} 
                 />
               </div>
@@ -128,17 +129,20 @@ export default function CaseStudy() {
                 {project.gallery.slice(1).map((screenshot, sIdx) => (
                   <div 
                     key={sIdx} 
+                    className="nr-project-media-container"
                     style={{ 
                       borderRadius: "20px", 
                       overflow: "hidden", 
                       background: "var(--nr-light-gray)", 
                       border: "1px solid var(--nr-light-gray)", 
-                      boxShadow: "0 10px 30px rgba(0,0,0,0.04)" 
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.04)",
+                      position: "relative"
                     }}
                   >
                     <img 
                       src={screenshot} 
                       alt={`${project.name} interface view ${sIdx + 2}`} 
+                      className="nr-project-media-img"
                       style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} 
                     />
                   </div>

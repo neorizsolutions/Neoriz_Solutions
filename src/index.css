@@ -668,9 +668,9 @@ section {
   flex-direction: column;
   justify-content: space-between;
   min-height: 340px;
-  transition: transform var(--nr-transition-medium), 
-              border-color var(--nr-transition-medium), 
-              box-shadow var(--nr-transition-medium);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   outline: none;
 }
 
@@ -692,7 +692,7 @@ section {
   inset: 0;
   background: linear-gradient(135deg, var(--nr-deep-navy) 0%, #10243e 50%, #0d3868 100%);
   opacity: 0;
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: none;
   z-index: 1;
 }
@@ -702,7 +702,7 @@ section {
   opacity: 1;
 }
 
-/* Layer 3: Diagonal Light-Sweep Highlight */
+/* Layer 2: Diagonal Light-Sweep Highlight */
 .nr-service-card-sweep {
   position: absolute;
   top: 0;
@@ -723,7 +723,7 @@ section {
 }
 
 .nr-service-card:hover .nr-service-card-sweep {
-  animation: nr-light-sweep 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: nr-light-sweep 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes nr-light-sweep {
@@ -763,7 +763,11 @@ section {
   justify-content: center;
   color: var(--nr-blue);
   box-shadow: 0 4px 12px rgba(10, 25, 47, 0.04);
-  transition: all var(--nr-transition-medium);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              background 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              color 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nr-service-card:hover .nr-service-icon-wrap,
@@ -781,7 +785,7 @@ section {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--nr-medium-gray);
-  transition: color var(--nr-transition-fast);
+  transition: color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nr-service-card:hover .nr-service-number,
@@ -797,7 +801,7 @@ section {
   letter-spacing: -0.02em;
   margin-bottom: 14px;
   line-height: 1.25;
-  transition: color var(--nr-transition-fast);
+  transition: color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nr-service-card:hover .nr-service-title,
@@ -810,7 +814,7 @@ section {
   color: var(--nr-medium-gray);
   line-height: 1.65;
   margin: 0;
-  transition: color var(--nr-transition-fast);
+  transition: color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nr-service-card:hover .nr-service-desc,
@@ -825,7 +829,7 @@ section {
   margin-top: 28px;
   padding-top: 20px;
   border-top: 1px solid var(--nr-light-gray);
-  transition: border-color var(--nr-transition-fast);
+  transition: border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nr-service-card:hover .nr-service-card-bottom,
@@ -839,7 +843,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--nr-blue);
-  transition: color var(--nr-transition-fast);
+  transition: color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nr-service-card:hover .nr-service-explore-label,
@@ -857,7 +861,9 @@ section {
   background: rgba(40, 88, 240, 0.08);
   color: var(--nr-blue);
   font-size: 1rem;
-  transition: all var(--nr-transition-medium);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              background 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nr-service-card:hover .nr-service-arrow-circle,
@@ -872,15 +878,26 @@ section {
   .nr-service-card,
   .nr-service-card-bg-gradient,
   .nr-service-icon-wrap,
-  .nr-service-arrow-circle {
+  .nr-service-arrow-circle,
+  .nr-project-card,
+  .nr-card-img,
+  .nr-project-media-img,
+  .nr-project-media-container {
     transition: none !important;
     animation: none !important;
   }
-  .nr-service-card:hover {
+  .nr-service-card:hover,
+  .nr-project-card:hover,
+  .nr-project-media-container:hover {
     transform: none !important;
   }
-  .nr-service-card-sweep {
+  .nr-service-card-sweep,
+  .nr-card-media-slot::before,
+  .nr-card-media-slot::after,
+  .nr-project-media-container::before,
+  .nr-project-media-container::after {
     display: none !important;
+    animation: none !important;
   }
 }
 
@@ -2421,9 +2438,9 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--nr-white);
   border: 1px solid var(--nr-light-gray);
   box-shadow: 0 4px 16px rgba(10, 25, 47, 0.04);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   overflow: hidden;
 }
 
@@ -2446,7 +2463,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Optional Media Slot */
+/* Optional Media Slot & Project Imagery Spotlight */
 .nr-card-media-slot {
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -2462,18 +2479,93 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   width: 100%;
   height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.nr-card-img {
+/* Subtle, slow-moving brand-tinted spotlight overlay on project images */
+.nr-card-media-slot::after,
+.nr-project-media-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(40, 88, 240, 0.07) 0%,
+    rgba(8, 200, 176, 0.05) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nr-project-card:hover .nr-card-media-slot::after,
+.nr-project-media-container:hover::after {
+  opacity: 1;
+}
+
+/* Soft diagonal light sweep for project imagery */
+.nr-card-media-slot::before,
+.nr-project-media-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(8, 200, 176, 0.08) 55%,
+    transparent 70%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.nr-project-card:hover .nr-card-media-slot::before,
+.nr-project-media-container:hover::before {
+  animation: nr-project-media-sweep 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes nr-project-media-sweep {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 160%;
+  }
+}
+
+.nr-card-img,
+.nr-project-media-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.nr-project-card:hover .nr-card-img {
+.nr-project-card:hover .nr-card-img,
+.nr-project-media-container:hover .nr-project-media-img {
   transform: scale(1.02);
+}
+
+.nr-project-media-container {
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nr-project-media-container:hover {
+  border-color: rgba(40, 88, 240, 0.3) !important;
+  box-shadow: 0 16px 36px rgba(10, 25, 47, 0.08) !important;
 }
 
 .nr-card-media-placeholder {
