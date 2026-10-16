@@ -16,9 +16,39 @@ export default function MobileMenu({ isOpen, onClose }) {
     };
   }, [isOpen]);
 
-  const renderLink = (path, label) => {
+  const renderLink = (target, label, isAnchor = false) => {
+    if (isAnchor && isHome) {
+      return (
+        <a 
+          href={`#${target}`} 
+          className="mobile-link" 
+          onClick={(e) => {
+            e.preventDefault();
+            onClose();
+            const el = document.getElementById(target);
+            if (el) {
+              setTimeout(() => {
+                el.scrollIntoView({ behavior: "smooth" });
+              }, 150);
+              window.history.pushState(null, "", `#${target}`);
+            }
+          }}
+        >
+          {label}
+        </a>
+      );
+    }
+
+    if (isAnchor && !isHome) {
+      return (
+        <Link to={`/#${target}`} className="mobile-link" onClick={onClose}>
+          {label}
+        </Link>
+      );
+    }
+
     return (
-      <Link to={path} className="mobile-link" onClick={onClose}>
+      <Link to={target} className="mobile-link" onClick={onClose}>
         {label}
       </Link>
     );
@@ -27,8 +57,9 @@ export default function MobileMenu({ isOpen, onClose }) {
   return (
     <div className={`mobile-menu ${isOpen ? "active" : ""}`}>
       {renderLink("/about", "About")}
+      {renderLink("services", "Services", true)}
       {renderLink("/work", "Work")}
-      {renderLink("/process", "Process")}
+      {renderLink("contact", "Contact", true)}
       {renderLink("/contact", "Start a Project")}
     </div>
   );

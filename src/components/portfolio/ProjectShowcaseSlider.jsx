@@ -5,6 +5,40 @@ import { projectsData } from "../../data/portfolioData";
 
 const AUTOPLAY_INTERVAL = 6000; // 6 seconds per project
 
+// Coordinated project-specific visual palettes derived from actual assets and brand identity
+const projectThemeMap = {
+  "tablo-self-ordering": {
+    themeClass: "theme-tablo-self-ordering",
+    bgGradient: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+    accentLight: "rgba(16, 185, 129, 0.12)"
+  },
+  "tablo-table-qr": {
+    themeClass: "theme-tablo-table-qr",
+    bgGradient: "linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)",
+    accentLight: "rgba(14, 165, 233, 0.12)"
+  },
+  "nox-fight-club": {
+    themeClass: "theme-nox-fight-club",
+    bgGradient: "linear-gradient(135deg, #E11D48 0%, #991B1B 100%)",
+    accentLight: "rgba(225, 29, 72, 0.12)"
+  },
+  "neoriz-whatsapp-automation": {
+    themeClass: "theme-whatsapp-automation",
+    bgGradient: "linear-gradient(135deg, #0D9488 0%, #0F766E 100%)",
+    accentLight: "rgba(13, 148, 136, 0.12)"
+  },
+  "emblingo": {
+    themeClass: "theme-emblingo",
+    bgGradient: "linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)",
+    accentLight: "rgba(59, 130, 246, 0.12)"
+  },
+  "felora-dress-rental": {
+    themeClass: "theme-felora",
+    bgGradient: "linear-gradient(135deg, #D97706 0%, #B45309 100%)",
+    accentLight: "rgba(217, 119, 6, 0.12)"
+  }
+};
+
 export default function ProjectShowcaseSlider({
   eyebrow = "SELECTED WORK",
   title = "Proprietary Products & Engineered Experiences",
@@ -23,6 +57,7 @@ export default function ProjectShowcaseSlider({
   const timerRef = useRef(null);
 
   const currentProject = activeProjects[currentIndex] || activeProjects[0];
+  const currentTheme = projectThemeMap[currentProject.id] || projectThemeMap["tablo-self-ordering"];
 
   const goToSlide = useCallback((index, newDirection = 1) => {
     if (index === currentIndex || isAnimating) return;
@@ -154,10 +189,17 @@ export default function ProjectShowcaseSlider({
 
         {/* Main Showcase Stage */}
         <div 
-          className="nr-showcase-card"
+          className={`nr-showcase-card ${currentTheme.themeClass}`}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
+          {/* Project-Specific Curved Color Backdrop (Reference 3 inspired) */}
+          <div 
+            className="nr-showcase-curved-backdrop" 
+            style={{ background: currentTheme.bgGradient }}
+            aria-hidden="true" 
+          />
+
           {/* Left Information Panel */}
           <div className="nr-showcase-info-col">
             <AnimatePresence mode="wait" custom={direction}>
@@ -170,17 +212,14 @@ export default function ProjectShowcaseSlider({
                 exit="exit"
                 className="nr-showcase-text-wrap"
               >
-                {/* Micro meta row: Number and Industry/Scope */}
-                <div className="nr-showcase-meta-row">
-                  <span className="nr-showcase-badge-pill">
-                    PROJECT {String(currentIndex + 1).padStart(2, "0")} / {String(totalSlides).padStart(2, "0")}
-                  </span>
-                  {currentProject.industry && (
+                {/* Meta row: Industry / Scope only */}
+                {currentProject.industry && (
+                  <div className="nr-showcase-meta-row">
                     <span className="nr-showcase-meta-industry">
                       {currentProject.industry}
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
 
                 {/* Project Title */}
                 <h3 className="nr-showcase-project-title">
@@ -233,58 +272,67 @@ export default function ProjectShowcaseSlider({
             </AnimatePresence>
           </div>
 
-          {/* Right Visual Panel */}
+          {/* Right Visual Panel: 5-Image Collage */}
           <div className="nr-showcase-visual-col">
-            <Link
-              to={`/project/${currentProject.slug}`}
-              className="nr-showcase-media-frame"
-              tabIndex={-1}
-              aria-hidden="true"
-            >
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
-                  key={currentProject.id}
-                  custom={direction}
-                  variants={imageVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="nr-showcase-img-holder"
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={currentProject.id}
+                custom={direction}
+                variants={imageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="nr-showcase-collage-wrap"
+              >
+                {/* 1. Main Hero Image */}
+                <Link
+                  to={`/project/${currentProject.slug}`}
+                  className="nr-showcase-media-frame nr-showcase-main-frame"
+                  aria-label={`View case study hero for ${currentProject.name}`}
                 >
-                  <img
-                    src={currentProject.image}
-                    alt={currentProject.name}
-                    className="nr-showcase-img"
-                    loading="eager"
-                  />
-                  <div className="nr-showcase-img-overlay" />
-                </motion.div>
-              </AnimatePresence>
-            </Link>
+                  <div className="nr-showcase-card-sweep" aria-hidden="true" />
+                  <div className="nr-showcase-img-holder">
+                    <img
+                      src={currentProject.image}
+                      alt={currentProject.name}
+                      className="nr-showcase-img"
+                      loading="eager"
+                    />
+                    <div className="nr-showcase-img-overlay" />
+                  </div>
+                </Link>
+
+                {/* 2. Four Supporting Images Collage Grid */}
+                {currentProject.gallery && currentProject.gallery.length > 1 && (
+                  <div className="nr-showcase-gallery-grid" aria-label="Supporting project screenshots">
+                    {currentProject.gallery.slice(1, 5).map((galleryImg, idx) => (
+                      <Link
+                        key={idx}
+                        to={`/project/${currentProject.slug}`}
+                        className="nr-showcase-media-frame nr-showcase-thumb-frame"
+                        aria-label={`${currentProject.name} screenshot ${idx + 2}`}
+                      >
+                        <div className="nr-showcase-card-sweep" aria-hidden="true" />
+                        <div className="nr-showcase-img-holder">
+                          <img
+                            src={galleryImg}
+                            alt={`${currentProject.name} supporting screenshot ${idx + 1}`}
+                            className="nr-showcase-img nr-showcase-thumb-img"
+                            loading="lazy"
+                          />
+                          <div className="nr-showcase-img-overlay" />
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 
-        {/* Clean, Professional Navigation Bar: Position Counter + Slim Progress Bar + Prev/Next Controls */}
+        {/* Clean, Professional Navigation Bar: Project Selector Dots + Prev/Next Controls (Numerical Counter Removed) */}
         <div className="nr-showcase-nav-bar">
-          
-          {/* Left: Position Counter and Progress Line */}
-          <div className="nr-showcase-counter-group" aria-label={`Project ${currentIndex + 1} of ${totalSlides}`}>
-            <span className="nr-showcase-current-num">
-              {String(currentIndex + 1).padStart(2, "0")}
-            </span>
-            <div className="nr-showcase-progress-track" role="progressbar" aria-valuenow={currentIndex + 1} aria-valuemin={1} aria-valuemax={totalSlides}>
-              <div 
-                className="nr-showcase-progress-indicator"
-                style={{
-                  width: `${((currentIndex + 1) / totalSlides) * 100}%`
-                }}
-              />
-            </div>
-            <span className="nr-showcase-total-num">
-              {String(totalSlides).padStart(2, "0")}
-            </span>
-          </div>
-
           {/* Segmented position dots / mini-bars for quick direct clicking */}
           <div className="nr-showcase-dots-group" role="tablist" aria-label="Direct project selection">
             {activeProjects.map((proj, idx) => {

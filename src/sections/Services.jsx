@@ -48,23 +48,38 @@ const serviceIcons = {
 };
 
 export default function Services() {
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--spotlight-x", `${x}px`);
+    card.style.setProperty("--spotlight-y", `${y}px`);
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.removeProperty("--spotlight-x");
+    card.style.removeProperty("--spotlight-y");
+  };
+
   return (
     <section className="services-section" id="services">
       <div className="container">
-        
+
         {/* Section Header with 'Succeed' highlighted in brand palette */}
         <div className="services-header-area">
           <div className="services-badge">
             <span>Core Capabilities</span>
           </div>
           <h2 className="services-main-title">
-            Services to Help You{" "}
-            <span className="services-highlight-word">Succeed</span>{" "}
-            in Your Mission!
+            Digital Solutions{" "}
+            <span className="services-highlight-word">Built</span>{" "}
+            for Growth!
           </h2>
         </div>
 
-        {/* 6-Service Interactive Gradient Grid */}
+        {/* Exactly 6 Services in 3-Column (Desktop) Grid with Fedgix-Style Hover & Spotlight */}
         <div className="nr-services-grid" role="list">
           {servicesData.map((service) => (
             <Link
@@ -74,33 +89,20 @@ export default function Services() {
               role="listitem"
               tabIndex={0}
               aria-label={`${service.name}: ${service.description}`}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
             >
-              {/* Layer 1: Base smooth deep brand gradient reveal on hover */}
-              <div className="nr-service-card-bg-gradient" aria-hidden="true" />
-              
-              {/* Layer 2: Diagonal Light-Sweep Highlight */}
+              {/* Diagonal light-sweep layer — matches project image hover animation */}
               <div className="nr-service-card-sweep" aria-hidden="true" />
-
-              {/* Card Content Layer */}
               <div className="nr-service-card-content">
-                <div>
-                  <div className="nr-service-card-top">
-                    <div className="nr-service-icon-wrap" aria-hidden="true">
-                      {serviceIcons[service.id]}
-                    </div>
-                    <span className="nr-service-number">{service.id}</span>
+                <div className="nr-service-card-top">
+                  <div className="nr-service-icon-wrap" aria-hidden="true">
+                    {serviceIcons[service.id]}
                   </div>
-
                   <h3 className="nr-service-title">{service.name}</h3>
-                  <p className="nr-service-desc">{service.description}</p>
                 </div>
 
-                <div className="nr-service-card-bottom">
-                  <span className="nr-service-explore-label">Start a Project</span>
-                  <div className="nr-service-arrow-circle" aria-hidden="true">
-                    <span>→</span>
-                  </div>
-                </div>
+                <p className="nr-service-desc">{service.description}</p>
               </div>
             </Link>
           ))}

@@ -3,8 +3,8 @@ import Navbar from "../components/Navbar";
 import MobileMenu from "../components/MobileMenu";
 import CustomCursor from "../components/CustomCursor";
 import Hero from "../sections/Hero";
-import About from "../sections/About";
 import Services from "../sections/Services";
+import VisionMission from "../sections/VisionMission";
 import FeaturedWork from "../sections/FeaturedWork";
 import ScrollingMarquee from "../components/ScrollingMarquee";
 import Process from "../sections/Process";
@@ -58,14 +58,14 @@ export default function Home() {
         {/* 02. Hero */}
         <Hero />
         
-        {/* 03. Brand Introduction / What We Build (mapped to About.jsx) */}
-        <About />
-        
-        {/* 04. Selected Work */}
-        <FeaturedWork />
-        
-        {/* 05. Capabilities (mapped to Services.jsx) */}
+        {/* 03. Services (Core Capabilities) - Redesigned immediately after Hero */}
         <Services />
+        
+        {/* 04. Vision & Mission Section */}
+        <VisionMission />
+        
+        {/* 05. Selected Work */}
+        <FeaturedWork />
         
         {/* 06. Technology Marquee Section */}
         <section className="marquee-section" style={{ background: "var(--nr-soft-white)" }}>

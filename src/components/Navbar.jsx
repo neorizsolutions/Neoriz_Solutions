@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import logo from "../assets/brand/neoriz-logo-horizontal.svg";
 
@@ -20,11 +20,38 @@ export default function Navbar({ onToggleMenu, isMenuOpen }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const renderLink = (path, label) => {
-    const isActive = location.pathname === path;
+  const renderLink = (target, label, isAnchor = false) => {
+    if (isAnchor && isHome) {
+      return (
+        <a 
+          href={`#${target}`} 
+          className="nav-link-premium"
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById(target);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+              window.history.pushState(null, "", `#${target}`);
+            }
+          }}
+        >
+          {label}
+        </a>
+      );
+    }
+
+    if (isAnchor && !isHome) {
+      return (
+        <Link to={`/#${target}`} className="nav-link-premium">
+          {label}
+        </Link>
+      );
+    }
+
+    const isActive = location.pathname === target;
     const className = `nav-link-premium ${isActive ? "active" : ""}`;
     return (
-      <Link to={path} className={className}>
+      <Link to={target} className={className}>
         {label}
       </Link>
     );
@@ -44,19 +71,19 @@ export default function Navbar({ onToggleMenu, isMenuOpen }) {
           </Link>
         )}
 
-        {/* LINKS */}
+        {/* LINKS (Center Column): About, Services, Work, Contact */}
         <div className="nav-links-premium">
-          {renderLink("/", "Home")}
           {renderLink("/about", "About")}
-          {renderLink("/process", "Process")}
+          {renderLink("services", "Services", true)}
           {renderLink("/work", "Work")}
-          
-          {/* PRIMARY CTA (Only pill element) */}
-          <div className="nav-cta-wrapper">
-            <Link to="/contact" className="nav-cta-premium">
-              Start a Project
-            </Link>
-          </div>
+          {renderLink("contact", "Contact", true)}
+        </div>
+
+        {/* PRIMARY CTA (Right Column) */}
+        <div className="nav-cta-wrapper">
+          <Link to="/contact" className="nav-cta-premium">
+            Start a Project
+          </Link>
         </div>
 
         {/* MOBILE TOGGLE */}
