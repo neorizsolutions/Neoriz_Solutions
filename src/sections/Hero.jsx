@@ -73,7 +73,7 @@ export default function Hero() {
               <span key={line} className="hero-headline-line-wrapper">
                 <motion.span 
                   variants={lineVariants} 
-                  className={`hero-headline-line ${line === "FORWARD." ? "hero-headline-accent" : ""}`}
+                  className="hero-headline-line"
                 >
                   {line}
                 </motion.span>

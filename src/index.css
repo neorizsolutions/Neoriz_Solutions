@@ -1942,10 +1942,7 @@ section {
 }
 
 .hero-headline-accent {
-  background: linear-gradient(135deg, var(--nr-deep-navy) 40%, #0284C7 85%, #38BDF8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--nr-deep-navy);
 }
 
 .hero-desc-white {
