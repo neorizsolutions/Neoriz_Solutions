@@ -1,36 +1,26 @@
 import React from "react";
+import { servicesData } from "../data/portfolioData";
 
 export default function ScrollingMarquee() {
-  const items = [
+  // Full official services upfront, followed by core product and digital capabilities
+  const officialServices = servicesData.map(service => service.name.toUpperCase());
+
+  const capabilities = [
     "DIGITAL PRODUCTS",
-    "MODERN WEB",
-    "WEB PLATFORMS",
-    "CLOUD SYSTEMS",
-    "MOBILE EXPERIENCES",
     "BUSINESS AUTOMATION",
-    "BUSINESS SYSTEMS",
-    "AI SOLUTIONS",
-    "AI INTEGRATION",
-    "UI/UX DESIGN",
-    "E-COMMERCE",
+    "AI SOLUTIONS & INTEGRATION",
+    "CLOUD SYSTEMS",
+    "WEB PLATFORMS",
     "CUSTOM SOFTWARE",
     "SAAS PLATFORMS",
     "RESTAURANT TECHNOLOGY",
     "DIGITAL TRANSFORMATION",
-    "SCALABLE SYSTEMS",
-    "PRODUCT DEVELOPMENT",
-    "STARTUP SOLUTIONS",
-    "BRAND EXPERIENCES",
-    "INTELLIGENT AUTOMATION",
-    "IT CONSULTING",
-    "STRATEGY & OPERATIONS",
-    "CLOUD MIGRATION",
-    "CYBERSECURITY",
+    "MOBILE EXPERIENCES",
     "DATA ANALYTICS",
-    "ENTERPRISE ARCHITECTURE",
-    "TECH ADVISORY",
-    "MANAGEMENT CONSULTING"
+    "INTELLIGENT WORKFLOWS"
   ];
+
+  const items = [...officialServices, ...capabilities];
 
   return (
     <div className="marquee-wrapper single-row">
@@ -43,18 +33,18 @@ export default function ScrollingMarquee() {
                 <div className="marquee-item premium-text">
                   {item}
                 </div>
-                <div className="marquee-separator">·</div>
+                <div className="marquee-separator" aria-hidden="true">•</div>
               </React.Fragment>
             ))}
           </div>
-          {/* Duplicated set for seamless loop */}
+          {/* Duplicated set for seamless infinite loop */}
           <div className="marquee-content" aria-hidden="true">
             {items.map((item, index) => (
               <React.Fragment key={`dup-${index}`}>
                 <div className="marquee-item premium-text">
                   {item}
                 </div>
-                <div className="marquee-separator">·</div>
+                <div className="marquee-separator" aria-hidden="true">•</div>
               </React.Fragment>
             ))}
           </div>
