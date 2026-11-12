@@ -181,12 +181,6 @@ export default function ContactPage() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
                   >
-                    {formData.projectType === "Discovery Call / Consultation" && (
-                      <div style={{ marginBottom: "20px", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(40, 88, 240, 0.08)", color: "var(--nr-blue)", padding: "8px 16px", borderRadius: "100px", fontSize: "0.8125rem", fontWeight: 600 }}>
-                        <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--nr-blue)" }} />
-                        Discovery Call Request — Tell us about your goals below
-                      </div>
-                    )}
                     <h2 style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "32px", letterSpacing: "-0.02em" }}>Project Inquiry</h2>
                     
                     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }} noValidate>
@@ -295,10 +289,12 @@ export default function ContactPage() {
                             disabled={isSubmitting}
                           >
                             <option value="">Select range...</option>
-                            <option value="<$5k">Under $5k</option>
-                            <option value="$5k - $10k">$5k - $10k</option>
-                            <option value="$10k - $25k">$10k - $25k</option>
-                            <option value="$25k+">$25k+</option>
+                            <option value="Under ₹50,000">Under ₹50,000</option>
+                            <option value="₹50,000 - ₹1 Lakh">₹50,000 – ₹1 Lakh</option>
+                            <option value="₹1 Lakh - ₹3 Lakhs">₹1 Lakh – ₹3 Lakhs</option>
+                            <option value="₹3 Lakhs - ₹5 Lakhs">₹3 Lakhs – ₹5 Lakhs</option>
+                            <option value="₹5 Lakhs - ₹10 Lakhs">₹5 Lakhs – ₹10 Lakhs</option>
+                            <option value="₹10 Lakhs+">₹10 Lakhs+</option>
                             <option value="To be discussed">To be discussed</option>
                           </select>
                         </div>
@@ -338,30 +334,28 @@ export default function ContactPage() {
                               width: "100%", 
                               background: isSubmitting ? "var(--nr-medium-gray)" : "var(--nr-deep-navy)", 
                               color: "var(--nr-white)", 
-                              padding: "20px 40px", 
-                              borderRadius: "100px", 
+                              padding: "12px 28px", 
+                              borderRadius: "var(--nr-radius-full)", 
                               fontWeight: 600, 
-                              fontSize: "1.125rem",
+                              fontSize: "0.875rem",
+                              letterSpacing: "0.02em",
                               border: "none",
                               cursor: isSubmitting ? "not-allowed" : "pointer",
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              gap: "12px",
-                              transition: "background 0.3s ease"
+                              transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)"
                             }}
                           >
                             {isSubmitting ? (
                               <>
-                                <svg className="spinner" viewBox="0 0 50 50" style={{ width: "24px", height: "24px", animation: "rotate 2s linear infinite" }}>
+                                <svg className="spinner" viewBox="0 0 50 50" style={{ width: "20px", height: "20px", animation: "rotate 2s linear infinite" }}>
                                   <circle cx="25" cy="25" r="20" fill="none" strokeWidth="4" stroke="#ffffff" strokeLinecap="round" strokeDasharray="90, 150" style={{ animation: "dash 1.5s ease-in-out infinite" }}></circle>
                                 </svg>
                                 Sending...
                               </>
                             ) : (
-                              <>
-                                Submit Inquiry <span className="btn-arrow" style={{ fontSize: "1.2em", marginLeft: "8px" }}>→</span>
-                              </>
+                              "Submit Inquiry"
                             )}
                           </button>
                         </MagneticButton>
@@ -395,7 +389,7 @@ export default function ContactPage() {
                           setIsSubmitted(false);
                           setFormData({ name: "", email: "", company: "", projectType: "", budget: "", timeline: "", message: "" });
                         }}
-                        style={{ background: "transparent", border: "1px solid var(--nr-deep-navy)", color: "var(--nr-deep-navy)", padding: "16px 32px", borderRadius: "100px", fontWeight: 600, cursor: "pointer", fontSize: "1rem" }}
+                        style={{ background: "transparent", border: "1px solid var(--nr-deep-navy)", color: "var(--nr-deep-navy)", padding: "12px 28px", borderRadius: "var(--nr-radius-full)", fontWeight: 600, cursor: "pointer", fontSize: "0.875rem", letterSpacing: "0.02em" }}
                       >
                         Send Another Inquiry
                       </button>

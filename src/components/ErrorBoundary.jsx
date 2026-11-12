@@ -77,15 +77,14 @@ export default class ErrorBoundary extends React.Component {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "10px",
-                padding: "16px 36px",
-                background: "#000000",
-                color: "#FFFFFF",
+                padding: "12px 28px",
+                background: "var(--nr-deep-navy)",
+                color: "var(--nr-white)",
                 fontSize: "0.875rem",
                 fontWeight: "600",
                 letterSpacing: "0.02em",
-                borderRadius: "100px",
-                border: "1px solid #000000",
+                borderRadius: "var(--nr-radius-full)",
+                border: "1px solid var(--nr-deep-navy)",
                 cursor: "pointer",
                 transition: "all 0.3s ease"
               }}

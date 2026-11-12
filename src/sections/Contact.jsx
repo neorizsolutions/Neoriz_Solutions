@@ -34,8 +34,7 @@ export default function Contact() {
           <div className="contact-cta-group">
             <MagneticButton>
               <Link to="/contact" className="btn-contact-final">
-                <span>Start a Project</span>
-                <span className="btn-arrow" aria-hidden="true">→</span>
+                Start a Project
               </Link>
             </MagneticButton>
 

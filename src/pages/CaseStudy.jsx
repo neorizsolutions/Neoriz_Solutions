@@ -335,13 +335,15 @@ export default function CaseStudy() {
                 style={{ 
                   borderColor: "rgba(255,255,255,0.25)", 
                   color: "var(--nr-white)",
-                  padding: "16px 40px",
-                  borderRadius: "100px",
-                  fontSize: "1rem",
+                  padding: "12px 28px",
+                  borderRadius: "var(--nr-radius-full)",
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.02em",
                   textDecoration: "none"
                 }}
               >
-                Discuss Your Project →
+                Discuss Your Project
               </Link>
             </MagneticButton>
           </div>

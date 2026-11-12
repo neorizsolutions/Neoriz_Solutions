@@ -74,41 +74,14 @@ export default function NotFound() {
               <Link
                 to="/work"
                 className="btn-primary"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "16px 36px",
-                  background: "var(--nr-deep-navy)",
-                  color: "var(--nr-white)",
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  letterSpacing: "0.02em",
-                  borderRadius: "100px",
-                  textDecoration: "none"
-                }}
               >
-                Back to Portfolio <span className="btn-arrow">→</span>
+                Back to Portfolio
               </Link>
             </MagneticButton>
             <MagneticButton>
               <Link
                 to="/"
                 className="btn-secondary"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "16px 36px",
-                  background: "transparent",
-                  color: "var(--nr-deep-navy)",
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  letterSpacing: "0.02em",
-                  borderRadius: "100px",
-                  border: "1px solid var(--nr-light-gray)",
-                  textDecoration: "none"
-                }}
               >
                 Return Home
               </Link>

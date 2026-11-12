@@ -115,7 +115,6 @@ export default function ProcessPage() {
             <MagneticButton>
               <Link to="/work" className="btn-primary">
                 Explore Our Work
-                <span className="btn-arrow" style={{ fontSize: "1.2em", marginLeft: "8px" }}>→</span>
               </Link>
             </MagneticButton>
           </div>

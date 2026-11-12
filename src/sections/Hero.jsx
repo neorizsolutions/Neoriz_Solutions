@@ -89,7 +89,7 @@ export default function Hero() {
           {/* Action CTAs */}
           <motion.div variants={fadeUpVariants} className="hero-actions-white">
             <Link to="/contact" className="btn-primary-white">
-              Start a Project <span className="btn-arrow" aria-hidden="true">→</span>
+              Start a Project
             </Link>
             <Link to="/work" className="btn-secondary-white">
               Explore Our Work

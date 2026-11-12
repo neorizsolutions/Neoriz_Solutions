@@ -141,16 +141,17 @@ export default function WorkPage() {
                 style={{
                   borderColor: "rgba(255,255,255,0.25)",
                   color: "var(--nr-white)",
-                  padding: "18px 44px",
-                  borderRadius: "100px",
-                  fontSize: "1.0625rem",
+                  padding: "12px 28px",
+                  borderRadius: "var(--nr-radius-full)",
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.02em",
                   textDecoration: "none",
                   display: "inline-flex",
                   alignItems: "center"
                 }}
               >
                 Start a Conversation
-                <span className="btn-arrow" style={{ fontSize: "1.2em", marginLeft: "10px" }}>→</span>
               </Link>
             </MagneticButton>
           </div>

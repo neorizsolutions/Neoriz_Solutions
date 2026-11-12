@@ -58,22 +58,9 @@ export default function FeaturedProject({ project, reversed = false }) {
         <MagneticButton>
           <Link 
             to={`/project/${project.slug}`}
-            className="btn-primary" 
-            style={{ 
-              background: "var(--nr-deep-navy)", 
-              color: "var(--nr-white)", 
-              padding: "16px 36px", 
-              borderRadius: "100px", 
-              fontWeight: 600, 
-              display: "inline-flex", 
-              alignItems: "center", 
-              gap: "10px", 
-              fontSize: "0.9375rem",
-              textDecoration: "none"
-            }}
+            className="btn-primary"
           >
             Explore Case Study
-            <span style={{ fontSize: "1.2em" }}>→</span>
           </Link>
         </MagneticButton>
       </div>

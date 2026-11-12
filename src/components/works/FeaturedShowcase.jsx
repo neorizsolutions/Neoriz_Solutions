@@ -132,11 +132,9 @@ export default function FeaturedShowcase({ projects }) {
           <div style={{ display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap" }}>
             <Link 
               to={`/project/${current.slug}`} 
-              className="btn-primary" 
-              style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
+              className="btn-primary"
             >
-              <span>View Case Study</span>
-              <span style={{ fontSize: "1.2em" }}>→</span>
+              View Case Study
             </Link>
 
             {current.website && current.website !== "#" && (

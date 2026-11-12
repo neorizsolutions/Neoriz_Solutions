@@ -45,7 +45,7 @@ export default function AboutPage() {
                 Who is NEORIZ?
               </div>
               <h1 className="hero-headline-white" style={{ maxWidth: "900px", marginBottom: "40px" }}>
-                We Build What Businesses <span style={{ background: "var(--nr-gradient-primary)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Move Toward.</span>
+                We Build What Businesses Move Toward.
               </h1>
             </motion.div>
           </div>
@@ -147,8 +147,8 @@ export default function AboutPage() {
             <h2 style={{ fontFamily: "var(--nr-font-display)", fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "36px", letterSpacing: "-0.03em" }}>
               Ready to elevate your digital presence?
             </h2>
-            <Link to="/contact" className="btn-primary-white" style={{ display: "inline-flex" }}>
-              Start a Project <span className="btn-arrow">→</span>
+            <Link to="/contact" className="btn-primary-white">
+              Start a Project
             </Link>
           </div>
         </section>
