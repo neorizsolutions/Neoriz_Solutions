@@ -116,6 +116,7 @@ export default function Footer() {
               {renderQuickLink("/about", "About")}
               {renderQuickLink("/process", "Process")}
               {renderQuickLink("/work", "Work")}
+              {renderQuickLink("/careers", "Careers")}
               {renderQuickLink("/contact", "Contact")}
             </nav>
           </div>

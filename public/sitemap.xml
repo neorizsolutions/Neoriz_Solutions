@@ -21,6 +21,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://neorizsolutions.com/careers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://neorizsolutions.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -67,6 +72,11 @@
   </url>
   <url>
     <loc>https://neorizsolutions.com/project/felora-dress-rental</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://neorizsolutions.com/careers/full-stack-developer-intern</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

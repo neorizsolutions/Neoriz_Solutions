@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { projectsData } from '../src/data/portfolioData.js';
+import { careersData } from '../src/data/careersData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,6 +14,7 @@ const staticRoutes = [
   '/about',
   '/process',
   '/work',
+  '/careers',
   '/contact',
   '/privacy-policy',
   '/terms-of-use',
@@ -37,6 +39,17 @@ function generateSitemap() {
     if (project.slug) {
       xml += `  <url>\n`;
       xml += `    <loc>${BASE_URL}/project/${project.slug}</loc>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`;
+      xml += `    <priority>0.8</priority>\n`;
+      xml += `  </url>\n`;
+    }
+  });
+
+  // Add dynamic careers routes
+  careersData.forEach((job) => {
+    if (job.slug) {
+      xml += `  <url>\n`;
+      xml += `    <loc>${BASE_URL}/careers/${job.slug}</loc>\n`;
       xml += `    <changefreq>monthly</changefreq>\n`;
       xml += `    <priority>0.8</priority>\n`;
       xml += `  </url>\n`;

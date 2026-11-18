@@ -71,11 +71,12 @@ export default function Navbar({ onToggleMenu, isMenuOpen }) {
           </Link>
         )}
 
-        {/* LINKS (Center Column): About, Services, Work, Contact */}
+        {/* LINKS (Center Column): About, Services, Work, Careers, Contact */}
         <div className="nav-links-premium">
           {renderLink("/about", "About")}
           {renderLink("services", "Services", true)}
           {renderLink("/work", "Work")}
+          {renderLink("/careers", "Careers")}
           {renderLink("contact", "Contact", true)}
         </div>
 

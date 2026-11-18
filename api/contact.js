@@ -54,9 +54,32 @@ export default async function handler(req, res) {
   }
 
   // 7. Construct Email
-  const subject = `New Project Inquiry — ${projectType || 'General'} — ${name}`;
+  const isJobApp = projectType && (projectType.toLowerCase().includes("job application") || projectType.toLowerCase().includes("career") || projectType.toLowerCase().includes("intern"));
+  const subject = isJobApp 
+    ? `Job Application: ${projectType} — ${name}`
+    : `New Project Inquiry — ${projectType || 'General'} — ${name}`;
   
-  const textBody = `
+  const textBody = isJobApp ? `
+Neoriz Solutions — New Job Application
+
+Applicant Name:
+${name}
+
+Applicant Email:
+${email}
+
+Role Applied For:
+${projectType}
+
+Portfolio / GitHub / Résumé Link:
+${company || 'Not provided'}
+
+Application & Technical Background:
+${message}
+
+Submitted At:
+${new Date().toISOString()}
+  `.trim() : `
 Neoriz Solutions — New Project Inquiry
 
 Name:
@@ -81,7 +104,23 @@ Submitted At:
 ${new Date().toISOString()}
   `.trim();
 
-  const htmlBody = `
+  const htmlBody = isJobApp ? `
+    <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; line-height: 1.6;">
+      <h2 style="color: #2858F0; border-bottom: 2px solid #EAEAEA; padding-bottom: 12px;">Neoriz Solutions &mdash; New Job Application</h2>
+      
+      <p><strong>Applicant Name:</strong><br/>${name}</p>
+      <p><strong>Applicant Email:</strong><br/><a href="mailto:${email}">${email}</a></p>
+      <p><strong>Position:</strong><br/>${projectType}</p>
+      <p><strong>Portfolio / GitHub / Résumé Link:</strong><br/>${company ? `<a href="${company}" target="_blank">${company}</a>` : 'Not provided'}</p>
+      
+      <p><strong>Application & Candidate Background:</strong></p>
+      <div style="background: #F9F9F9; padding: 16px; border-radius: 8px; border: 1px solid #EAEAEA; white-space: pre-wrap;">${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+      
+      <p style="font-size: 0.8em; color: #888; margin-top: 32px; border-top: 1px solid #EAEAEA; padding-top: 12px;">
+        Submitted At: ${new Date().toISOString()}
+      </p>
+    </div>
+  ` : `
     <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; line-height: 1.6;">
       <h2 style="color: #2858F0; border-bottom: 2px solid #EAEAEA; padding-bottom: 12px;">Neoriz Solutions &mdash; New Inquiry</h2>
       

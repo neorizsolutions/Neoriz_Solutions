@@ -5,6 +5,8 @@ import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import ProcessPage from "./pages/ProcessPage";
 import WorkPage from "./pages/WorkPage";
+import CareersPage from "./pages/CareersPage";
+import JobDetailPage from "./pages/JobDetailPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -22,6 +24,8 @@ export default function App() {
           <Route path="/services" element={<Navigate to="/#services" replace />} />
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/careers/:slug" element={<JobDetailPage />} />
           
           {/* Canonical Case Study Route */}
           <Route path="/project/:slug" element={<CaseStudy />} />

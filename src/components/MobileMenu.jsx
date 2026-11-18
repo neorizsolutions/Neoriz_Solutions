@@ -59,6 +59,7 @@ export default function MobileMenu({ isOpen, onClose }) {
       {renderLink("/about", "About")}
       {renderLink("services", "Services", true)}
       {renderLink("/work", "Work")}
+      {renderLink("/careers", "Careers")}
       {renderLink("contact", "Contact", true)}
       {renderLink("/contact?type=discovery", "Book a Discovery Call")}
     </div>
