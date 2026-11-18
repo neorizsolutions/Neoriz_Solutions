@@ -70,7 +70,7 @@ export default async function handler(req, res) {
   // 7. Determine Application Type & Destination
   const isJobApp = projectType && (projectType.toLowerCase().includes("job application") || projectType.toLowerCase().includes("career") || projectType.toLowerCase().includes("intern"));
   const destinationEmail = isJobApp 
-    ? (process.env.CAREERS_EMAIL || 'hradmin@neorizsolutions.com') 
+    ? (process.env.CAREERS_EMAIL || toEmail || 'hradmin@neorizsolutions.com') 
     : toEmail;
   const subject = isJobApp 
     ? `Job Application: ${projectType} — ${name}`
@@ -237,24 +237,44 @@ ${new Date().toISOString()}
 
   // 8. Dispatch Email via Resend API
   try {
-    const resendResponse = await fetch('https://api.resend.com/emails', {
+    const emailPayload = {
+      from: fromEmail,
+      to: [destinationEmail],
+      reply_to: email, // Direct replies go to candidate
+      subject: subject,
+      text: textBody,
+      html: htmlBody,
+      ...(attachments.length > 0 ? { attachments } : {})
+    };
+
+    let resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${resendApiKey}`
       },
-      body: JSON.stringify({
-        from: fromEmail,
-        to: [destinationEmail],
-        reply_to: email, // Direct replies go to candidate
-        subject: subject,
-        text: textBody,
-        html: htmlBody,
-        ...(attachments.length > 0 ? { attachments } : {})
-      })
+      body: JSON.stringify(emailPayload)
     });
 
-    const data = await resendResponse.json();
+    let data = await resendResponse.json();
+
+    // If sending to a custom careers address failed (e.g. testing mode domain restriction on Resend),
+    // automatically fallback to the verified toEmail (CONTACT_EMAIL) so applications are never dropped
+    if (!resendResponse.ok && destinationEmail !== toEmail && toEmail) {
+      console.warn(`Resend dispatch to ${destinationEmail} failed. Retrying fallback to verified address (${toEmail})...`, data);
+      resendResponse = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${resendApiKey}`
+        },
+        body: JSON.stringify({
+          ...emailPayload,
+          to: [toEmail]
+        })
+      });
+      data = await resendResponse.json();
+    }
 
     if (!resendResponse.ok) {
       console.error('Resend API Error: Failed to dispatch email.', {
@@ -262,9 +282,10 @@ ${new Date().toISOString()}
         statusText: resendResponse.statusText,
         error: data
       });
-      return res.status(500).json({ 
+      const providerMsg = data?.message || data?.error?.message || (typeof data === 'string' ? data : 'Failed to dispatch email via provider. Please check your Resend domain/API key configuration.');
+      return res.status(resendResponse.status || 500).json({ 
         success: false, 
-        message: 'Failed to dispatch email via provider. Please try again later.' 
+        message: providerMsg
       });
     }
 
