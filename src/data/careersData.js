@@ -42,7 +42,7 @@ export const careersData = [
     ],
 
     applicationNote:
-      "Please include your résumé and, if available, a GitHub, portfolio, or live project link. Briefly explain what you built, what you personally contributed, and one technical problem you solved."
+      "Please attach your résumé (PDF or DOCX) — do not send a link. Include your current location, GitHub profile, and briefly explain what you built, what you personally contributed, and one technical problem you solved."
   }
 ];
 

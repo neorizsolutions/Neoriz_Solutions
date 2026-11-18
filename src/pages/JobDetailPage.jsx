@@ -19,10 +19,20 @@ export default function JobDetailPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    portfolioLink: "",
+    location: "",
+    phone: "",
+    githubUrl: "",
+    portfolioUrl: "",
+    availableFullTime: "Yes",
+    reactExp: "Yes",
+    backendExp: "Yes",
+    gitComfort: "Yes",
     message: "",
     bot_field: ""
   });
+  const [resumeFile, setResumeFile] = useState(null);
+  const [resumeBase64, setResumeBase64] = useState("");
+  const [resumeError, setResumeError] = useState("");
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -49,20 +59,33 @@ export default function JobDetailPage() {
   // Email mailto URL prefilled with prompt's required application details
   const emailSubject = encodeURIComponent(`Job Application: ${job.title} — [Your Name]`);
   const emailBody = encodeURIComponent(
-`Hi Neoriz Solutions Team,
+`Hi Neoriz Solutions Hiring Team,
 
-I am applying for the ${job.title} position (${job.arrangement}).
+I am writing to apply for the ${job.title} position (${job.arrangement}).
 
-Applicant Name: [Your Name]
-Contact Phone: [Your Phone Number]
-Résumé Link (Google Drive / Dropbox / PDF): [Your Link]
-GitHub / Portfolio / Live Project Link: [Your Link]
+--- APPLICANT DETAILS ---
+Full Name: [Your Full Name]
+Email Address: [Your Email Address]
+Current Location / City: [e.g. Kochi, Kerala, India]
+Contact Phone / WhatsApp: [Your Phone Number]
+GitHub Profile URL: [https://github.com/yourusername]
+Portfolio / Live Project Link: [Optional link]
 
+--- CANDIDATE SCREENING QUESTIONS ---
+1. Are you available for a full-time, 6-month remote internship? [Yes / No]
+2. Do you have hands-on experience with React, HTML, CSS, and modern JavaScript? [Yes / No]
+3. Do you have basic familiarity with backend (Node.js/Python) & REST APIs? [Yes / No]
+4. Are you comfortable collaborating via Git and pull requests? [Yes / No]
+
+--- PROJECT & TECHNICAL CONTRIBUTION ---
 1. What I built & personally contributed:
-[Briefly describe your project and what you personally engineered]
+[Briefly describe your project, tech stack, and what you personally engineered]
 
 2. One technical problem I solved:
-[Explain the challenge, your debugging/engineering thought process, and how you resolved it]
+[Explain the challenge or bug, your debugging thought process, and how you resolved it]
+
+*** MANDATORY RÉSUMÉ ATTACHMENT ***
+>> PLEASE ATTACH YOUR RÉSUMÉ FILE (PDF or DOCX) TO THIS EMAIL BEFORE SENDING (DO NOT SEND A LINK) <<
 
 Thank you,
 [Your Name]`
@@ -90,12 +113,67 @@ Thank you,
     }
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const allowedExtensions = [".pdf", ".doc", ".docx"];
+    const fileExt = file.name.substring(file.name.lastIndexOf(".")).toLowerCase();
+
+    if (!allowedExtensions.includes(fileExt)) {
+      setResumeError("Unsupported file format. Please upload a PDF, DOC, or DOCX file.");
+      setResumeFile(null);
+      setResumeBase64("");
+      return;
+    }
+
+    // 4.5 MB limit
+    if (file.size > 4.5 * 1024 * 1024) {
+      setResumeError("File size exceeds 4.5MB limit. Please upload a smaller file.");
+      setResumeFile(null);
+      setResumeBase64("");
+      return;
+    }
+
+    setResumeError("");
+    if (formErrors.resume) {
+      setFormErrors((prev) => ({ ...prev, resume: "" }));
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setResumeFile(file);
+      setResumeBase64(reader.result);
+    };
+    reader.onerror = () => {
+      setResumeError("Failed to read the file. Please try again.");
+      setResumeFile(null);
+      setResumeBase64("");
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveFile = () => {
+    setResumeFile(null);
+    setResumeBase64("");
+    setResumeError("");
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const errors = {};
-    if (!formData.name.trim()) errors.name = "Please enter your name.";
+    if (!formData.name.trim()) errors.name = "Please enter your full name.";
     if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errors.email = "Please enter a valid email address.";
+    }
+    if (!formData.location.trim()) {
+      errors.location = "Please enter your current location / city.";
+    }
+    if (!formData.githubUrl.trim()) {
+      errors.githubUrl = "Please provide your GitHub profile link.";
+    }
+    if (!resumeFile || !resumeBase64) {
+      errors.resume = "Mandatory: Please attach your résumé (PDF or DOC/DOCX).";
     }
     if (!formData.message.trim()) {
       errors.message = "Please share details about what you built and problems you solved.";
@@ -116,10 +194,24 @@ Thank you,
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          company: formData.portfolioLink, // Routed as link in contact handler
+          phone: formData.phone,
+          location: formData.location,
+          githubUrl: formData.githubUrl,
+          portfolioUrl: formData.portfolioUrl,
+          screeningAnswers: {
+            availableFullTime: formData.availableFullTime,
+            reactExp: formData.reactExp,
+            backendExp: formData.backendExp,
+            gitComfort: formData.gitComfort
+          },
           projectType: `Job Application: ${job.title}`,
           budget: "N/A (Careers)",
           message: formData.message,
+          resumeAttachment: {
+            filename: resumeFile.name,
+            content: resumeBase64,
+            contentType: resumeFile.type
+          },
           bot_field: formData.bot_field
         })
       });
@@ -430,7 +522,7 @@ Thank you,
               style={{
                 background: "#FFFFFF",
                 borderRadius: "24px",
-                maxWidth: "640px",
+                maxWidth: "680px",
                 width: "100%",
                 maxHeight: "90vh",
                 overflowY: "auto",
@@ -462,25 +554,25 @@ Thank you,
 
               {!isSubmitted ? (
                 <>
-                  <div style={{ marginBottom: "24px" }}>
+                  <div style={{ marginBottom: "20px" }}>
                     <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--nr-blue)", letterSpacing: "0.15em", textTransform: "uppercase" }}>
                       Online Application
                     </span>
-                    <h3 style={{ fontFamily: "var(--nr-font-display)", fontSize: "1.5rem", fontWeight: 800, color: "var(--nr-deep-navy)", margin: "6px 0 8px 0" }}>
+                    <h3 style={{ fontFamily: "var(--nr-font-display)", fontSize: "1.5rem", fontWeight: 800, color: "var(--nr-deep-navy)", margin: "4px 0 6px 0" }}>
                       Apply for {job.title}
                     </h3>
                     <p style={{ color: "var(--nr-medium-gray)", fontSize: "0.875rem", margin: 0, lineHeight: 1.5 }}>
-                      Directly submits your details to <strong style={{ color: "var(--nr-deep-navy)" }}>{job.applyEmail}</strong> via our secure Resend email dispatch.
+                      Directly submits your application and attached résumé to <strong style={{ color: "var(--nr-deep-navy)" }}>{job.applyEmail}</strong>.
                     </p>
                   </div>
 
                   {submitError && (
-                    <div style={{ padding: "12px 16px", background: "#FEF2F2", border: "1px solid #FCA5A5", borderRadius: "10px", color: "#B91C1C", fontSize: "0.875rem", marginBottom: "20px" }}>
+                    <div style={{ padding: "12px 16px", background: "#FEF2F2", border: "1px solid #FCA5A5", borderRadius: "10px", color: "#B91C1C", fontSize: "0.875rem", marginBottom: "16px" }}>
                       {submitError}
                     </div>
                   )}
 
-                  <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+                  <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                     {/* Honeypot field */}
                     <input 
                       type="text" 
@@ -492,71 +584,307 @@ Thank you,
                       autoComplete="off" 
                     />
 
-                    <div>
-                      <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
-                        Full Name *
-                      </label>
-                      <input 
-                        type="text" 
-                        name="name" 
-                        value={formData.name} 
-                        onChange={handleFormChange}
-                        placeholder="John Doe"
-                        style={{
-                          width: "100%",
-                          padding: "12px 16px",
-                          borderRadius: "10px",
-                          border: formErrors.name ? "1px solid #EF4444" : "1px solid var(--nr-light-gray)",
-                          fontSize: "0.9375rem",
-                          outline: "none"
-                        }}
-                      />
-                      {formErrors.name && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{formErrors.name}</span>}
+                    {/* Name & Email Row */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "14px" }}>
+                      <div>
+                        <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
+                          Full Name *
+                        </label>
+                        <input 
+                          type="text" 
+                          name="name" 
+                          value={formData.name} 
+                          onChange={handleFormChange}
+                          placeholder="Jane Doe"
+                          style={{
+                            width: "100%",
+                            padding: "11px 14px",
+                            borderRadius: "10px",
+                            border: formErrors.name ? "1px solid #EF4444" : "1px solid var(--nr-light-gray)",
+                            fontSize: "0.9375rem",
+                            outline: "none"
+                          }}
+                        />
+                        {formErrors.name && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{formErrors.name}</span>}
+                      </div>
+
+                      <div>
+                        <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
+                          Email Address *
+                        </label>
+                        <input 
+                          type="email" 
+                          name="email" 
+                          value={formData.email} 
+                          onChange={handleFormChange}
+                          placeholder="jane@example.com"
+                          style={{
+                            width: "100%",
+                            padding: "11px 14px",
+                            borderRadius: "10px",
+                            border: formErrors.email ? "1px solid #EF4444" : "1px solid var(--nr-light-gray)",
+                            fontSize: "0.9375rem",
+                            outline: "none"
+                          }}
+                        />
+                        {formErrors.email && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{formErrors.email}</span>}
+                      </div>
                     </div>
 
-                    <div>
-                      <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
-                        Email Address *
-                      </label>
-                      <input 
-                        type="email" 
-                        name="email" 
-                        value={formData.email} 
-                        onChange={handleFormChange}
-                        placeholder="john@example.com"
-                        style={{
-                          width: "100%",
-                          padding: "12px 16px",
-                          borderRadius: "10px",
-                          border: formErrors.email ? "1px solid #EF4444" : "1px solid var(--nr-light-gray)",
-                          fontSize: "0.9375rem",
-                          outline: "none"
-                        }}
-                      />
-                      {formErrors.email && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{formErrors.email}</span>}
+                    {/* Location & Phone Row */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "14px" }}>
+                      <div>
+                        <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
+                          Current Location / City *
+                        </label>
+                        <input 
+                          type="text" 
+                          name="location" 
+                          value={formData.location} 
+                          onChange={handleFormChange}
+                          placeholder="e.g. Kochi, Kerala, India"
+                          style={{
+                            width: "100%",
+                            padding: "11px 14px",
+                            borderRadius: "10px",
+                            border: formErrors.location ? "1px solid #EF4444" : "1px solid var(--nr-light-gray)",
+                            fontSize: "0.9375rem",
+                            outline: "none"
+                          }}
+                        />
+                        {formErrors.location && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{formErrors.location}</span>}
+                      </div>
+
+                      <div>
+                        <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
+                          Phone / WhatsApp (Optional)
+                        </label>
+                        <input 
+                          type="tel" 
+                          name="phone" 
+                          value={formData.phone} 
+                          onChange={handleFormChange}
+                          placeholder="+91 98765 43210"
+                          style={{
+                            width: "100%",
+                            padding: "11px 14px",
+                            borderRadius: "10px",
+                            border: "1px solid var(--nr-light-gray)",
+                            fontSize: "0.9375rem",
+                            outline: "none"
+                          }}
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
-                        GitHub / Portfolio / Résumé Link (Optional)
-                      </label>
-                      <input 
-                        type="url" 
-                        name="portfolioLink" 
-                        value={formData.portfolioLink} 
-                        onChange={handleFormChange}
-                        placeholder="https://github.com/yourusername or drive link"
-                        style={{
-                          width: "100%",
-                          padding: "12px 16px",
-                          borderRadius: "10px",
-                          border: "1px solid var(--nr-light-gray)",
-                          fontSize: "0.9375rem",
-                          outline: "none"
-                        }}
-                      />
+                    {/* GitHub & Portfolio Row */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "14px" }}>
+                      <div>
+                        <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
+                          GitHub Profile Link *
+                        </label>
+                        <input 
+                          type="url" 
+                          name="githubUrl" 
+                          value={formData.githubUrl} 
+                          onChange={handleFormChange}
+                          placeholder="https://github.com/yourusername"
+                          style={{
+                            width: "100%",
+                            padding: "11px 14px",
+                            borderRadius: "10px",
+                            border: formErrors.githubUrl ? "1px solid #EF4444" : "1px solid var(--nr-light-gray)",
+                            fontSize: "0.9375rem",
+                            outline: "none"
+                          }}
+                        />
+                        {formErrors.githubUrl && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{formErrors.githubUrl}</span>}
+                      </div>
+
+                      <div>
+                        <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
+                          Portfolio / Live Project (Optional)
+                        </label>
+                        <input 
+                          type="url" 
+                          name="portfolioUrl" 
+                          value={formData.portfolioUrl} 
+                          onChange={handleFormChange}
+                          placeholder="https://yourportfolio.com"
+                          style={{
+                            width: "100%",
+                            padding: "11px 14px",
+                            borderRadius: "10px",
+                            border: "1px solid var(--nr-light-gray)",
+                            fontSize: "0.9375rem",
+                            outline: "none"
+                          }}
+                        />
+                      </div>
                     </div>
 
+                    {/* Candidate Screening Questions (Yes / No) */}
+                    <div style={{
+                      background: "#F8FAFC",
+                      border: "1px solid #E2E8F0",
+                      borderRadius: "14px",
+                      padding: "16px 18px"
+                    }}>
+                      <div style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "10px", display: "flex", alignItems: "center", gap: "6px" }}>
+                        <span>Candidate Screening</span>
+                        <span style={{ fontSize: "0.75rem", color: "var(--nr-medium-gray)", fontWeight: 500 }}>(Quick Questions)</span>
+                      </div>
+
+                      {[
+                        { name: "availableFullTime", label: "Available for full-time, remote internship?" },
+                        { name: "reactExp", label: "Working knowledge of React and modern JavaScript?" },
+                        { name: "backendExp", label: "Familiarity with backend stacks (Node/Python) & APIs?" },
+                        { name: "gitComfort", label: "Comfortable collaborating via Git & Pull Requests?" }
+                      ].map((q, idx) => (
+                        <div 
+                          key={q.name}
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            gap: "12px",
+                            flexWrap: "wrap",
+                            padding: "8px 0",
+                            borderBottom: idx < 3 ? "1px solid #E2E8F0" : "none"
+                          }}
+                        >
+                          <span style={{ fontSize: "0.8125rem", color: "var(--nr-deep-navy)", fontWeight: 500, flex: 1, minWidth: "220px" }}>
+                            {q.label}
+                          </span>
+                          <div style={{ display: "inline-flex", gap: "6px" }}>
+                            <button
+                              type="button"
+                              onClick={() => setFormData(prev => ({ ...prev, [q.name]: "Yes" }))}
+                              style={{
+                                padding: "4px 14px",
+                                borderRadius: "var(--nr-radius-full)",
+                                fontSize: "0.75rem",
+                                fontWeight: 700,
+                                border: "none",
+                                cursor: "pointer",
+                                background: formData[q.name] === "Yes" ? "var(--nr-blue)" : "#E2E8F0",
+                                color: formData[q.name] === "Yes" ? "#FFFFFF" : "var(--nr-deep-navy)",
+                                transition: "all 0.15s ease"
+                              }}
+                            >
+                              Yes
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setFormData(prev => ({ ...prev, [q.name]: "No" }))}
+                              style={{
+                                padding: "4px 14px",
+                                borderRadius: "var(--nr-radius-full)",
+                                fontSize: "0.75rem",
+                                fontWeight: 700,
+                                border: "none",
+                                cursor: "pointer",
+                                background: formData[q.name] === "No" ? "var(--nr-deep-navy)" : "#E2E8F0",
+                                color: formData[q.name] === "No" ? "#FFFFFF" : "var(--nr-deep-navy)",
+                                transition: "all 0.15s ease"
+                              }}
+                            >
+                              No
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Résumé Attachment (Mandatory) */}
+                    <div>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                        <label style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)" }}>
+                          Attach Résumé (PDF or DOCX) *
+                        </label>
+                        <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "var(--nr-blue)" }}>
+                          Mandatory &bull; Max 4.5MB
+                        </span>
+                      </div>
+
+                      {!resumeFile ? (
+                        <label
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "20px 16px",
+                            border: formErrors.resume ? "2px dashed #EF4444" : "2px dashed #CBD5E1",
+                            borderRadius: "12px",
+                            background: "#F8FAFC",
+                            cursor: "pointer",
+                            transition: "all 0.2s ease",
+                            textAlign: "center"
+                          }}
+                        >
+                          <input
+                            type="file"
+                            accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                            onChange={handleFileChange}
+                            style={{ display: "none" }}
+                          />
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--nr-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: "6px" }}>
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                          </svg>
+                          <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--nr-deep-navy)", marginBottom: "2px" }}>
+                            Click to browse and attach résumé
+                          </span>
+                          <span style={{ fontSize: "0.75rem", color: "var(--nr-medium-gray)" }}>
+                            Accepts .pdf, .doc, or .docx (No links, file only)
+                          </span>
+                        </label>
+                      ) : (
+                        <div style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          padding: "12px 16px",
+                          background: "#F0FDF4",
+                          border: "1px solid #86EFAC",
+                          borderRadius: "10px"
+                        }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: "10px", minWidth: 0 }}>
+                            <span style={{ fontSize: "1.25rem", flexShrink: 0 }}>📎</span>
+                            <div style={{ minWidth: 0 }}>
+                              <p style={{ margin: 0, fontSize: "0.8125rem", fontWeight: 700, color: "#166534", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                                {resumeFile.name}
+                              </p>
+                              <p style={{ margin: 0, fontSize: "0.75rem", color: "#15803D" }}>
+                                {(resumeFile.size / 1024).toFixed(1)} KB &bull; Attached & ready
+                              </p>
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={handleRemoveFile}
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "#EF4444",
+                              fontSize: "0.8125rem",
+                              fontWeight: 600,
+                              cursor: "pointer",
+                              padding: "4px 8px"
+                            }}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      )}
+
+                      {resumeError && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{resumeError}</span>}
+                      {formErrors.resume && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{formErrors.resume}</span>}
+                    </div>
+
+                    {/* What you built & technical problem */}
                     <div>
                       <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "var(--nr-deep-navy)", marginBottom: "6px" }}>
                         What you built & technical problem solved *
@@ -564,12 +892,12 @@ Thank you,
                       <textarea 
                         name="message" 
                         value={formData.message} 
-                        onChange={handleFormChange}
-                        rows={4}
+                        onChange={handleFormChange} 
+                        rows={3}
                         placeholder="Briefly explain what you built, what you personally contributed, and one technical problem you solved..."
                         style={{
                           width: "100%",
-                          padding: "12px 16px",
+                          padding: "11px 14px",
                           borderRadius: "10px",
                           border: formErrors.message ? "1px solid #EF4444" : "1px solid var(--nr-light-gray)",
                           fontSize: "0.9375rem",
@@ -580,7 +908,7 @@ Thank you,
                       {formErrors.message && <span style={{ color: "#EF4444", fontSize: "0.75rem", marginTop: "4px", display: "block" }}>{formErrors.message}</span>}
                     </div>
 
-                    <div style={{ display: "flex", gap: "12px", justifyContent: "flex-end", marginTop: "12px" }}>
+                    <div style={{ display: "flex", gap: "12px", justifyContent: "flex-end", marginTop: "8px", alignItems: "center" }}>
                       <button
                         type="button"
                         onClick={() => setIsModalOpen(false)}
@@ -612,14 +940,31 @@ Thank you,
                     Application Sent!
                   </h3>
                   <p style={{ color: "var(--nr-medium-gray)", fontSize: "0.95rem", lineHeight: 1.6, marginBottom: "28px" }}>
-                    Thank you for applying. We have delivered your application to <strong style={{ color: "var(--nr-deep-navy)" }}>{job.applyEmail}</strong>. Our engineering team will review your profile and get in touch with you.
+                    Thank you for applying. We have delivered your application and attached résumé to <strong style={{ color: "var(--nr-deep-navy)" }}>{job.applyEmail}</strong>. Our engineering team will review your profile and get in touch with you.
                   </p>
                   <button
                     type="button"
                     onClick={() => {
                       setIsSubmitted(false);
                       setIsModalOpen(false);
-                      setFormData({ name: "", email: "", portfolioLink: "", message: "", bot_field: "" });
+                      setFormData({
+                        name: "",
+                        email: "",
+                        location: "",
+                        phone: "",
+                        githubUrl: "",
+                        portfolioUrl: "",
+                        availableFullTime: "Yes",
+                        reactExp: "Yes",
+                        backendExp: "Yes",
+                        gitComfort: "Yes",
+                        message: "",
+                        bot_field: ""
+                      });
+                      setResumeFile(null);
+                      setResumeBase64("");
+                      setResumeError("");
+                      setFormErrors({});
                     }}
                     className="btn-primary"
                     style={{ cursor: "pointer" }}
