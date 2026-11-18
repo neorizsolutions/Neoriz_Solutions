@@ -11,11 +11,11 @@ export const careersData = [
     status: "open", // "open" | "opening_soon" | "closed"
     
     // Application destination configuration:
-    // - "email": Uses direct email / on-page quick form connected to hello@neorizsolutions.com
+    // - "email": Uses direct email / on-page quick form connected to hradmin@neorizsolutions.com
     // - "linkedin": Redirects directly to the live LinkedIn job post once supplied in linkedInUrl
     // - "opening_soon": Displays "Applications opening soon"
     applyMode: "email", 
-    applyEmail: "hello@neorizsolutions.com",
+    applyEmail: "hradmin@neorizsolutions.com",
     linkedInUrl: "", // Paste live LinkedIn job URL here once supplied
 
     companyDescription:

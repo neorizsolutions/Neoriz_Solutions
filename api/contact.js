@@ -55,6 +55,9 @@ export default async function handler(req, res) {
 
   // 7. Construct Email
   const isJobApp = projectType && (projectType.toLowerCase().includes("job application") || projectType.toLowerCase().includes("career") || projectType.toLowerCase().includes("intern"));
+  const destinationEmail = isJobApp 
+    ? (process.env.CAREERS_EMAIL || 'hradmin@neorizsolutions.com') 
+    : toEmail;
   const subject = isJobApp 
     ? `Job Application: ${projectType} — ${name}`
     : `New Project Inquiry — ${projectType || 'General'} — ${name}`;
@@ -149,7 +152,7 @@ ${new Date().toISOString()}
       },
       body: JSON.stringify({
         from: fromEmail,
-        to: [toEmail],
+        to: [destinationEmail],
         reply_to: email, // Direct replies go to the user
         subject: subject,
         text: textBody,

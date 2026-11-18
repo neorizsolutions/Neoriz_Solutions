@@ -405,7 +405,7 @@ Thank you,
 
       </main>
 
-      {/* In-page Quick Application Modal (Powered by Resend API -> hello@neorizsolutions.com) */}
+      {/* In-page Quick Application Modal (Powered by Resend API -> hradmin@neorizsolutions.com) */}
       <AnimatePresence>
         {isModalOpen && (
           <div 

@@ -216,10 +216,10 @@ export default function CareersPage() {
               <div>
                 <MagneticButton>
                   <a 
-                    href="mailto:hello@neorizsolutions.com?subject=Speculative%20Application%20-%20Neoriz%20Solutions" 
+                    href="mailto:hradmin@neorizsolutions.com?subject=Speculative%20Application%20-%20Neoriz%20Solutions" 
                     className="btn-secondary"
                   >
-                    Email hello@neorizsolutions.com
+                    Email hradmin@neorizsolutions.com
                   </a>
                 </MagneticButton>
               </div>
