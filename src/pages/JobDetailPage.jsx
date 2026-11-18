@@ -56,41 +56,9 @@ export default function JobDetailPage() {
 
   if (!job) return <NotFound />;
 
-  // Email mailto URL prefilled with prompt's required application details
-  const emailSubject = encodeURIComponent(`Job Application: ${job.title} — [Your Name]`);
-  const emailBody = encodeURIComponent(
-`Hi Neoriz Solutions Hiring Team,
-
-I am writing to apply for the ${job.title} position (${job.arrangement}).
-
---- APPLICANT DETAILS ---
-Full Name: [Your Full Name]
-Email Address: [Your Email Address]
-Current Location / City: [e.g. Kochi, Kerala, India]
-Contact Phone / WhatsApp: [Your Phone Number]
-GitHub Profile URL: [https://github.com/yourusername]
-Portfolio / Live Project Link: [Optional link]
-
---- CANDIDATE SCREENING QUESTIONS ---
-1. Are you available for a full-time, 6-month remote internship? [Yes / No]
-2. Do you have hands-on experience with React, HTML, CSS, and modern JavaScript? [Yes / No]
-3. Do you have basic familiarity with backend (Node.js/Python) & REST APIs? [Yes / No]
-4. Are you comfortable collaborating via Git and pull requests? [Yes / No]
-
---- PROJECT & TECHNICAL CONTRIBUTION ---
-1. What I built & personally contributed:
-[Briefly describe your project, tech stack, and what you personally engineered]
-
-2. One technical problem I solved:
-[Explain the challenge or bug, your debugging thought process, and how you resolved it]
-
-*** MANDATORY RÉSUMÉ ATTACHMENT ***
->> PLEASE ATTACH YOUR RÉSUMÉ FILE (PDF or DOCX) TO THIS EMAIL BEFORE SENDING (DO NOT SEND A LINK) <<
-
-Thank you,
-[Your Name]`
-  );
-  const mailtoUrl = `mailto:${job.applyEmail}?subject=${emailSubject}&body=${emailBody}`;
+  // Email mailto URL with subject line only
+  const emailSubject = encodeURIComponent(`Job Application: ${job.title}`);
+  const mailtoUrl = `mailto:${job.applyEmail}?subject=${emailSubject}`;
 
   const handleApplyClick = (e) => {
     if (job.applyMode === "linkedin" && job.linkedInUrl) {
